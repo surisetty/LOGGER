@@ -4,6 +4,9 @@
   "releaseDate": "2017-09-15T00:00:00.000Z",
   "config_status": false,
   "NW_type": "gprs",
+  "File_name": "hostname_time",
+  "Modbus_interval": "300",
+  "Ftp_interval": "600",
   "ftp": {
     "name": "testuser",
     "password": "test123",
