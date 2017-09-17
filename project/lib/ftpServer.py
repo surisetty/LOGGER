@@ -19,12 +19,13 @@ class FTP_node(object):
 	#***********************************************************#
 	def __init__(self):
 		# Timeout for FTP Failure
-		self.timeOut = 20
+		self.timeOut = 10
 		# FTP Credentials initialization
 		self.user_id = "Anonymous"
 		self.password = "Anonymous"
 		self.ip_addr = "xx.xx.xx.xx"
 		self.port_num = 21
+		self.server_upload_time = 100
 		print("FTP Node Initialized...")
 
 	#***********************************************************#
@@ -39,7 +40,7 @@ class FTP_node(object):
 			try:
 				# Create FTP Node with the existing Credentials
 				ftp = FTP(ip_addr, user_id, password, self.timeOut)
-				# ftp.cwd('/home/test')
+				ftp.cwd(self.path)
 				# Print the Welcome Message
 				print ( ftp.getwelcome() )
 				# If Connection is made, make, retry as false
@@ -63,13 +64,12 @@ class FTP_node(object):
 			print('Uploading ' + final_file_name + '...')
 			# Fetch the File extension
 			ext = os.path.splitext(final_file_name)[1]
-			if ext in (".txt", ".htm", ".html"):
-				# send the file in non-binary format if file type is txt
-				cred.storlines("STOR " + final_file_name, open(final_file_name))
+
+			if ext in (".csv"):
+				cred.storbinary('STOR '+ final_file_name, open(file_path, 'rb'))
+				print('Upload finished.')
 			else:
-				# send the file in binary format if file type is not text
-				cred.storbinary("STOR " + final_file_name, open(final_file_name, "rb"))
-			print('Upload finished.')
+				print('File Format other than csv')
 		
 		# Handle all the exceptions while File upload
 		except IOError:
@@ -85,31 +85,34 @@ class FTP_node(object):
 		ext = os.path.splitext(cred_file)[1]
 		# if file type is JSON
 		if ext in (".json"):
-			print ("Reading Credentials")
+			print ("Reading FTP Credentials")
 			# Open and Load JSON File
 			with open(cred_file_path) as data_file:    
 				data = json.load(data_file)
+
 			# Fetch all the credentials
-			self.user_id = data["credentials"][0]["user_id"]
-			self.password = data["credentials"][1]["password"]
-			self.ip_addr = data["credentials"][2]["ip_addr"]
-			self.port_num = data["credentials"][3]["port_num"]
+			self.user_id = data["ftp"]["name"]
+			self.password = data["ftp"]["password"]
+			self.ip_addr = data["ftp"]["server"]
+			self.port_num = data["ftp"]["port"]
+			self.path = data["ftp"]["path"]
+			self.server_upload_time = data["Ftp_interval"]
 		# if file type is not JSON
 		else:
 			print ("File not in JSON Format")
 
-# Main Loop starts here
-if __name__ == '__main__':
-	# take the fisrt file from the passed argument
-	cred_file = sys.argv[1]
-	# take the second file from the passed argument
-	file = sys.argv[2]
+# # Main Loop starts here
+# if __name__ == '__main__':
+# 	# take the fisrt file from the passed argument
+# 	cred_file = sys.argv[1]
+# 	# take the second file from the passed argument
+# 	file = sys.argv[2]
 	
-	# Call FTP NODE
-	Ftp = FTP_node()
-	# Read JSON file
-	Ftp.Read_JSON(cred_file)
-	# Make Connection
-	cred = Ftp.FTP_connect(Ftp.user_id, Ftp.password, Ftp.ip_addr, Ftp.port_num)
-	# Upload the required file
-	Ftp.FTP_upload(cred, file)
+# 	# Call FTP NODE
+# 	Ftp = FTP_node()
+# 	# Read JSON file
+# 	Ftp.Read_JSON(cred_file)
+# 	# Make Connection
+# 	cred = Ftp.FTP_connect(Ftp.user_id, Ftp.password, Ftp.ip_addr, Ftp.port_num)
+# 	# Upload the required file
+# 	Ftp.FTP_upload(cred, file)
