@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Naveen : First declare os libraries then application libraries
+
 from ftpServer import FTP_node
 from modbus import MODBUS_node
 import _thread
@@ -42,6 +44,7 @@ try:
    _thread.start_new_thread( send_file, ("Ftp_Send", float(Ftp.server_upload_time), cred, filepath, ) )
 except:
    print ("Error: unable to start _thread")
+   # Naveen : Can we have exit value printed ? . also log error for each of the thread
 
 while 1:
    pass
