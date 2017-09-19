@@ -9,15 +9,6 @@ import os
 true = 1
 false = 0
 
-#################################
-
-Naveen:
-add doc strings to all  functios 
-
-############################### 
-
-
-
 #***********************************************************#
 #********************    FTP Class Node    *****************#
 #***********************************************************#
@@ -62,6 +53,14 @@ class FTP_node(object):
 				# Run the loop until connection is a Success
 				retry = true
 		return ftp
+
+	#***********************************************************#
+	#******    Function to Close the FTP Connection    *********#
+	#***********************************************************#
+	def FTP_Close(self):
+		ftp = FTP()
+		ftp.close()
+		print ("Closing the FTP Connection...")
 
 	#***********************************************************#
 	#******    Function to Upload File on FTP Server    ********#
