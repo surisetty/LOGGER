@@ -38,7 +38,7 @@ class MODBUS_node(object):
 		# File extension of the file containing the modbus responses of the read addresses 
 		self.mod_data_file_ext = '.csv'
 		# File number counter
-		self.mod_file_counter = 10
+		self.mod_file_counter = 0
 		print("MODBUS Node Initialized...")
 
 	#***********************************************************#
@@ -102,7 +102,7 @@ class MODBUS_node(object):
 			# make a new file if not present
 			append_write = 'w'
 		# write the data into the file
-		with open(self.mod_created_file_name, append_write, newline='') as f: 
+		with open(self.mod_created_file_name, append_write) as f: 
 			f.write(value)
 		# with open("New_files/test2.csv", append_write, newline='') as f: 
 		# 	writer = csv.writer(f , delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
