@@ -30,15 +30,17 @@ class MODBUS_node(object):
 		# Interval between two modbus read
 		self.modbus_fetch_time = 1
 		# slave device address
-		self.device_addr = "0x07"
+		self.device_addr = "0x01"
 		# File containing the modbus responses of the read addresses 
 		self.mod_created_file_name = ''
 		# File location and name containing the modbus responses of the read addresses 
 		self.mod_data_file = 'New_files/file'
 		# File extension of the file containing the modbus responses of the read addresses 
 		self.mod_data_file_ext = '.csv'
+		#create file name initial
+		timestr = time.strftime("%Y%m%d-%H%M%S")
 		# File number counter
-		self.mod_file_counter = 0
+		self.mod_file_counter = timestr
 		print("MODBUS Node Initialized...")
 
 	#***********************************************************#
@@ -92,7 +94,7 @@ class MODBUS_node(object):
 		# convert the data read from modbus in a particular format
 		value = self.Mod_File_Conversion(read_value)
 		# create the file name
-		self.mod_created_file_name = self.mod_data_file + str(self.mod_file_counter) \
+		self.mod_created_file_name = self.mod_data_file + self.mod_file_counter \
 									+ self.mod_data_file_ext
 		# check for the file existence
 		if os.path.exists(self.mod_created_file_name) == True:
@@ -129,7 +131,7 @@ class MODBUS_node(object):
 			# read all register one by one
 			for i in range(len(addr_list)):
 				# 0x07 is the slave device address
-				result = client.read_holding_registers(int(addr_list[i]), 1, unit=0x07)
+				result = client.read_holding_registers(int(addr_list[i]), 1, unit=0x01)
 				# append the register data in the list
 				get_data.append(result.registers[0])
 			# close the modbus client after data read

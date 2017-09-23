@@ -29,8 +29,8 @@ def mod_read(threadName, delay):
 #******    Thread function to send modbus file    **********#
 #***********************************************************#
 def send_file(threadName, delay):
-	cred = Ftp.FTP_connect(Ftp.user_id, Ftp.password, Ftp.ip_addr, Ftp.port_num)
 	while 1:
+		cred = Ftp.FTP_connect(Ftp.user_id, Ftp.password, Ftp.ip_addr, Ftp.port_num)
 		# continue reading the data until exit flag is set high
 		if exitFlag:
 			# exit the thread when exit flag is set
@@ -43,8 +43,10 @@ def send_file(threadName, delay):
 		Ftp.FTP_Close()
 		# remove the uploaded file when sent
 		os.remove(Modbus.mod_created_file_name)
+		# create file name
+		timestr = time.strftime("%Y%m%d-%H%M%S")
 		# Increment the file counter, when file is sent
-		Modbus.mod_file_counter += 1
+		Modbus.mod_file_counter = timestr
 
 # Get the credential file as an input
 cred_file = sys.argv[1]
