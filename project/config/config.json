@@ -4,15 +4,15 @@
   "releaseDate": "2017-09-15T00:00:00.000Z",
   "config_status": false,
   "NW_type": "gprs",
-  "File_name": "hostname_time",
+  "Output_Filename": "logger_",
   "Modbus_interval": "4",
   "Ftp_interval": "9",
   "ftp": {
-    "name": "jd",
-    "password": "bsrc1234",
-    "server": "10.2.28.208",
+    "name": "test",
+    "password": "pullu",
+    "server": "10.2.24.144",
     "port": "21",
-    "path": "/ftptest"
+    "path": "/home/test/collect"
   },
   "GPRS": {
     "user": "test",

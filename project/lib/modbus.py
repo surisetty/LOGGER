@@ -8,6 +8,7 @@ import json
 import csv
 import pymodbus3
 from pymodbus3.client.sync import ModbusSerialClient as ModbusClient
+from lib.json_read import Read_Config
 
 #***********************************************************#
 #********************    Modbus Class Node    **************#
@@ -21,32 +22,24 @@ class MODBUS_node(object):
 		self.read_reg_addr = []
 		# number of registers to read
 		self.read_reg_count = 0
-		# input file to modbus, containing addresses to read
-		self.file = "xxxxx"
-		# com port address for modbus
-		self.port_addr = "xxxxxxxx"
 		# Timeout for MODBUS Failure
 		self.timeOut = 3
-		# Interval between two modbus read
-		self.modbus_fetch_time = 1
-		# slave device address
-		self.device_addr = "0x01"
 		# File containing the modbus responses of the read addresses 
-		self.mod_created_file_name = ''
+		self.mod_data_file = ""
 		# File location and name containing the modbus responses of the read addresses 
-		self.mod_data_file = 'New_files/file'
+		self.mod_data_file_path = sys.path[0] + "/Data/"
 		# File extension of the file containing the modbus responses of the read addresses 
 		self.mod_data_file_ext = '.csv'
 		#create file name initial
 		timestr = time.strftime("%Y%m%d-%H%M%S")
 		# File number counter
-		self.mod_file_counter = timestr
+		self.mod_data_file_timestamp = timestr
 		print("MODBUS Node Initialized...")
 
 	#***********************************************************#
 	#******    Function to Read the Input File    **************#
 	#***********************************************************#
-	def Read_ADDR_Input_file(self, file_path):
+	def Read_input_file(self, file_path):
 		# Fetch the File name
 		mod_file_name = os.path.basename(file_path)
 		# Fetch the file extension
@@ -63,48 +56,25 @@ class MODBUS_node(object):
 			print("Error in Reading file, change extension to .addr")
 
 	#***********************************************************#
-	#******    Function to Read the Credentials File    ********#
-	#***********************************************************#
-	def Read_JSON(self, cred_file_path):
-		# Fetch the File name
-		cred_file = os.path.basename(cred_file_path)
-		# Fetch the file extension
-		ext = os.path.splitext(cred_file)[1]
-		# if file type is JSON
-		if ext in (".json"):
-			print ("Reading MODBUS Credentials")
-			# Open and Load JSON File
-			with open(cred_file_path) as data_file:    
-				data = json.load(data_file)
-
-			# Fetch all the credentials
-			self.port_addr = data["serial"]["COM0"]["device"]
-			self.file = data["serial"]["COM0"]["Device_files"][0]
-			self.modbus_fetch_time = data["Modbus_interval"]
-		# if file type is not JSON
-		else:
-			print ("File not in JSON Format")
-
-	#***********************************************************#
 	#******    Function to Create the Modbus Read File    ******#
 	#***********************************************************#
-	def Mod_Create_file(self):
+	def Mod_Create_file(self, rjson):
 		# read the Modbus data for the specified addresses
-		read_value = self.Mod_Read(self.read_reg_addr)
+		read_value = self.Mod_Read(self.read_reg_addr, rjson)
 		# convert the data read from modbus in a particular format
-		value = self.Mod_File_Conversion(read_value)
+		value = self.Mod_File_Conversion(read_value, rjson)
 		# create the file name
-		self.mod_created_file_name = self.mod_data_file + self.mod_file_counter \
-									+ self.mod_data_file_ext
+		self.mod_data_file = self.mod_data_file_path + rjson.mod_data_file_initial \
+							+ self.mod_data_file_timestamp + self.mod_data_file_ext
 		# check for the file existence
-		if os.path.exists(self.mod_created_file_name) == True:
+		if os.path.exists(self.mod_data_file) == True:
 			# append if file already exists
 			append_write = 'a' 
 		else:
 			# make a new file if not present
 			append_write = 'w'
 		# write the data into the file
-		with open(self.mod_created_file_name, append_write) as f: 
+		with open(self.mod_data_file, append_write) as f: 
 			f.write(value)
 		# with open("New_files/test2.csv", append_write, newline='') as f: 
 		# 	writer = csv.writer(f , delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
@@ -112,13 +82,12 @@ class MODBUS_node(object):
 		# 		writer.writerow(value[i])
 		print ("done")
 
-
 	#***********************************************************#
 	#******    Function to Read the MODBUS data addr    ********#
 	#***********************************************************#
-	def Mod_Read(self, addr_list):
+	def Mod_Read(self, addr_list, rjson):
 		# Create a Modbus Client with the foloowing details
-		client= ModbusClient(method = "rtu", port=self.port_addr,stopbits = 1,\
+		client= ModbusClient(method = "rtu", port=rjson.mod_port_addr,stopbits = 1,\
 							 bytesize = 8, parity = 'N', baudrate= 9600, timeout= self.timeOut)
 		print("Trying to Connect to Modbus ...")
 		# create a list to store all the read addresses
@@ -146,19 +115,12 @@ class MODBUS_node(object):
 	#***********************************************************#
 	#******    Function to put the data in csv format    *******#
 	#***********************************************************#
-	def Mod_File_Conversion(self, data):
+	def Mod_File_Conversion(self, data,rjson):
 		row = ""
-		row += "ADDRMODBUS" + ", " + self.device_addr + "\n"
-		row += "TypeMODBUS" + ", " + self.file + "\n"
+		row += "ADDRMODBUS" + ", " + rjson.mod_device_addr + "\n"
+		row += "TypeMODBUS" + ", " + "hitachi" + "\n"
 		str_addr = ', '.join(str(e) for e in self.read_reg_addr)
 		row += str(len(data)) + ", " + str_addr + "\n"
 		str_data = ', '.join(str(e) for e in data)
 		row += time.ctime(time.time()) + "," + str_data + "\n"
-		# row = []
-		# row.append("ADDRMODBUS" + " " + self.device_addr)
-		# row.append("TypeMODBUS" + " " + self.file)
-		# str_addr = ', '.join(str(e) for e in self.read_reg_addr)
-		# row.append(str(len(data)) + " " + str_addr)
-		# str_data = ', '.join(str(e) for e in data)
-		# row.append(time.ctime(time.time()) + " " + str_data)
 		return row
