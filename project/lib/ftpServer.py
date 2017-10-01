@@ -6,7 +6,7 @@ import json
 import sys
 import os
 # Variable definitions
-true = 1
+true = 1  # naveen remove true false declarations, use True and False which defined by default 
 false = 0
 
 #***********************************************************#
@@ -20,12 +20,12 @@ class FTP_node(object):
 	def __init__(self):
 		# Timeout for FTP Failure
 		self.timeOut = 10
-		print("FTP Node Initialized...")
+		print("FTP Node Initialized...") #naveen remove all print calls, everything to be logged to log file 
 
 	#***********************************************************#
 	#******    Function to Create the FTP Connection    ********#
 	#***********************************************************#
-	def FTP_connect(self, user_id, password, ip_addr, port_num, path):
+	def FTP_connect(self, user_id, password, ip_addr, port_num, path): #naveen make all declaration to follow camel case 
 		print ("Connecting to FTP Server...")
 		# set initialize as True
 		retry = true
@@ -38,6 +38,7 @@ class FTP_node(object):
 				# Print the Welcome Message
 				print ( ftp.getwelcome() )
 				# If Connection is made, make, retry as false
+                                #naveen add log message stating FTP connection succesful 
 				retry = false
 
 			# Handle all kinds of existing errors while making the connection
