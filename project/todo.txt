@@ -7,6 +7,7 @@
    When executed showd display user menu with following options. 
    ) Hardware test ---> test COM ports loopback test for selected port 
                    ---> MODBUS test take user input addr and display received data ( readbus and write bus) 
+                   ---- ( If there is any utility is available use that) 
    ) Test network   ----> Ping gate way 
                     ----> Ping 8.8.8.8 
                     ----> FTP test send one sample file to ftp server 
@@ -18,3 +19,6 @@
                    ----->  show application PID 
 
 7) Diagnostic class to be implemented to find and detect system health check . 
+8) When application is starting log system uptime and application start time in log file. 
+9) Print log file name on screen when appliation is starting. 
+
