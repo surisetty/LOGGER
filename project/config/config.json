@@ -5,14 +5,15 @@
   "config_status": false,
   "NW_type": "gprs",
   "Output_Filename": "logger_",
+  "Logging_Level": 10,
   "Modbus_interval": "4",
-  "Ftp_interval": "9",
+  "Ftp_interval": "5",
   "ftp": {
-    "name": "test",
-    "password": "pullu",
-    "server": "10.2.24.144",
+    "name": "jd",
+    "password": "bsrc1234",
+    "server": "10.2.28.208",
     "port": "21",
-    "path": "/home/test/collect"
+    "path": "/ftptest"
   },
   "GPRS": {
     "user": "test",
