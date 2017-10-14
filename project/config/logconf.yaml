@@ -17,7 +17,7 @@ handlers:
         formatter: custom_format
         filename: '../project/Log_files/mylogger.log'
         filters: [mylogger]
-        maxBytes: 10240
+        maxBytes: 102400000
         backupCount: 5
 
 loggers:
