@@ -86,20 +86,7 @@ RJSON = ReadConfig()
 # Read the JSON file (config) 
 RJSON.ReadJson(cred_file)
 
-
 mylogger = logging.getLogger('mylogger')
-# # Initializing the logging settings
-# logging.basicConfig(level=RJSON.logging_level,
-#                     format='%(levelname)s - %(name)s - %(asctime)s - %(message)s',
-#                     filename=log_file_path,
-#                     filemode='a')
-
-# # create rotating file handler
-# handler = logging.handlers.RotatingFileHandler(log_file_path,\
-# 					 maxBytes=1024, backupCount=5)
-
-# mylogger.addHandler(handler)
-
 
 # Get the modbus input file as an input
 mod_file = []
