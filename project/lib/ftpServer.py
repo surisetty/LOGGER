@@ -1,21 +1,13 @@
 		#!/usr/bin/env python
 
-# Import necessary Libraries
 from ftplib import FTP
 import json
 import sys
 import os
 import logging
-# Variable definitions
-
-#***********************************************************#
-#********************    FTP Class Node    *****************#
-#***********************************************************#
 
 class FTP_node(object):
-	#***********************************************************#
-	#***************    Class Initialization    ****************#
-	#***********************************************************#
+	
 	def __init__(self):
 		logging.basicConfig(level=10,
                     format='%(levelname)s %(asctime)s %(threadName)s %(message)s',
@@ -25,11 +17,7 @@ class FTP_node(object):
 		self.timeOut = 10
 		logging.info("FTP node Initialized")
 		# print("FTP Node Initialized...")
-		
-
-	#***********************************************************#
-	#******    Function to Create the FTP Connection    ********#
-	#***********************************************************#
+	
 	def FTP_connect(self, user_id, password, ip_addr, port_num, path):
 		# print ("Connecting to FTP Server...")
 		logging.info("Connecting to FTP Server...")
@@ -56,18 +44,14 @@ class FTP_node(object):
 				logging.debug("Still trying to connect to FTP Server...")
 		return ftp
 
-	#***********************************************************#
-	#******    Function to Close the FTP Connection    *********#
-	#***********************************************************#
+	
 	def FTP_Close(self):
 		ftp = FTP()
 		ftp.close()
 		# print ("Closing the FTP Connection...")
 		logging.info("Closing the FTP Connection...")
 
-	#***********************************************************#
-	#******    Function to Upload File on FTP Server    ********#
-	#***********************************************************#
+	
 	def FTP_upload(self, cred, file_path):
 		try:
 			# Fetch the File name
