@@ -1,0 +1,2 @@
+http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/
+sudo systemctl stop logger.service , sudo systemctl start logger.service , sudo systemctl status logger.service 

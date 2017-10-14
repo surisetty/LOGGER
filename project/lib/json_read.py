@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 
+# Import necessary Libraries
 from ftplib import FTP
 import json
 import sys
 import os
 import logging
+# mylogger_json = logging.getLogger('mylogger.json')
 
-
-class Read_Config(object):
-	
+class ReadConfig(object):
+	#***********************************************************#
+	#***************    Class Initialization    ****************#
+	#***********************************************************#
 	def __init__(self):
 		# FTP User ID
 		self.ftp_user_id = "Anonymous"
@@ -26,8 +29,6 @@ class Read_Config(object):
 		self.mod_port_addr = "xxxxxxxx"
 		# Interval between two modbus read
 		self.mod_fetch_time = 1
-		# # slave device address
-		# self.mod_device_addr = "01"
 		# Output file name
 		self.mod_data_file_initial = 'xxxx'
 		#Modbus input file
@@ -36,22 +37,18 @@ class Read_Config(object):
 		self.serial_port_count = 0
 		# read logging Level
 		self.logging_level = 10
-		
-		logging.basicConfig(level=self.logging_level,
-                    format='%(levelname)s %(asctime)s %(threadName)s %(message)s',
-                    filename='./project/Log_files/test.log',
-                    filemode='a')
 
-	
-	def Read_JSON(self, cred_file_path):
+	#***********************************************************#
+	#******    Function to Read the Credentials File    ********#
+	#***********************************************************#
+	def ReadJson(self, cred_file_path):
 		# Fetch the File name
 		cred_file = os.path.basename(cred_file_path)
 		# Fetch the file extension
 		ext = os.path.splitext(cred_file)[1]
 		# if file type is JSON
 		if ext in (".json"):
-			logging.info("ReadingCredentials")
-			# print ("ReadingCredentials")
+			
 			# Open and Load JSON File
 			with open(cred_file_path) as data_file:    
 				data = json.load(data_file)
@@ -79,5 +76,5 @@ class Read_Config(object):
 
 		# if file type is not JSON
 		else:
-			logging.error("File not in JSON Format")
-			# print ("File not in JSON Format")
+			test = 0
+			# logging.error("File not in JSON Format")

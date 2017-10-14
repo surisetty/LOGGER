@@ -1,0 +1,11 @@
+[Unit]
+Description=PES Logger
+After=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/pi/testing/bin/logger
+Restart=on-abort
+ 
+[Install]
+WantedBy=multi-user.target

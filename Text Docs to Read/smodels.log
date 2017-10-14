@@ -1,0 +1,14 @@
+2017-10-06 04:56 INFO     main.py:91  Running Thread for Modbus
+2017-10-06 04:56 INFO     main.py:95  Running Thread for FTP
+2017-10-06 04:56 INFO     main.py:34  Modbus Read Cycle completed, Data collected
+2017-10-06 04:56 INFO     main.py:60  Uploaded file removed from the location
+2017-10-06 04:56 INFO     main.py:34  Modbus Read Cycle completed, Data collected
+2017-10-06 04:56 INFO     main.py:60  Uploaded file removed from the location
+2017-10-06 04:57 INFO     main.py:34  Modbus Read Cycle completed, Data collected
+2017-10-06 04:57 INFO     main.py:34  Modbus Read Cycle completed, Data collected
+2017-10-06 04:57 INFO     main.py:60  Uploaded file removed from the location
+2017-10-06 04:57 INFO     main.py:34  Modbus Read Cycle completed, Data collected
+2017-10-06 04:57 INFO     main.py:60  Uploaded file removed from the location
+2017-10-06 04:57 INFO     main.py:34  Modbus Read Cycle completed, Data collected
+2017-10-06 04:57 INFO     main.py:60  Uploaded file removed from the location
+2017-10-06 04:57 INFO     main.py:34  Modbus Read Cycle completed, Data collected

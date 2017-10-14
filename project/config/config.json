@@ -7,11 +7,11 @@
   "Output_Filename": "logger_",
   "Logging_Level": 10,
   "Modbus_interval": "4",
-  "Ftp_interval": "5",
+  "Ftp_interval": "4",
   "ftp": {
     "name": "jd",
     "password": "bsrc1234",
-    "server": "10.2.28.208",
+    "server": "192.168.1.219",
     "port": "21",
     "path": "/ftptest"
   },
