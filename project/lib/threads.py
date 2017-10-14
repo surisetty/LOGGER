@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-# import basic libraries
 import os
 import time
 import sys
@@ -11,21 +10,14 @@ from lib.modbus import MODBUS_node
 # exit flag for thread exit, initialized to 0
 exitFlag = 0
 
-#***********************************************************#
-#******************  Threads Class Node    *****************#
-#***********************************************************#
+
 
 class Threads(object):
-	#***********************************************************#
-	#***************    Class Initialization    ****************#
-	#***********************************************************#
+	
 	def __init__(self):
 		# Get the credential file as an input
 		self.cred_file = sys.path[0] + "/config/config.json"
 
-	#***********************************************************#
-	#******    Thread function to read modbus device    ********#
-	#***********************************************************#
 	def mod_read(threadName, delay, rjson):
 		# continue reading the data until exit flag is set high
 		while 1:
@@ -37,9 +29,7 @@ class Threads(object):
 			# Read the required Addresses
 			Modbus.Mod_Create_file(rjson)
 			
-	#***********************************************************#
-	#******    Thread function to send modbus file    **********#
-	#***********************************************************#
+	
 	def send_file(threadName, delay):
 		while 1:
 			cred = Ftp.FTP_connect(RJSON.ftp_user_id, RJSON.ftp_password, RJSON.ftp_ip_addr,\
