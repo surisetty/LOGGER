@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-# Import necessary Libraries
 import sys
 import os
 import time
@@ -10,13 +9,8 @@ import csv
 import pymodbus3
 from pymodbus3.client.sync import ModbusSerialClient as ModbusClient
 
-#***********************************************************#
-#********************    Modbus Class Node    **************#
-#***********************************************************#
 class MODBUS_node(object):
-	#***********************************************************#
-	#***************    Class Initialization    ****************#
-	#***********************************************************#
+	
 	def __init__(self):
 		# logging.basicConfig(level=10,
   #                   format='%(levelname)s %(asctime)s %(threadName)s %(message)s',
@@ -44,9 +38,7 @@ class MODBUS_node(object):
 		# logging.info("MODBUS Node Initialized...")
 		# print("MODBUS Node Initialized...")
 
-	#***********************************************************#
-	#******    Function to Read the Input File    **************#
-	#***********************************************************#
+	
 	def Read_input_file(self, file_path_list):
 		for loop in range(len(file_path_list)):
 			# Fetch the File name
@@ -73,9 +65,8 @@ class MODBUS_node(object):
 			else:
 				# logging.error("Error in Reading file, change extension to .addr")
 				print("Error in Reading file, change extension to .addr")
-	#***********************************************************#
-	#******    Function to Create the Modbus Read File    ******#
-	#***********************************************************#
+	
+	
 	def Mod_Create_file(self, rjson):
 		# read the Modbus data for the specified addresses
 		read_value = self.Mod_Read(self.read_reg_addr, rjson)
@@ -99,9 +90,7 @@ class MODBUS_node(object):
 		# print ("done")
 		# logging.info("Mode cycle completed. Data file created")
 
-	#***********************************************************#
-	#******    Function to Read the MODBUS data addr    ********#
-	#***********************************************************#
+	
 	def Mod_Read(self, addr_list, rjson):
 		# Create a Modbus Client with the foloowing details
 		client= ModbusClient(method = "rtu", port=rjson.mod_port_addr,stopbits = 1,\
@@ -140,9 +129,7 @@ class MODBUS_node(object):
 				result.append("Error")
 			return result
 
-	#***********************************************************#
-	#******    Function to put the data in csv format    *******#
-	#***********************************************************#
+	
 	def Mod_File_Conversion(self, data,rjson):
 		row = ""
 		for loop in range(len(data)):
