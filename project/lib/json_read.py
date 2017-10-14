@@ -1,20 +1,14 @@
 #!/usr/bin/env python
 
-# Import necessary Libraries
 from ftplib import FTP
 import json
 import sys
 import os
 import logging
 
-#***********************************************************#
-#********************    FTP Class Node    *****************#
-#***********************************************************#
 
 class Read_Config(object):
-	#***********************************************************#
-	#***************    Class Initialization    ****************#
-	#***********************************************************#
+	
 	def __init__(self):
 		# FTP User ID
 		self.ftp_user_id = "Anonymous"
@@ -48,9 +42,7 @@ class Read_Config(object):
                     filename='./project/Log_files/test.log',
                     filemode='a')
 
-	#***********************************************************#
-	#******    Function to Read the Credentials File    ********#
-	#***********************************************************#
+	
 	def Read_JSON(self, cred_file_path):
 		# Fetch the File name
 		cred_file = os.path.basename(cred_file_path)
