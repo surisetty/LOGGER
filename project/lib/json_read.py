@@ -6,12 +6,8 @@ import json
 import sys
 import os
 import logging
-# mylogger_json = logging.getLogger('mylogger.json')
 
 class ReadConfig(object):
-	#***********************************************************#
-	#***************    Class Initialization    ****************#
-	#***********************************************************#
 	def __init__(self):
 		# FTP User ID
 		self.ftp_user_id = "Anonymous"
@@ -38,9 +34,6 @@ class ReadConfig(object):
 		# read logging Level
 		self.logging_level = 10
 
-	#***********************************************************#
-	#******    Function to Read the Credentials File    ********#
-	#***********************************************************#
 	def ReadJson(self, cred_file_path):
 		# Fetch the File name
 		cred_file = os.path.basename(cred_file_path)
