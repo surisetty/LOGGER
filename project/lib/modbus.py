@@ -13,13 +13,7 @@ from pymodbus3.client.sync import ModbusSerialClient as ModbusClient
 
 mylogger_modbus = logging.getLogger('mylogger.modbus')
 
-#***********************************************************#
-#********************    Modbus Class Node    **************#
-#***********************************************************#
 class ModbusNode(object):
-	#***********************************************************#
-	#***************    Class Initialization    ****************#
-	#***********************************************************#
 	def __init__(self):
 		# List to store modbus read addresses
 		self.read_reg_addr = []
@@ -40,9 +34,6 @@ class ModbusNode(object):
 
 		mylogger_modbus.info("MODBUS Node Initialized...")
 
-	#***********************************************************#
-	#******    Function to Read the Input File    **************#
-	#***********************************************************#
 	def ReadInputFile(self, file_path_list):
 		for loop in range(len(file_path_list)):
 			# Fetch the File name
@@ -62,10 +53,6 @@ class ModbusNode(object):
 				self.read_reg_addr.append(lines[1].split(','))
 			else:
 				mylogger_modbus.error("Error in Reading file, change extension to .addr")
-
-	#***********************************************************#
-	#******    Function to Create the Modbus Read File    ******#
-	#***********************************************************#
 	def ModCreateFile(self, rjson):
 		# read the Modbus data for the specified addresses
 		read_value = self.ModRead(self.read_reg_addr, rjson)
@@ -81,9 +68,6 @@ class ModbusNode(object):
 		with open(self.mod_data_file, 'w') as f: 
 			f.write(value)
 
-	#***********************************************************#
-	#******    Function to Read the MODBUS data addr    ********#
-	#***********************************************************#
 	def ModRead(self, addr_list, rjson):
 		# Create a Modbus Client with the following details
 		client= ModbusClient(method = "rtu", port=rjson.mod_port_addr,stopbits = 1,\
@@ -127,9 +111,6 @@ class ModbusNode(object):
 				result.append("Error")
 			return result
 
-	#***********************************************************#
-	#******    Function to put the data in csv format    *******#
-	#***********************************************************#
 	def ModFileConversion(self, data,rjson):
 		row = ""
 		for loop in range(len(data)):
