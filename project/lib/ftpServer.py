@@ -8,24 +8,13 @@ import os
 import logging
 mylogger_ftp = logging.getLogger('mylogger.ftp')
 
-#***********************************************************#
-#********************    FTP Class Node    *****************#
-#***********************************************************#
-
 class FtpNode(object):
-	#***********************************************************#
-	#***************    Class Initialization    ****************#
-	#***********************************************************#
 	def __init__(self):
 		# Timeout for FTP Failure
 		self.timeOut = 10
 		self.ftp_all_good = 0
 		mylogger_ftp.info("FTP node Initialized")
 		
-
-	#***********************************************************#
-	#******    Function to Create the FTP Connection    ********#
-	#***********************************************************#
 	def FtpConnect(self, user_id, password, ip_addr, port_num, path):
 		mylogger_ftp.info("Connecting to FTP Server...")
 		# set initialize as True
@@ -49,17 +38,11 @@ class FtpNode(object):
 				mylogger_ftp.debug("Still trying to connect to FTP Server...")
 		return ftp
 
-	#***********************************************************#
-	#******    Function to Close the FTP Connection    *********#
-	#***********************************************************#
 	def FtpClose(self):
 		ftp = FTP()
 		ftp.close()
 		mylogger_ftp.info("Closing the FTP Connection...")
 
-	#***********************************************************#
-	#******    Function to Upload File on FTP Server    ********#
-	#***********************************************************#
 	def FtpUpload(self, cred, file_path):
 		try:
 			# Fetch the File name
@@ -79,5 +62,3 @@ class FtpNode(object):
 		except Exception as e:
 			mylogger_ftp.error("Error uploading file: " + str(e))
 			self.ftp_all_good = 0
-		#except IOError:
-		#	logger.error("No such file or directory... passing to next file")
