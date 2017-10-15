@@ -18,11 +18,7 @@ from lib.modbus import ModbusNode
 # exit flag for thread exit, initialized to 0
 exitFlag = 0
 
-#***********************************************************#
-#******    Thread function to read modbus device    ********#
-#***********************************************************#
 def ModRead(threadName, delay, rjson):
-	# continue reading the data until exit flag is set high
 	while 1:
 		if exitFlag:
 			# exit the thread when exit flag is set
@@ -34,9 +30,6 @@ def ModRead(threadName, delay, rjson):
 		# print (threadName)
 		mylogger.info("Modbus Read Cycle completed, Data collected")
 		
-#***********************************************************#
-#******    Thread function to send modbus file    **********#
-#***********************************************************#
 def FtpSendFile(threadName, delay):
 	while 1:
 		data_files = sorted(os.listdir(Modbus.mod_data_file_path))
@@ -66,10 +59,6 @@ def FtpSendFile(threadName, delay):
 										.format(e))
 			# FTP connection close
 			Ftp.FtpClose()
-			#mylogger.info("Uploaded file removed from the location")
-		# else:
-		# 	mylogger.info("No files to send")
-
 
 log_conf_path = sys.path[0] + '/config/logconf.yaml'
 with open(log_conf_path, 'r') as f:
