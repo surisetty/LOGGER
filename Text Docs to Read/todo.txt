@@ -1,7 +1,7 @@
-1) Crate default config file with PES server details. So that user need not configure on first boot. This makes operator life simple 
-2) Create cron job to monitor application running status, if not running cron job to restart application. 
-3) Auto start application on boot eigther by cron job or service. 
-4) Application logs older than 15 days to be deleted, add logwatcher or new cron job to find old files and delete. 
+1) Done:Crate default config file with PES server details. So that user need not configure on first boot. This makes operator life simple 
+2) Done:Create cron job to monitor application running status, if not running cron job to restart application. 
+3) Done:Auto start application on boot eigther by cron job or service. 
+4) Done:Application logs maintained at upto 5 backups for 1 MB size each 
 5) Implement application initialization logic which will check config file COM ports, if any of the port is not working log the error in log file. 
 6) Develop separate debug application with following features 
    When executed showd display user menu with following options. 

@@ -1,0 +1,26 @@
+{% block body %}
+<form action="/update" method="POST">
+  <fieldset>
+    <legend>General Settings:</legend>
+    Output_Filename: <input type="text" name="Output_Filename" value={{rjson.mod_data_file_initial}}><br>
+    Logging_Level: <input type="text" name="Logging_Level" value={{rjson.logging_level}}><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Modbus Settings:</legend>
+    Modbus_interval: <input type="text" name="Modbus_interval" value={{rjson.mod_fetch_time}}><br>
+  </fieldset>
+  
+  <fieldset>
+    <legend>FTP Settings:</legend>
+    Ftp_interval: <input type="text" name="Ftp_interval" value={{rjson.ftp_server_upload_time}}><br>
+    Ftp_name: <input type="text" name="Ftp_name" value={{rjson.ftp_user_id}}><br>
+    Ftp_password: <input type="text" name="Ftp_password" value={{rjson.ftp_password}}><br>
+    Ftp_server: <input type="text" name="Ftp_server" value={{rjson.ftp_ip_addr}}><br>
+    Ftp_port: <input type="text" name="Ftp_port" value={{rjson.ftp_port_num}}><br>
+    Ftp_path: <input type="text" name="Ftp_path" value={{rjson.ftp_path}}><br>
+  </fieldset>
+
+  <input type="submit" value="Update">
+</form>
+{% endblock %}

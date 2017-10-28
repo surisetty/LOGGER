@@ -1,44 +1,44 @@
 {
-  "product": "Solar Logger",
-  "version": 1,
-  "releaseDate": "2017-09-15T00:00:00.000Z",
-  "config_status": false,
-  "NW_type": "gprs",
-  "Output_Filename": "logger_",
-  "Logging_Level": 10,
-  "Modbus_interval": "4",
-  "Ftp_interval": "4",
-  "ftp": {
-    "name": "jd",
-    "password": "bsrc1234",
-    "server": "192.168.1.219",
-    "port": "21",
-    "path": "/ftptest"
-  },
-  "GPRS": {
-    "user": "test",
-    "password": "1234",
-    "apn": "airtelgprs.com"
-  },
-  "wifi": {
-    "ssid": "test",
-    "password": "1234"
-  },
-  "serial": {
-    "COM0": {
-      "device": "/dev/ttyUSB0",
-      "Device_files": [
-        "hitachi.addr",
-        "custome.addr"
-      ]
-    },
-    "COM1": {
-      "device": "/dev/ttyUSB2",
-      "Device_files": [
-        "simens.addr",
-        "custome.addr",
-        "hitachi.addr"
-      ]
-    }
-  }
+    "GPRS": {
+        "password": "1234", 
+        "apn": "airtelgprs.com", 
+        "user": "test"
+    }, 
+    "ftp": {
+        "path": "/ftptest", 
+        "password": "bsrc1234", 
+        "port": "21", 
+        "name": "jd", 
+        "server": "192.168.1.219"
+    }, 
+    "product": "Solar Logger", 
+    "Ftp_interval": "4", 
+    "config_status": false, 
+    "wifi": {
+        "password": "1234", 
+        "ssid": "test"
+    }, 
+    "Output_Filename": "logger_", 
+    "Modbus_interval": "4", 
+    "releaseDate": "2017-09-15T00:00:00.000Z", 
+    "version": 1, 
+    "NW_type": "gprs", 
+    "serial": {
+        "COM1": {
+            "device": "/dev/ttyUSB2", 
+            "Device_files": [
+                "simens.addr", 
+                "custome.addr", 
+                "hitachi.addr"
+            ]
+        }, 
+        "COM0": {
+            "device": "/dev/ttyUSB0", 
+            "Device_files": [
+                "hitachi.addr", 
+                "custome.addr"
+            ]
+        }
+    }, 
+    "Logging_Level": 10
 }

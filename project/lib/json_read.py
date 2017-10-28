@@ -18,7 +18,7 @@ class ReadConfig(object):
 		# FTP port number
 		self.ftp_port_num = 21
 		# FTP desination path
-		self.ftp_path = ""
+		self.ftp_path = "/ftptest"
 		# FTP send interval
 		self.ftp_server_upload_time = 100
 		# com port address for modbus
