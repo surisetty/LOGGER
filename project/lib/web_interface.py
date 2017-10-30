@@ -12,13 +12,7 @@ def home():
 	if not session.get('logged_in'):
 		return render_template('login.html')
 	else:
-		config_str = "<a href='/configure'>Configure</a>"
-		help_str = "<a href='/help'>help</a>"
-		logout_str = "<a href='/logout'>Logout</a>"
-		line_break = "</br>"
-		login_success_string = "<b>Settings</b>" + line_break + line_break + config_str + line_break + help_str + \
-								line_break + line_break + line_break + line_break + logout_str
-		return login_success_string
+		return render_template('homepage.html')
  
 @app.route('/login', methods=['POST'])
 def do_admin_login():
@@ -33,10 +27,19 @@ def configure():
 	cred_file = sys.path[0] + "/../config/config.json"
 	RJSON = ReadConfig()
 	RJSON.ReadJson(cred_file)
-	return render_template('configure.html', rjson = RJSON)
+	print request.method
+	if request.method == "POST":
+		if request.form['action'] == 'General Settings':
+			return render_template('gen_set.html', rjson = RJSON)
+		elif request.form['action'] == 'FTP Settings':
+			return render_template('ftp_set.html', rjson = RJSON)
+		elif request.form['action'] == 'MODBUS Settings':
+			return render_template('mod_set.html', rjson = RJSON)
+	else:
+		pass
 
-@app.route("/update", methods=['POST'])
-def update():
+@app.route("/update_general", methods=['POST'])
+def update_general():
 	cred_file = sys.path[0] + "/../config/config.json"
 
 	with open(cred_file, "r") as jsonFile:
@@ -48,10 +51,32 @@ def update():
 		json.dump(data, jsonFile, indent=4)
 	return home()
 
-@app.route("/help")
-def help():
-	return render_template('help.html')
- 
+@app.route("/update_ftp", methods=['POST'])
+def update_ftp():
+	cred_file = sys.path[0] + "/../config/config.json"
+
+	with open(cred_file, "r") as jsonFile:
+		data = json.load(jsonFile)
+
+	data["Ftp_interval"] = request.form['Ftp_interval']
+
+	with open(cred_file, "w") as jsonFile:
+		json.dump(data, jsonFile, indent=4)
+	return home()
+
+@app.route("/update_modbus", methods=['POST'])
+def update_modbus():
+	cred_file = sys.path[0] + "/../config/config.json"
+
+	with open(cred_file, "r") as jsonFile:
+		data = json.load(jsonFile)
+
+	data["Modbus_interval"] = request.form['Modbus_interval']
+
+	with open(cred_file, "w") as jsonFile:
+		json.dump(data, jsonFile, indent=4)
+	return home()
+
 @app.route("/logout")
 def logout():
 	session['logged_in'] = False

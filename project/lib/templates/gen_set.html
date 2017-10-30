@@ -1,0 +1,13 @@
+{% block body %}
+<form action="/update_general" method="POST">
+  <fieldset>
+    <legend>General Settings:</legend>
+    <ul>
+    <li>Output_Filename: <input type="text" name="Output_Filename" value={{rjson.mod_data_file_initial}}></li><br>
+    <li>Logging_Level: <input type="text" name="Logging_Level" value={{rjson.logging_level}}></li><br>
+    </ul>
+  </fieldset>
+  <input type="submit" value="Update">
+</form>
+{% endblock %}
+

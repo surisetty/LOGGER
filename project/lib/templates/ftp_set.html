@@ -1,0 +1,17 @@
+{% block body %}
+<form action="/update_ftp" method="POST">  
+  <fieldset>
+    <legend>FTP Settings:</legend>
+    <ul>
+    <li>Ftp_interval: <input type="text" name="Ftp_interval" value={{rjson.ftp_server_upload_time}}></li><br>
+    <li>Ftp_name: <input type="text" name="Ftp_name" value={{rjson.ftp_user_id}}></li><br>
+    <li>Ftp_password: <input type="text" name="Ftp_password" value={{rjson.ftp_password}}></li><br>
+    <li>Ftp_server: <input type="text" name="Ftp_server" value={{rjson.ftp_ip_addr}}></li><br>
+    <li>Ftp_port: <input type="text" name="Ftp_port" value={{rjson.ftp_port_num}}></li><br>
+    <li>Ftp_path: <input type="text" name="Ftp_path" value={{rjson.ftp_path}}></li><br>
+    </ul>
+  </fieldset>
+
+  <input type="submit" value="Update">
+</form>
+{% endblock %}
