@@ -35,11 +35,15 @@ class ModbusNode(object):
 		self.set_float = 0
 		mylogger_modbus.info("MODBUS Node Initialized...")
 
-	def float_conv(self, hex_num):
-		i = int(hex_num, 16)                   # convert from hex to a Python int
-		cp = pointer(c_int(i))           # make this into a c integer
-		fp = cast(cp, POINTER(c_float))  # cast the int pointer to a float pointer
-		return fp.contents.value
+	def float_conv(self, num):
+		regStr = chr(num[1]>>8) + chr(num[1]&0x00FF) + chr(num[0]>>8) + chr(num[0]&0x00FF)
+		val = minimalmodbus._bytestringToFloat(regStr)	
+		print("float value: ",val)	
+		return val
+		# i = int(hex_num, 16)                   # convert from hex to a Python int
+		# cp = pointer(c_int(i))           # make this into a c integer
+		# fp = cast(cp, POINTER(c_float))  # cast the int pointer to a float pointer
+		# return fp.contents.value
 
 	def ReadInputFile(self, file_path_list):
 		for loop in range(len(file_path_list)):
@@ -153,10 +157,10 @@ class ModbusNode(object):
 	def ModFileConversion(self, data,rjson):
 		row = ""
 		for loop in range(len(data)):
-			if rjson.mod_input_file[loop] == "float.addr":
+			if rjson.mod_input_file[loop] == "MFM.addr":
 				self.set_float = 1
 			
-			#add 1st line in oitput file	
+			#add 1st line in output file	
 			row += "ADDRMODBUS" + ";" + str(self.slaves_addr[loop][0]) + "\n"
 			# add 2nd line in output file
 			row += "TypeMODBUS" + ";" + rjson.mod_input_file[loop] + "\n"
@@ -202,12 +206,9 @@ class ModbusNode(object):
 					# change this code for doing changes in the float file output
 
 					if self.set_float == 1:
-
-						# regStr = chr(a>>8) + chr(a&0x00FF) + chr(b>>8) + chr(b&0x00FF)
-						# val = minimalmodbus._bytestringToFloat(regStr)
-						print("float value: ",self.float_conv(val))
+						# print("float value: ",self.float_conv(val))
 						#time.sleep(.1)
-						temp_data.append(self.float_conv(val))
+						temp_data.append(self.float_conv(data[loop][i]))
 						# temp_data.append(val)
 					else:
 						temp_data.append(int(val,16))
