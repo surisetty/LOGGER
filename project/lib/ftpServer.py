@@ -24,6 +24,7 @@ class FtpNode(object):
 			try:
 				# Create FTP Node with the existing Credentials
 				ftp = FTP(ip_addr, user_id, password, self.timeOut)
+				ftp.set_pasv (1)
 				ftp.cwd(path)
 				# If Connection is made, make, retry as false
 				retry = False
@@ -35,7 +36,7 @@ class FtpNode(object):
 				mylogger_ftp.error("I/O error({0}): {1}".format(e.errno, e.strerror))
 				# Run the loop until connection is a Success
 				retry = True
-				mylogger_ftp.debug("Still trying to connect to FTP Server...")
+				mylogger_ftp.info("Still trying to connect to FTP Server...")
 		return ftp
 
 	def FtpClose(self):

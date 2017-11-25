@@ -35,8 +35,19 @@ def configure():
 			return render_template('ftp_set.html', rjson = RJSON)
 		elif request.form['action'] == 'MODBUS Settings':
 			return render_template('mod_set.html', rjson = RJSON)
+		elif request.form['action'] == 'Log files':
+			return render_template('log_files.html')
 	else:
 		pass
+
+@app.route("/read_file", methods=['POST'])
+def read_file():
+	file_number = request.form['log_number']
+	log_file_path = sys.path[0] + "/../Log_files/test" + str(file_number) + ".html"
+	data_file_path = sys.path[0] + "/../Data/"
+	with open(log_file_path, "r") as f:
+		content = f.read()
+	return render_template('show_file_content.html', content = content)
 
 @app.route("/update_general", methods=['POST'])
 def update_general():
