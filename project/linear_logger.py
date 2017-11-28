@@ -13,7 +13,7 @@ import logging.config
 import logging.handlers
 from lib.json_read import ReadConfig
 from lib.ftpServer import FtpNode
-from lib.modbus import ModbusNode
+from lib.mod_gen import ModbusNode
 
 # exit flag for thread exit, initialized to 0
 exitFlag = 0
@@ -28,7 +28,7 @@ def ModRead(threadName, delay, rjson):
 		# Read the required Addresses
 		Modbus.ModCreateFile(rjson)
 		# print (threadName)
-		mylogger.info("Modbus Read Cycle completed, Data collected")
+		linear.info("Modbus Read Cycle completed, Data collected")
 		
 def FtpSendFile(threadName, delay):
 	while 1:
@@ -52,54 +52,59 @@ def FtpSendFile(threadName, delay):
 					# remove the uploaded file when sent
 					if Ftp.ftp_all_good:
 						os.remove(Modbus.mod_data_file_path + data_files[loop])
-						mylogger.info("Uploaded file removed from the location")
+						linear.info("Uploaded file removed from the location")
 						Ftp.ftp_all_good = 0
 				except ftplib.error_temp as e:
-						mylogger.error("File Transfer error, Trying again ...({0})"\
+						linear.error("File Transfer error, Trying again ...({0})"\
 										.format(e))
 			# FTP connection close
 			Ftp.FtpClose()
 
-log_conf_path = sys.path[0] + '/config/logconf.yaml'
+
+log_conf_path = sys.path[0] + '/config/linear_log_config.yaml'
 with open(log_conf_path, 'r') as f:
     conf = yaml.load(f)
 
 logging.config.dictConfig(conf)
-
 # Get the credential file as an input
-cred_file = sys.path[0] + "/config/config.json"
-log_file_path = sys.path[0] + '/Log_files/test.log'
+cred_file = sys.path[0] + "/config/linear_config.json"
+linear = logging.getLogger('linear')
 
 # call the Read Json node
 RJSON = ReadConfig()
 # Read the JSON file (config) 
 RJSON.ReadJson(cred_file)
 
-mylogger = logging.getLogger('mylogger')
 
 # Get the modbus input file as an input
-mod_file = []
-for loop in range(len(RJSON.mod_input_file)):
-	mod_file.append(sys.path[0] + "/config/" + RJSON.mod_input_file[loop])
+mod_files = []
+for loop in range(len(RJSON.mod_slaves)):
+	if RJSON.serial_port_status[loop] == 'enabled':
+		linear.info("Active Port : %s", RJSON.mod_port_addr[loop])
+		# for i in range(len(RJSON.mod_slaves[loop])):
+		mod_files.append(RJSON.mod_slaves[loop])
+	else:
+		linear.info("Inactive Port : %s", RJSON.mod_port_addr[loop])
 
 # create Modbus node
 Modbus = ModbusNode()
 # read the input file to fetch the addresses to read
-Modbus.ReadInputFile(mod_file)
+Modbus.ReadInputFile(mod_files)
 # create FTP node
 Ftp = FtpNode()
+
 try:
    # Start Modbus Read Thread
-   mylogger.info("Running Thread for Modbus")
+   linear.info("Running Thread for Modbus")
    _thread.start_new_thread( ModRead, ("MODBUS", float(RJSON.mod_fetch_time), RJSON, ) )
    
    # Start FTP file Upload Thread
-   mylogger.info("Running Thread for FTP")
+   linear.info("Running Thread for FTP")
    _thread.start_new_thread( FtpSendFile, ("FTP", float(RJSON.ftp_server_upload_time),) )
    
 except:
    # print ("Error: unable to start _thread")
-   mylogger.error("Unable to start thread")
+   linear.error("Unable to start thread")
 
 while 1:
    pass

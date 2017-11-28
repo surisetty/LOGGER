@@ -1,0 +1,280 @@
+INFO - linear.ftp - 2017-11-28 18:06:38,996 - FTP node Initialized
+INFO - linear - 2017-11-28 18:06:38,996 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:06:38,996 - Running Thread for FTP
+INFO - linear.ftp - 2017-11-28 18:07:12,692 - FTP node Initialized
+INFO - linear - 2017-11-28 18:07:12,693 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:07:12,693 - Running Thread for FTP
+INFO - linear.ftp - 2017-11-28 18:07:28,558 - FTP node Initialized
+INFO - linear - 2017-11-28 18:07:28,558 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:07:28,558 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:08:26,464 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:08:26,465 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:08:26,465 - FTP node Initialized
+INFO - linear - 2017-11-28 18:08:26,465 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:08:26,465 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:08:44,129 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:08:44,129 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:08:44,129 - FTP node Initialized
+INFO - linear - 2017-11-28 18:08:44,129 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:08:44,129 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:15:29,880 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:15:29,880 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:15:29,880 - FTP node Initialized
+INFO - linear - 2017-11-28 18:15:29,880 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:15:29,881 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:15:42,374 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:15:42,374 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:15:42,374 - FTP node Initialized
+INFO - linear - 2017-11-28 18:15:42,374 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:15:42,374 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:16:39,813 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:16:39,814 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:16:39,814 - FTP node Initialized
+INFO - linear - 2017-11-28 18:16:39,814 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:16:39,814 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:18:19,805 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:18:19,805 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:18:19,805 - FTP node Initialized
+INFO - linear - 2017-11-28 18:18:19,805 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:18:19,805 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:18:33,422 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:18:33,422 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:18:33,422 - FTP node Initialized
+INFO - linear - 2017-11-28 18:18:33,422 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:18:33,423 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:20:57,015 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:20:57,015 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:20:57,016 - FTP node Initialized
+INFO - linear - 2017-11-28 18:20:57,016 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:20:57,016 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:27:14,759 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:27:14,759 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:27:14,759 - FTP node Initialized
+INFO - linear - 2017-11-28 18:27:14,760 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:27:14,760 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:27:54,918 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:27:54,918 - Inactive Port : /dev/ttyUSB1
+INFO - linear - 2017-11-28 18:31:01,283 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:31:01,283 - Active Port : /dev/ttyUSB1
+INFO - linear - 2017-11-28 18:31:55,012 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:31:55,013 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:31:55,013 - FTP node Initialized
+INFO - linear - 2017-11-28 18:31:55,013 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:31:55,013 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:33:32,896 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:33:32,896 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:33:32,896 - FTP node Initialized
+INFO - linear - 2017-11-28 18:33:32,896 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:33:32,897 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:34:45,477 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:34:45,477 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:34:45,478 - FTP node Initialized
+INFO - linear - 2017-11-28 18:34:45,478 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:34:45,478 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:34:56,105 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:34:56,105 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:34:56,116 - FTP node Initialized
+INFO - linear - 2017-11-28 18:34:56,116 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:34:56,116 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:35:29,708 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:35:29,708 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:35:29,708 - FTP node Initialized
+INFO - linear - 2017-11-28 18:35:29,709 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:35:29,709 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:37:29,120 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:37:29,121 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:37:29,121 - FTP node Initialized
+INFO - linear - 2017-11-28 18:37:29,121 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:37:29,121 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:37:47,942 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:37:47,943 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:37:47,943 - FTP node Initialized
+INFO - linear - 2017-11-28 18:37:47,943 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:37:47,943 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:38:11,148 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:38:11,148 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:38:11,148 - FTP node Initialized
+INFO - linear - 2017-11-28 18:38:11,148 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:38:11,148 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:40:23,367 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:41:09,137 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:41:09,138 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:41:09,138 - FTP node Initialized
+INFO - linear - 2017-11-28 18:41:09,138 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:41:09,138 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:42:05,772 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:42:05,773 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:42:05,773 - FTP node Initialized
+INFO - linear - 2017-11-28 18:42:05,773 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:42:05,773 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:42:58,792 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:42:58,792 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:42:58,792 - FTP node Initialized
+INFO - linear - 2017-11-28 18:42:58,792 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:42:58,792 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:43:30,394 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:43:30,395 - Inactive Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:43:30,395 - FTP node Initialized
+INFO - linear - 2017-11-28 18:43:30,395 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:43:30,395 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:43:40,355 - Inactive Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:43:40,355 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:43:40,356 - FTP node Initialized
+INFO - linear - 2017-11-28 18:43:40,356 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:43:40,356 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:51:24,297 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:51:24,298 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:51:24,298 - FTP node Initialized
+INFO - linear - 2017-11-28 18:51:24,298 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:51:24,298 - Running Thread for FTP
+INFO - linear - 2017-11-28 18:52:20,408 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 18:52:20,408 - Active Port : /dev/ttyUSB1
+INFO - linear.ftp - 2017-11-28 18:52:20,408 - FTP node Initialized
+INFO - linear - 2017-11-28 18:52:20,408 - Running Thread for Modbus
+INFO - linear - 2017-11-28 18:52:20,409 - Running Thread for FTP
+INFO - linear - 2017-11-28 19:50:51,389 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 19:50:51,389 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 19:50:51,389 - Reading the RTU file
+INFO - linear - 2017-11-28 19:51:04,194 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 19:51:04,195 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 19:51:04,195 - Reading the RTU file
+INFO - linear - 2017-11-28 19:51:14,099 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 19:51:14,099 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 19:51:14,099 - Reading the RTU file
+INFO - linear - 2017-11-28 19:52:03,183 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 19:52:03,184 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 19:52:03,184 - Reading the RTU file
+INFO - linear - 2017-11-28 19:53:04,030 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 19:53:04,030 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 19:53:04,031 - Reading the RTU file
+INFO - linear - 2017-11-28 19:55:28,935 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 19:55:28,935 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 19:55:28,936 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 19:55:28,936 - Reading the RTU file
+INFO - linear - 2017-11-28 19:55:35,696 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 19:55:35,696 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 19:55:35,696 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 19:55:35,696 - Reading the RTU file
+INFO - linear - 2017-11-28 20:00:48,364 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:00:48,364 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:00:48,364 - Reading the RTU file
+INFO - linear - 2017-11-28 20:01:33,968 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:01:33,968 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:01:33,968 - Reading the RTU file
+INFO - linear - 2017-11-28 20:02:23,270 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:02:23,270 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:02:23,271 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:02:23,271 - Reading the RTU file
+INFO - linear - 2017-11-28 20:03:28,719 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:03:28,719 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:03:28,720 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:03:28,720 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:03:28,720 - FTP node Initialized
+INFO - linear - 2017-11-28 20:03:28,720 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:03:28,720 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:04:07,145 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:04:07,146 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:04:07,146 - Reading the RTU file
+INFO - linear - 2017-11-28 20:05:31,739 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:05:31,739 - Active Port : /dev/ttyUSB1
+INFO - linear - 2017-11-28 20:05:57,432 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:05:57,433 - Active Port : /dev/ttyUSB1
+INFO - linear - 2017-11-28 20:07:06,382 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:07:06,382 - Active Port : /dev/ttyUSB1
+INFO - linear - 2017-11-28 20:07:37,133 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:07:37,133 - Active Port : /dev/ttyUSB1
+INFO - linear - 2017-11-28 20:07:49,895 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:07:49,896 - Active Port : /dev/ttyUSB1
+INFO - linear - 2017-11-28 20:11:11,553 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:11:11,553 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:11:11,554 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:11:11,554 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:11:11,554 - FTP node Initialized
+INFO - linear - 2017-11-28 20:11:11,554 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:11:11,554 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:14:47,351 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:14:47,351 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:14:47,352 - Reading the RTU file
+INFO - linear - 2017-11-28 20:14:51,705 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:14:51,705 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:14:51,705 - Reading the RTU file
+INFO - linear - 2017-11-28 20:15:29,844 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:15:29,844 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:15:29,845 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:15:29,845 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:15:29,845 - FTP node Initialized
+INFO - linear - 2017-11-28 20:15:29,845 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:15:29,845 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:16:18,741 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:16:18,741 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:16:18,741 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:16:18,742 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:16:18,742 - FTP node Initialized
+INFO - linear - 2017-11-28 20:16:18,742 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:16:18,742 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:16:30,725 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:16:30,725 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:16:30,726 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:16:30,726 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:16:30,726 - FTP node Initialized
+INFO - linear - 2017-11-28 20:16:30,726 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:16:30,726 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:16:46,316 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:16:46,316 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:16:46,316 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:16:46,316 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:16:46,317 - FTP node Initialized
+INFO - linear - 2017-11-28 20:16:46,317 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:16:46,317 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:17:27,658 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:17:27,658 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:17:27,658 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:17:27,658 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:17:27,659 - FTP node Initialized
+INFO - linear - 2017-11-28 20:17:27,659 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:17:27,659 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:19:38,417 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:19:38,418 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:19:38,418 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:19:38,418 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:19:38,418 - FTP node Initialized
+INFO - linear - 2017-11-28 20:19:38,418 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:19:38,418 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:19:54,654 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:19:54,654 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:19:54,654 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:19:54,654 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:19:54,655 - FTP node Initialized
+INFO - linear - 2017-11-28 20:19:54,655 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:19:54,655 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:22:34,461 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:22:34,461 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:22:34,461 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:22:34,461 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:22:34,462 - FTP node Initialized
+INFO - linear - 2017-11-28 20:22:34,462 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:22:34,462 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:24:03,083 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:24:03,083 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:24:03,083 - Reading the RTU file
+INFO - linear - 2017-11-28 20:24:17,568 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:24:17,569 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:24:17,569 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:24:17,569 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:24:17,569 - FTP node Initialized
+INFO - linear - 2017-11-28 20:24:17,569 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:24:17,570 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:25:17,401 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:25:17,401 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:25:17,401 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:25:17,402 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:25:17,402 - FTP node Initialized
+INFO - linear - 2017-11-28 20:25:17,402 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:25:17,402 - Running Thread for FTP
+INFO - linear - 2017-11-28 20:26:45,867 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-11-28 20:26:45,867 - Active Port : /dev/ttyUSB1
+INFO - linear.rtu - 2017-11-28 20:26:45,867 - Reading the RTU file
+INFO - linear.rtu - 2017-11-28 20:26:45,867 - Reading the RTU file
+INFO - linear.ftp - 2017-11-28 20:26:45,868 - FTP node Initialized
+INFO - linear - 2017-11-28 20:26:45,868 - Running Thread for Modbus
+INFO - linear - 2017-11-28 20:26:45,868 - Running Thread for FTP

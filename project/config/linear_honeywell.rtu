@@ -1,0 +1,21 @@
+{
+  "address": [
+  
+    {
+        "addr": "1000",
+        "length" : 2,
+        "data_type": "U_32"
+        
+    },
+    {
+        "addr": "2002",
+        "length" : 10,
+        "data_type": "U_16"
+        
+    }
+      
+   ],
+  "active": "True",
+  "endian_type": "little",
+  "Description": "XYZ inverter"
+}

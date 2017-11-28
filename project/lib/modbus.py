@@ -14,7 +14,7 @@ import logging
 from ctypes import *
 minimalmodbus.CLOSE_PORT_AFTER_EACH_CALL = True
 
-mylogger_modbus = logging.getLogger('mylogger.modbus')
+linear_modbus = logging.getLogger('linear_logger.modbus')
 
 class ModbusNode(object):
 	def __init__(self):
@@ -35,7 +35,7 @@ class ModbusNode(object):
 		# File number counter
 		self.mod_data_file_timestamp = timestr
 		self.set_float = 0
-		mylogger_modbus.info("MODBUS Node Initialized...")
+		linear_modbus.info("MODBUS Node Initialized...")
 
 	def float_conv(self, num):
 		regStr = chr(num[1]>>8) + chr(num[1]&0x00FF) + chr(num[0]>>8) + chr(num[0]&0x00FF)
@@ -56,7 +56,7 @@ class ModbusNode(object):
 			ext = os.path.splitext(mod_file_name)[1]
 			# print("file_name", mod_file_name)
 			if ext in (".addr"):
-				mylogger_modbus.info("Reading the input file with Addr Extension for file %s", mod_file_name)
+				linear_modbus.info("Reading the input file with Addr Extension for file %s", mod_file_name)
 				with open(file_path_list[loop]) as f:
 					lines=f.readlines()
 				x = lines[0].split(',')
@@ -82,7 +82,7 @@ class ModbusNode(object):
 					# self.read_reg_addr.append(m)
 				self.read_reg_addr.append(m)
 			else:
-				mylogger_modbus.error("Error in Reading file, change extension to .addr")
+				linear_modbus.error("Error in Reading file, change extension to .addr")
 	
 	def ModCreateFile(self, rjson):
 		# read the Modbus data for the specified addresses
@@ -111,7 +111,7 @@ class ModbusNode(object):
 		instrument.serial.stopbits = 1
 		instrument.serial.timeout = self.timeOut
 		#print("mod read started")
-		mylogger_modbus.info("Trying to Connect to Modbus ...")
+		linear_modbus.info("Trying to Connect to Modbus ...")
 		# create a list to store all the read addresses
 		get_data = []
 		# connect to Modbus Client
@@ -120,7 +120,7 @@ class ModbusNode(object):
 		# if connection successful
 		connect = True
 		if connect == True:
-			mylogger_modbus.info("Modbus Connection succesful")
+			linear_modbus.info("Modbus Connection succesful")
 			for loop in range(len(addr_list)):
 				temp = []
 				for i in range(len(addr_list[loop])):
@@ -138,22 +138,22 @@ class ModbusNode(object):
 						# print("Raw Data:",result)
 						time.sleep(.30)
 					except ValueError as e:
-						mylogger_modbus.error("Value Error : ({0})".format(e))
+						linear_modbus.error("Value Error : ({0})".format(e))
 					except TypeError as e:
-						mylogger_modbus.error("Type Error : ({0})".format(e))
+						linear_modbus.error("Type Error : ({0})".format(e))
 					except IOError as e:
-						mylogger_modbus.error("IO Error : ({0})".format(e))
+						linear_modbus.error("IO Error : ({0})".format(e))
 				get_data.append(temp)
-				mylogger_modbus.info("Modbus Read completed for file : %s", str(loop))
+				linear_modbus.info("Modbus Read completed for file : %s", str(loop))
 			# close the modbus client after data read
 			#client.close()
-			mylogger_modbus.info("Modbus Closed")
+			linear_modbus.info("Modbus Closed")
 			#print(get_data)
 			return get_data
 		# if connection failed
 		else:
 			result = []
-			mylogger_modbus.error("Modbus connection failed")
+			linear_modbus.error("Modbus connection failed")
 			for loop in range(len(addr_list)):
 				result.append("Error")
 			return result

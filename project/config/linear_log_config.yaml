@@ -5,8 +5,8 @@ formatters:
         format: "%(levelname)s - %(name)s - %(asctime)s - %(message)s"
 
 filters:
-    mylogger:
-        name: mylogger
+    linear:
+        name: linear
 
 handlers:
     console:
@@ -15,12 +15,13 @@ handlers:
     file:
         class: logging.handlers.RotatingFileHandler
         formatter: custom_format
-        filename: '../project/Log_files/mylogger.log'
-        filters: [mylogger]
+        filename: '../project/Log_files/linear.log'
+        filters: [linear]
+        level: DEBUG
         maxBytes: 102400000
         backupCount: 5
 
 loggers:
-    mylogger:
+    linear:
         handlers: [file]
-        level: INFO
+        level: DEBUG

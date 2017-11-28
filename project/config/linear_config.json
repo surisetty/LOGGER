@@ -1,0 +1,50 @@
+{
+  "GPRS": {
+    "password": "1234",
+    "apn": "airtelgprs.com",
+    "user": "test"
+  },
+  "ftp": {
+    "path": "/ftptest",
+    "password": "bsrc1234",
+    "port": "21",
+    "server": "10.2.28.237",
+    "name": "jd"
+  },
+  "product": "linear",
+  "Ftp_interval": "10",
+  "Output_Filename": "linear_logger",
+  "Modbus_interval": "10",
+  "releaseDate": "2017-09-15T00:00:00.000Z",
+  "version": 1,
+  "NW_type": "gprs",
+  "serial": [
+    {
+      "device": "/dev/ttyUSB0",
+      "baudrate": 9600,
+      "parity": "odd",
+      "databits": 8,
+      "stopbits": 1,
+      "timeout": 3,
+      "slaves": [
+        "linear_hitachi.rtu",
+	      "linear_honda.rtu"
+      ],
+      "status": "enabled"
+    },
+    {
+      "device": "/dev/ttyUSB1",
+      "baudrate": 4800,
+      "parity": "odd",
+      "databits": 8,
+      "stopbits": 1,
+      "timeout": 0.5,
+      "slaves": [
+        "linear_honda.rtu",
+        "linear_honeywell.rtu"
+      ],
+      "status": "enabled"
+    }
+  ],
+  "config_status": false
+}
