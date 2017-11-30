@@ -2,20 +2,15 @@
   "address": [
   
     {
-        "addr": "1000",
+        "addr": 1310,
         "length" : 2,
-        "data_type": "U_32"
+        "data_type": "U32"
         
-    },
-    {
-        "addr": "2002",
-        "length" : 10,
-        "data_type": "U_16"
-        
-    }
-      
+    } 
    ],
-  "active": "False",
-  "endian_type": "little",
-  "Description": "XYZ inverter"
+  "retry_count" : 3,
+  "device_address": 1,
+  "active": "True",
+  "endian_type": "big",
+  "Description": "XYZ2 inverter"
 }

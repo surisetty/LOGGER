@@ -98,9 +98,9 @@ try:
    linear.info("Running Thread for Modbus")
    _thread.start_new_thread( ModRead, ("MODBUS", float(RJSON.mod_fetch_time), RJSON, ) )
    
-   # Start FTP file Upload Thread
-   linear.info("Running Thread for FTP")
-   _thread.start_new_thread( FtpSendFile, ("FTP", float(RJSON.ftp_server_upload_time),) )
+   # # Start FTP file Upload Thread
+   # linear.info("Running Thread for FTP")
+   # _thread.start_new_thread( FtpSendFile, ("FTP", float(RJSON.ftp_server_upload_time),) )
    
 except:
    # print ("Error: unable to start _thread")

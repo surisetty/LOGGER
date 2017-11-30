@@ -14,6 +14,8 @@ class RTU_READ(object):
 		self.rtu_file_active_status = False
 		self.rtu_file_endian_mode = ""
 		self.rtu_file_description = "" 
+		self.rtu_device_address = 0
+		self.rtu_retry_count = 0
 		self.file_addresses = []
 		self.address_length = []
 		self.datatypes = []
@@ -35,7 +37,8 @@ class RTU_READ(object):
 			self.rtu_file_active_status = data["active"]
 			self.rtu_file_endian_mode = data["endian_type"]
 			self.rtu_file_description = data["Description"]
-
+			self.rtu_device_address = data["device_address"]
+			self.rtu_retry_count = data["retry_count"]
 			addresses = data["address"]
 			all_addr_in_file = []
 			length = []
@@ -48,6 +51,6 @@ class RTU_READ(object):
 			self.address_length = length
 			self.datatypes = datatypes
 
-		# if file type is not JSON
+		# if file type is not RTU
 		else:
-			linear_json.error("File not in JSON Format")
+			linear_rtu.error("File not in RTU Format")

@@ -14,7 +14,7 @@ import logging
 from ctypes import *
 minimalmodbus.CLOSE_PORT_AFTER_EACH_CALL = True
 
-linear_modbus = logging.getLogger('linear_logger.modbus')
+linear_modbus = logging.getLogger('linear.modbus')
 
 class ModbusNode(object):
 	def __init__(self):
