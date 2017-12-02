@@ -18,7 +18,7 @@ from lib.mod_gen import ModbusNode
 # exit flag for thread exit, initialized to 0
 exitFlag = 0
 
-def ModRead(threadName, delay, rjson):
+def ModRead(threadName, delay, rjson, port_num):
 	while 1:
 		if exitFlag:
 			# exit the thread when exit flag is set
@@ -26,7 +26,7 @@ def ModRead(threadName, delay, rjson):
 		# sleep for the required time 
 		time.sleep(delay)
 		# Read the required Addresses
-		Modbus.ModCreateFile(rjson)
+		Modbus.ModCreateFile(rjson, port_num)
 		# print (threadName)
 		linear.info("Modbus Read Cycle completed, Data collected")
 		
@@ -85,22 +85,22 @@ for loop in range(len(RJSON.mod_slaves)):
 		mod_files.append(RJSON.mod_slaves[loop])
 	else:
 		linear.info("Inactive Port : %s", RJSON.mod_port_addr[loop])
-
 # create Modbus node
 Modbus = ModbusNode()
+Port_num = 0
 # read the input file to fetch the addresses to read
-Modbus.ReadInputFile(mod_files)
+Modbus.ReadInputFile(mod_files[Port_num])
 # create FTP node
 Ftp = FtpNode()
 
 try:
    # Start Modbus Read Thread
    linear.info("Running Thread for Modbus")
-   _thread.start_new_thread( ModRead, ("MODBUS", float(RJSON.mod_fetch_time), RJSON, ) )
+   _thread.start_new_thread( ModRead, ("MODBUS", float(RJSON.mod_fetch_time), RJSON, Port_num, ) )
    
-   # # Start FTP file Upload Thread
-   # linear.info("Running Thread for FTP")
-   # _thread.start_new_thread( FtpSendFile, ("FTP", float(RJSON.ftp_server_upload_time),) )
+   # Start FTP file Upload Thread
+   linear.info("Running Thread for FTP")
+   _thread.start_new_thread( FtpSendFile, ("FTP", float(RJSON.ftp_server_upload_time),) )
    
 except:
    # print ("Error: unable to start _thread")

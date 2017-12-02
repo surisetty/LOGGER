@@ -2,14 +2,29 @@
   "address": [
   
     {
-        "addr": 1301,
-        "length" : 2,
-        "data_type": "U16"   
-    } 
+        "addr": 1,
+        "length" : 1,
+        "data_type": "S16"   
+    },
+    {
+        "addr": 2,
+        "length" : 1,
+        "data_type": "S16"   
+    },
+    {
+        "addr": 5,
+        "length" : 1,
+        "data_type": "S32"   
+    },
+    {
+        "addr": 7,
+        "length" : 1,
+        "data_type": "U32"   
+    }
    ],
-  "retry_count" : 1,
-  "device_address": 1,
+  "retry_count" : 3,
+  "device_address": 23,
   "active": "True",
-  "endian_type": "big",
+  "endian_type": "little",
   "Description": "XYZ2 inverter"
 }

@@ -2,8 +2,6 @@
 
 # Import necessary Libraries
 from ftplib import FTP
-import json
-import sys
 import os
 import logging
 linear_ftp = logging.getLogger('linear.ftp')

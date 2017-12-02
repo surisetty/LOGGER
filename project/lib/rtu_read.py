@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
 # Import necessary Libraries
-from ftplib import FTP
 import json
-import sys
 import os
 import logging
 
