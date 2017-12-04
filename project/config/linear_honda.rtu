@@ -3,12 +3,7 @@
   
     {
         "addr": 1,
-        "length" : 1,
-        "data_type": "S16"   
-    },
-    {
-        "addr": 2,
-        "length" : 1,
+        "length" : 2,
         "data_type": "S16"   
     },
     {

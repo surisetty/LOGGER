@@ -6249,3 +6249,629 @@ INFO - linear - 2017-12-02 19:40:54,888 - Running Thread for FTP
 INFO - linear.modbus - 2017-12-02 19:40:55,937 - Modbus Connection established successfully
 INFO - linear.ftp - 2017-12-02 19:40:56,173 - Connecting to FTP Server...
 INFO - linear - 2017-12-02 19:40:58,068 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 19:54:09,665 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 19:54:09,665 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 19:54:09,665 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 19:54:09,665 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 19:54:09,665 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 19:54:09,665 - FTP node Initialized
+INFO - linear - 2017-12-02 19:54:09,666 - Running Thread for Modbus
+INFO - linear - 2017-12-02 19:54:09,666 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 19:54:10,725 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 19:54:11,088 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 19:55:12,875 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 19:55:12,875 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 19:55:12,875 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 19:55:12,875 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 19:55:12,875 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 19:55:12,876 - FTP node Initialized
+INFO - linear - 2017-12-02 19:55:12,876 - Running Thread for Modbus
+INFO - linear - 2017-12-02 19:55:12,876 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 19:55:13,945 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 19:55:13,997 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 19:55:28,030 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 19:55:28,031 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 19:55:28,031 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 19:55:28,031 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 19:55:28,031 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 19:55:28,031 - FTP node Initialized
+INFO - linear - 2017-12-02 19:55:28,031 - Running Thread for Modbus
+INFO - linear - 2017-12-02 19:55:28,032 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 19:55:29,086 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 19:55:29,851 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 19:55:50,614 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 19:55:50,614 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 19:55:50,614 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 19:55:50,614 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 19:55:50,614 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 19:55:50,615 - FTP node Initialized
+INFO - linear - 2017-12-02 19:55:50,615 - Running Thread for Modbus
+INFO - linear - 2017-12-02 19:55:50,615 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 19:55:51,654 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 19:55:52,052 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 19:55:54,005 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 19:55:55,022 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 19:55:57,237 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 19:56:22,535 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 19:56:22,535 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 19:56:22,536 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 19:56:22,536 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 19:56:22,536 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 19:56:22,536 - FTP node Initialized
+INFO - linear - 2017-12-02 19:56:22,536 - Running Thread for Modbus
+INFO - linear - 2017-12-02 19:56:22,536 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 19:56:23,596 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 19:56:23,669 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 19:56:25,743 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 19:56:26,754 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 19:56:47,003 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 19:56:47,003 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 19:56:47,003 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 19:56:47,003 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 19:56:47,004 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 19:56:47,004 - FTP node Initialized
+INFO - linear - 2017-12-02 19:56:47,004 - Running Thread for Modbus
+INFO - linear - 2017-12-02 19:56:47,004 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 19:56:48,058 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 19:56:48,283 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 19:56:50,213 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 19:56:51,225 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:00:41,832 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:00:41,832 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:00:41,832 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:00:41,832 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:00:41,833 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:00:41,833 - FTP node Initialized
+INFO - linear - 2017-12-02 20:00:41,833 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:00:41,833 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:00:42,897 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:00:43,056 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 20:00:44,999 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:00:46,016 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:02:24,609 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:02:24,610 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:02:24,610 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:02:24,610 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:02:24,610 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:02:24,610 - FTP node Initialized
+INFO - linear - 2017-12-02 20:02:24,610 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:02:24,611 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:02:25,710 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:02:26,028 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 20:02:28,029 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:02:29,040 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:02:31,298 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:03:14,570 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:03:14,570 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:03:14,570 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:03:14,571 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:03:14,571 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:03:14,571 - FTP node Initialized
+INFO - linear - 2017-12-02 20:03:14,571 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:03:14,571 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:03:15,620 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:03:15,892 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 20:03:18,055 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:03:19,067 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:08,498 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:04:08,499 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:04:08,499 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:04:08,499 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:04:08,499 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:04:08,499 - FTP node Initialized
+INFO - linear - 2017-12-02 20:04:08,499 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:04:08,500 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:04:09,539 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:04:09,820 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 20:04:11,732 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:12,748 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:14,964 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:15,975 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:17,971 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:18,982 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:20,947 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:04:37,655 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:04:37,655 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:04:37,656 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:04:37,656 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:04:37,656 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:04:37,656 - FTP node Initialized
+INFO - linear - 2017-12-02 20:04:37,656 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:04:37,656 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:04:38,762 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:04:39,018 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 20:04:40,645 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:41,656 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:43,540 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:44,557 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:46,543 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:47,554 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:49,444 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:50,455 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:52,243 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:53,255 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:55,043 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:56,054 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:04:57,859 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:04:58,876 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:21,853 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:15:21,853 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:15:21,853 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:15:21,853 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:15:21,853 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:15:21,854 - FTP node Initialized
+INFO - linear - 2017-12-02 20:15:21,854 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:15:21,854 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:15:22,892 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:15:23,123 - Connecting to FTP Server...
+INFO - linear.modbus - 2017-12-02 20:15:24,849 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:25,638 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:15:26,650 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:15:28,433 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:29,222 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:15:30,238 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:15:32,033 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:32,838 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:15:33,850 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:15:35,665 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:36,470 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:15:37,482 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:15:39,473 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:40,278 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:15:41,289 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:15:43,361 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:44,150 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:15:45,161 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:15:46,832 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:15:47,621 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:15:48,633 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:16:50,403 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:16:50,403 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:16:50,404 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:16:50,404 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:16:50,404 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:16:50,404 - FTP node Initialized
+INFO - linear - 2017-12-02 20:16:50,404 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:16:50,404 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:16:51,596 - Connecting to FTP Server...
+INFO - linear.modbus - 2017-12-02 20:16:51,607 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:16:53,498 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:16:54,319 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:16:55,330 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:16:57,242 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:32:04,631 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:32:04,632 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:32:04,632 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:32:04,632 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:32:04,632 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:32:04,632 - FTP node Initialized
+INFO - linear - 2017-12-02 20:32:04,632 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:32:04,632 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:32:05,677 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:32:06,259 - Connecting to FTP Server...
+INFO - linear.modbus - 2017-12-02 20:32:07,548 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:32:08,230 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:32:09,242 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:32:11,014 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:32:11,717 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:32:12,729 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:37:20,334 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:37:20,334 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:37:20,335 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:37:20,335 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:37:20,335 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:37:20,335 - FTP node Initialized
+INFO - linear - 2017-12-02 20:37:20,335 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:37:20,335 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:37:21,385 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:37:21,824 - Connecting to FTP Server...
+INFO - linear.modbus - 2017-12-02 20:37:23,266 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:37:24,045 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:37:25,056 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:37:27,026 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:37:27,820 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:37:28,831 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:37:30,626 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:37:31,420 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:37:32,431 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:37:34,241 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:38:21,659 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:38:21,660 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:38:21,660 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:38:21,660 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:38:21,660 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:38:21,660 - FTP node Initialized
+INFO - linear - 2017-12-02 20:38:21,660 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:38:21,660 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:38:22,730 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:38:22,853 - Connecting to FTP Server...
+INFO - linear.modbus - 2017-12-02 20:38:24,515 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:38:25,309 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:38:26,320 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:38:28,113 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:38:28,827 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:38:29,839 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:38:31,664 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:38:32,458 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:38:33,470 - Modbus Connection established successfully
+INFO - linear - 2017-12-02 20:41:07,541 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:41:07,541 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:41:07,542 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:41:07,542 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:41:07,542 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:41:07,542 - FTP node Initialized
+INFO - linear - 2017-12-02 20:41:07,542 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:41:07,542 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:41:08,586 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:41:08,735 - Connecting to FTP Server...
+INFO - linear.modbus - 2017-12-02 20:41:10,539 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:10,544 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:10,549 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:10,555 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:41:41,307 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:41:41,307 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:41:41,307 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:41:41,307 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:41:41,308 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:41:41,308 - FTP node Initialized
+INFO - linear - 2017-12-02 20:41:41,308 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:41:41,308 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:41:42,377 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:41:42,812 - Connecting to FTP Server...
+INFO - linear.modbus - 2017-12-02 20:41:44,345 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:44,350 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:44,355 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:44,361 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:41:44,994 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:41:46,005 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:47,912 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:47,917 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:47,923 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:47,928 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:41:48,556 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:41:49,568 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:51,401 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:51,406 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:51,411 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:51,417 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:41:51,954 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:41:52,966 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:54,776 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:54,781 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:54,786 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:54,792 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:41:55,410 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:41:56,421 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:58,504 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:41:58,509 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:58,515 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:41:58,520 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:41:59,063 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:00,074 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:01,838 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:01,839 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:01,839 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:01,839 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:02,354 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:03,366 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:05,337 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:05,342 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:05,348 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:05,348 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:05,843 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:06,855 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:08,792 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:08,797 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:08,804 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:08,809 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:09,394 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:10,406 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:12,375 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:12,381 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:12,386 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:12,392 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:12,924 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:13,935 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:15,922 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:15,927 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:15,932 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:15,938 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:16,443 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:17,455 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:19,302 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:19,308 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:19,313 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:19,314 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:19,911 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:20,917 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:22,982 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:22,987 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:22,993 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:22,998 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:23,627 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:42:24,638 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:26,374 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:42:26,379 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:26,385 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:42:26,385 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:42:27,023 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:44:00,187 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:44:00,188 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:44:00,188 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:44:00,188 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:44:00,188 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:44:00,189 - FTP node Initialized
+INFO - linear - 2017-12-02 20:44:00,189 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:44:00,189 - Running Thread for FTP
+INFO - linear.modbus - 2017-12-02 20:44:05,225 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:44:07,080 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:44:07,121 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:44:07,127 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:44:07,132 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:44:07,653 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:44:12,660 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:44:14,594 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:44:14,600 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:44:14,605 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:44:14,610 - Error in reading address 0. Retrying...
+INFO - linear.ftp - 2017-12-02 20:44:15,405 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 20:44:15,421 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:44:15,568 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:44:20,433 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:44:22,501 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:44:22,506 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:44:22,512 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:44:22,517 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:44:23,054 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:44:25,580 - Uploading linear_logger20171202-204407.csv...
+INFO - linear.ftp - 2017-12-02 20:44:25,677 - Upload finished
+INFO - linear - 2017-12-02 20:44:25,688 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:44:25,693 - Closing the FTP Connection...
+INFO - linear.ftp - 2017-12-02 20:44:25,719 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:44:25,779 - FTP Connection Successful
+INFO - linear - 2017-12-02 20:45:40,894 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:45:40,894 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:45:40,894 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:45:40,894 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:45:40,894 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:45:40,895 - FTP node Initialized
+INFO - linear - 2017-12-02 20:45:40,895 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:45:40,895 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:45:40,906 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:45:41,079 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:45:45,952 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:45:47,989 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:45:47,995 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:45:48,000 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:45:48,006 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:45:48,607 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:45:51,096 - Uploading linear_logger20171202-204415.csv...
+INFO - linear.ftp - 2017-12-02 20:45:51,461 - Upload finished
+INFO - linear - 2017-12-02 20:45:51,472 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:45:51,477 - Closing the FTP Connection...
+INFO - linear.ftp - 2017-12-02 20:45:51,503 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:45:51,566 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:45:53,623 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:45:55,509 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:45:55,514 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:45:55,520 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:45:55,525 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:45:56,057 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:46:01,064 - Modbus Connection established successfully
+INFO - linear.ftp - 2017-12-02 20:46:01,590 - Uploading linear_logger20171202-204423.csv...
+ERROR - linear.ftp - 2017-12-02 20:46:01,600 - Error uploading file: [Errno 2] No such file or directory: '/home/pulkit/Desktop/LinearCircuits/Linear_Logger/project/Data/linear_logger20171202-204423.csv'
+INFO - linear.ftp - 2017-12-02 20:46:01,606 - Closing the FTP Connection...
+INFO - linear.modbus - 2017-12-02 20:46:03,135 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:46:03,140 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:03,146 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:03,151 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:46:03,709 - Modbus Read Cycle completed, Data collected
+INFO - linear.modbus - 2017-12-02 20:46:08,744 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:46:10,671 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:46:10,682 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:10,682 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:10,693 - Error in reading address 0. Retrying...
+INFO - linear.ftp - 2017-12-02 20:46:11,285 - Connecting to FTP Server...
+INFO - linear - 2017-12-02 20:46:11,286 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:46:11,345 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:46:16,301 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:46:18,020 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:46:18,025 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:18,030 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:18,036 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:46:18,573 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:46:21,364 - Uploading linear_logger20171202-204603.csv...
+INFO - linear.ftp - 2017-12-02 20:46:22,306 - Upload finished
+INFO - linear - 2017-12-02 20:46:22,316 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:46:22,321 - Closing the FTP Connection...
+INFO - linear.ftp - 2017-12-02 20:46:22,352 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:46:22,411 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:46:23,588 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:46:25,571 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:46:25,576 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:25,582 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:46:25,587 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:46:26,124 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:47:07,970 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:47:07,970 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:47:07,970 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:47:07,970 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:47:07,971 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:47:07,971 - FTP node Initialized
+INFO - linear - 2017-12-02 20:47:07,971 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:47:07,971 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:47:07,983 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:47:08,104 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:47:13,033 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:47:15,001 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:47:15,006 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:47:15,012 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:47:15,017 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:47:15,556 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:47:18,135 - Uploading linear_logger20171202-204611.csv...
+INFO - linear.ftp - 2017-12-02 20:47:18,251 - Upload finished
+INFO - linear - 2017-12-02 20:47:18,272 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:47:18,272 - Uploading linear_logger20171202-204618.csv...
+INFO - linear.ftp - 2017-12-02 20:47:18,400 - Upload finished
+INFO - linear - 2017-12-02 20:47:18,416 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:47:18,421 - Closing the FTP Connection...
+INFO - linear.ftp - 2017-12-02 20:47:18,442 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:47:18,516 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:47:20,571 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:47:22,584 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:47:22,590 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:47:22,590 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:47:22,590 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:47:23,218 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:48:00,518 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:48:00,518 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:48:00,518 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:48:00,518 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:48:00,519 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:48:00,519 - FTP node Initialized
+INFO - linear - 2017-12-02 20:48:00,519 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:48:00,519 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:48:00,545 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:48:01,021 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:48:05,581 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:48:07,496 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:48:07,502 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:48:07,512 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:48:07,517 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:48:08,140 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:48:11,042 - Uploading linear_logger20171202-204626.csv...
+INFO - linear.ftp - 2017-12-02 20:48:11,161 - Upload finished
+INFO - linear - 2017-12-02 20:48:11,176 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:48:11,182 - Uploading linear_logger20171202-204715.csv...
+INFO - linear.ftp - 2017-12-02 20:48:11,291 - Upload finished
+INFO - linear - 2017-12-02 20:48:11,307 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:48:11,312 - Closing the FTP Connection...
+INFO - linear.ftp - 2017-12-02 20:48:11,343 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:48:11,405 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:48:13,156 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:48:15,080 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:48:15,085 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:48:15,091 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:48:15,096 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:48:15,735 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:49:08,607 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:49:08,608 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:49:08,608 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:49:08,608 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:49:08,608 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:49:08,608 - FTP node Initialized
+INFO - linear - 2017-12-02 20:49:08,608 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:49:08,609 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:49:08,634 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:49:08,738 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:49:13,671 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:49:15,358 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:49:15,364 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:49:15,369 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:49:15,374 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:49:16,003 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:49:18,758 - Uploading linear_logger20171202-204723.csv...
+INFO - linear.ftp - 2017-12-02 20:49:18,870 - Upload finished
+INFO - linear - 2017-12-02 20:49:18,880 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:49:18,886 - Uploading linear_logger20171202-204808.csv...
+INFO - linear.ftp - 2017-12-02 20:49:19,012 - Upload finished
+INFO - linear - 2017-12-02 20:49:19,023 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:49:19,028 - Closing the FTP Connection...
+INFO - linear.ftp - 2017-12-02 20:49:19,059 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:49:19,133 - FTP Connection Successful
+INFO - linear - 2017-12-02 20:49:55,171 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:49:55,172 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:49:55,172 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:49:55,172 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:49:55,172 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:49:55,172 - FTP node Initialized
+INFO - linear - 2017-12-02 20:49:55,172 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:49:55,173 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:49:55,198 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:49:55,334 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:50:00,235 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:50:02,144 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:50:02,149 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:50:02,154 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:50:02,160 - Error in reading address 0. Retrying...
+ERROR - linear.modbus - 2017-12-02 20:50:02,170 - Value Error : (The registeraddress is too small: -1, but minimum value is 0.)
+INFO - linear - 2017-12-02 20:50:02,196 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:50:12,890 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:50:12,890 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:50:12,890 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:50:12,890 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:50:12,891 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:50:12,891 - FTP node Initialized
+INFO - linear - 2017-12-02 20:50:12,891 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:50:12,891 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:50:12,912 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:50:13,078 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:50:17,953 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:50:19,728 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:50:19,734 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:50:19,739 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:50:19,745 - Error in reading address 0. Retrying...
+ERROR - linear.modbus - 2017-12-02 20:50:19,755 - Value Error : (The registeraddress is too small: -1, but minimum value is 0.)
+INFO - linear - 2017-12-02 20:50:19,786 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:51:03,574 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:51:03,574 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:51:03,574 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:51:03,575 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:51:03,575 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:51:03,575 - FTP node Initialized
+INFO - linear - 2017-12-02 20:51:03,575 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:51:03,575 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:51:03,586 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:51:03,721 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:51:08,637 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:51:10,435 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:51:10,445 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:51:10,451 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:51:10,456 - Error in reading address 0. Retrying...
+ERROR - linear.modbus - 2017-12-02 20:51:10,461 - Value Error : (The registeraddress is too small: -1, but minimum value is 0.)
+INFO - linear - 2017-12-02 20:51:10,487 - Modbus Read Cycle completed, Data collected
+INFO - linear.ftp - 2017-12-02 20:51:13,735 - Uploading linear_logger20171202-204815.csv...
+INFO - linear.ftp - 2017-12-02 20:51:13,845 - Upload finished
+INFO - linear - 2017-12-02 20:51:13,860 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:51:13,865 - Uploading linear_logger20171202-204915.csv...
+INFO - linear.ftp - 2017-12-02 20:51:13,972 - Upload finished
+INFO - linear - 2017-12-02 20:51:13,988 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:51:13,998 - Uploading linear_logger20171202-205002.csv...
+INFO - linear.ftp - 2017-12-02 20:51:14,110 - Upload finished
+INFO - linear - 2017-12-02 20:51:14,126 - Uploaded file removed from the location
+INFO - linear.ftp - 2017-12-02 20:51:14,131 - Closing the FTP Connection...
+INFO - linear.ftp - 2017-12-02 20:51:14,157 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:51:14,221 - FTP Connection Successful
+INFO - linear - 2017-12-02 20:52:25,627 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:52:25,627 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:52:25,627 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:52:25,627 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:52:25,627 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:52:25,627 - FTP node Initialized
+INFO - linear - 2017-12-02 20:52:25,628 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:52:25,628 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:52:25,643 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:52:26,135 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:52:30,684 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:52:32,476 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:52:32,481 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:52:32,486 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:52:32,492 - Error in reading address 0. Retrying...
+INFO - linear - 2017-12-02 20:52:33,110 - Modbus Read Cycle completed, Data collected
+INFO - linear - 2017-12-02 20:52:58,984 - Active Port : /dev/ttyUSB0
+INFO - linear - 2017-12-02 20:52:58,984 - Inactive Port : /dev/ttyUSB1
+INFO - linear.modbus - 2017-12-02 20:52:58,984 - MODBUS Node Initialized...
+INFO - linear.rtu - 2017-12-02 20:52:58,984 - Reading the RTU file
+INFO - linear.rtu - 2017-12-02 20:52:58,985 - Reading the RTU file
+INFO - linear.ftp - 2017-12-02 20:52:58,985 - FTP node Initialized
+INFO - linear - 2017-12-02 20:52:58,985 - Running Thread for Modbus
+INFO - linear - 2017-12-02 20:52:58,985 - Running Thread for FTP
+INFO - linear.ftp - 2017-12-02 20:52:59,011 - Connecting to FTP Server...
+INFO - linear.ftp - 2017-12-02 20:52:59,349 - FTP Connection Successful
+INFO - linear.modbus - 2017-12-02 20:53:04,048 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:53:05,933 - Modbus Connection established successfully
+INFO - linear.modbus - 2017-12-02 20:53:05,939 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:53:05,944 - Error in reading address 0. Retrying...
+INFO - linear.modbus - 2017-12-02 20:53:05,949 - Error in reading address 0. Retrying...
+ERROR - linear.modbus - 2017-12-02 20:53:05,955 - Value Error : (The registeraddress is too small: -1, but minimum value is 0.)
+INFO - linear - 2017-12-02 20:53:05,980 - Modbus Read Cycle completed, Data collected
