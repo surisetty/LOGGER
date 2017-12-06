@@ -27,7 +27,7 @@
       "stopbits": 1,
       "timeout": 3,
       "slaves": [
-        "linear_hitachi.rtu"
+        "linear_hitachi2.rtu"
       ],
       "status": "enabled"
     },
