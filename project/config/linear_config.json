@@ -5,16 +5,16 @@
     "user": "test"
   },
   "ftp": {
-    "path": "/GACHH",
-    "password": "Tri@123",
+    "path": "/ftptest",
+    "password": "bsrc1234",
     "port": "21",
-    "server": "182.75.57.179",
-    "name": "TriUser"
+    "server": "10.2.28.84",
+    "name": "jd"
   },
   "product": "linear",
   "Ftp_interval": "10",
   "Output_Filename": "test_logger",
-  "Modbus_interval": "20",
+  "Modbus_interval": "5",
   "releaseDate": "2017-09-15T00:00:00.000Z",
   "version": 1,
   "NW_type": "gprs",
@@ -27,22 +27,21 @@
       "stopbits": 1,
       "timeout": 3,
       "slaves": [
-        "linear_hitachi2.rtu"
+        "linear_honeywell.rtu"
       ],
       "status": "enabled"
     },
     {
       "device": "/dev/ttyUSB1",
-      "baudrate": 4800,
+      "baudrate": 9600,
       "parity": "N",
       "databits": 8,
       "stopbits": 1,
-      "timeout": 0.5,
+      "timeout": 3,
       "slaves": [
-        "linear_honda.rtu",
-        "linear_honeywell.rtu"
+        "linear_honda.rtu"
       ],
-      "status": "disabled"
+      "status": "enabled"
     }
   ],
   "config_status": false

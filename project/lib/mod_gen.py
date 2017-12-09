@@ -34,6 +34,7 @@ class ModbusNode(object):
 		timestr = time.strftime("%Y%m%d-%H%M%S")
 		# File number counter
 		self.mod_data_file_timestamp = timestr
+		self.mod_file_port_addr = ""
 		# log data
 		linear_modbus.info("MODBUS Node Initialized...")
 		# call RTU_READ node
@@ -74,6 +75,8 @@ class ModbusNode(object):
 		# print (self.all_endianness)
 		# print (self.all_device_address)
 		# print (self.all_retry_counts)
+
+
 
 	def getByteLength(self, datatype):
 		if datatype == 'U32':
@@ -131,6 +134,14 @@ class ModbusNode(object):
 
 
 	def modRead(self, rjson, port_num):
+		# print("hello")
+		# print(rjson.mod_port_addr)
+		# print(rjson.mod_baudrate)
+		# print(rjson.mod_databits)					  
+		# print(rjson.mod_parity)
+		# print(rjson.mod_stopbits)
+		# print(rjson.mod_poll_timeout)
+		# print("end")
 		port_data = []
 		for file_count in range(len(self.all_device_address)):
 			if self.all_addresses[file_count] == None:
@@ -141,6 +152,7 @@ class ModbusNode(object):
 											  rjson.mod_baudrate[port_num], rjson.mod_databits[port_num],\
 											  rjson.mod_parity[port_num], rjson.mod_stopbits[port_num],\
 											  rjson.mod_poll_timeout[port_num])
+				
 				instrument.debug = False
 				for addr_in_files in range(len(self.all_addresses[file_count])):
 					addr_data = []
@@ -177,6 +189,7 @@ class ModbusNode(object):
 		return port_data
 
 	def ModFileConversion(self, data, rjson):
+		try:
 			row = ""
 			for files in range(len(data)):
 				#add 1st line in output file	
@@ -201,18 +214,28 @@ class ModbusNode(object):
 				addr_results = ';'.join(str(e) for e in results)
 				row += time.strftime("%d/%m/%Y-%H:%M:%S", time.localtime()) + ";" + addr_results + "\n" 
 			return row
+		except: 
+			linear_modbus.error("Error in File Conversion")
 
 	def ModCreateFile(self, rjson, port_num):
 		# read the Modbus data for the specified addresses
 		read_value = self.modRead(rjson, port_num)
 		# convert the data read from modbus in a particular format
 		value = self.ModFileConversion(read_value, rjson)
+		print(value)
+		# get port address
+		self.mod_file_port_addr = "COM" + str(port_num) + "_"
+		# print(self.mod_file_port_addr)
 		# Increment the file counter, when file is sent
 		self.mod_data_file_timestamp = time.strftime("%Y%m%d-%H%M%S")
 
 		# create the file name
-		self.mod_data_file = self.mod_data_file_path + rjson.mod_data_file_initial \
-							+ self.mod_data_file_timestamp + self.mod_data_file_ext
+		self.mod_data_file = self.mod_data_file_path + self.mod_file_port_addr +\
+							 rjson.mod_data_file_initial + self.mod_data_file_timestamp +\
+							  self.mod_data_file_ext
 		# write the data into the file
-		with open(self.mod_data_file, 'w') as f: 
-			f.write(value)	
+		try:
+			with open(self.mod_data_file, 'w') as f: 
+				f.write(value)	
+		except:
+			linear_modbus.error("WARNING!!! Data Created, Unable to write in file")

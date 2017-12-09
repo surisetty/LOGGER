@@ -22,7 +22,7 @@
    ],
   "retry_count" : 3,
   "device_address": 2,
-  "active": "True",
+  "active": "False",
   "endian_type": "little",
   "Description": "XYZ2 inverter"
 }
