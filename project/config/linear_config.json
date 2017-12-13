@@ -12,7 +12,7 @@
     "name": "jd"
   },
   "product": "linear",
-  "Ftp_interval": "10",
+  "Ftp_interval": "3",
   "Output_Filename": "test_logger",
   "Modbus_interval": "5",
   "releaseDate": "2017-09-15T00:00:00.000Z",
@@ -29,10 +29,10 @@
       "slaves": [
         "linear_honeywell.rtu"
       ],
-      "status": "enabled"
+      "status": "disabled"
     },
     {
-      "device": "/dev/ttyUSB1",
+      "device": "/dev/ttyUSB0",
       "baudrate": 9600,
       "parity": "N",
       "databits": 8,

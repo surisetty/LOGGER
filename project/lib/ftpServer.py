@@ -3,6 +3,8 @@
 # Import necessary Libraries
 from ftplib import FTP
 import os
+import socket
+from lib.exceptions import HandleError
 import logging
 linear_ftp = logging.getLogger('linear.ftp')
 
@@ -26,13 +28,16 @@ class FtpNode(object):
 				ftp.cwd(path)
 				# If Connection is made, make, retry as false
 				retry = False
-
 				linear_ftp.info('FTP Connection Successful')
 
 			# Handle all kinds of existing errors while making the connection
-			except IOError as e:
-				linear_ftp.error("I/O error({0}): {1}".format(e.errno, e.strerror))
-				# Run the loop until connection is a Success
+			except socket.error as msg:
+				handler = HandleError(msg.errno, msg.strerror)
+				linear_ftp.error("Error : {0} - {1}".format(handler.code, handler.str))
+
+			except Exception as e:
+				handler = HandleError(e.args[0][:3], e.args[0][4:])
+				linear_ftp.error("Error : {0} - {1}".format(handler.code, handler.str))
 				retry = True
 				linear_ftp.info("Still trying to connect to FTP Server...")
 		return ftp
@@ -59,5 +64,6 @@ class FtpNode(object):
 		
 		# Handle all the exceptions while File upload
 		except Exception as e:
-			linear_ftp.error("Error uploading file: " + str(e))
+			handler = HandleError("4", "Error uploading file")
+			linear_ftp.error("Error : {0} - {1}".format(handler.code, handler.str))
 			self.ftp_all_good = 0

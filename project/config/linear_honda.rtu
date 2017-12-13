@@ -2,7 +2,7 @@
   "address": [
   
     {
-        "addr": 1305,
+        "addr": 1221,
         "length" : 1,
         "data_type": "U16"
     }

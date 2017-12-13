@@ -64,6 +64,14 @@ def FtpSendFile(threadName, delay, ports):
 			Ftp.FtpClose()
 
 
+log_dir = sys.path[0] + '/Log_files'
+data_dir = sys.path[0] + '/Data'
+
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+
 log_conf_path = sys.path[0] + '/config/linear_log_config.yaml'
 with open(log_conf_path, 'r') as f:
 	conf = yaml.load(f)
