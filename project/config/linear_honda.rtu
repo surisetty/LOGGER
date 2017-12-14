@@ -8,7 +8,7 @@
     }
    ],
   "retry_count" : 3,
-  "device_address": 7,
+  "device_address": 1,
   "active": "True",
   "endian_type": "little",
   "Description": "XYZ2 inverter"

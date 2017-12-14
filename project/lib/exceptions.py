@@ -4,6 +4,8 @@ class HandleError(Exception):
 		(self.code, self.str) = self.getErrorCode(err_code, err_str)
 
 	def getErrorCode(self, code, string):
+# FTP ERRORS
+
 		# FTP username/password error
 		if int(code) == 530:
 			code = str(1)
@@ -35,8 +37,45 @@ class HandleError(Exception):
 			string = "FTP " + string
 
 		# FTP Other Errors (Not defined anywhere)
-		if int(code) == 6:
-			code = str(6)
+		if int(code) == 7:
+			code = str(7)
 			string = "FTP " + string
 
+# MODBUS Errors
+		# RTU file read error
+		if int(code) == 51:
+			code = str(51)
+			string = "MODBUS " + string
+
+		# Modbus init error
+		if int(code) == 52:
+			code = str(52)
+			string = "MODBUS " + string
+
+		# Modbus read address error, Retrying
+		if int(code) == 53:
+			code = str(53)
+			string = "MODBUS " + string
+
+		# Modbus error in file conversion
+		if int(code) == 54:
+			code = str(54)
+			string = "MODBUS " + string
+
+		# Modbus error can't create file
+		if int(code) == 55:
+			code = str(55)
+			string = "MODBUS " + string
+
+# Logger Errors
+		
+		# cant read config json file
+		if int(code) == 101:
+			code = str(101)
+			string = "LOGGER " + string
+
+		# cant create threads
+		if int(code) == 102:
+			code = str(102)
+			string = "LOGGER " + string
 		return (code, string)

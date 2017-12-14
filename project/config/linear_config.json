@@ -27,12 +27,12 @@
       "stopbits": 1,
       "timeout": 3,
       "slaves": [
-        "linear_honeywell.rtu"
+        "linear_honda.rtu"
       ],
-      "status": "disabled"
+      "status": "enabled"
     },
     {
-      "device": "/dev/ttyUSB0",
+      "device": "/dev/ttyUSB1",
       "baudrate": 9600,
       "parity": "N",
       "databits": 8,
@@ -41,7 +41,7 @@
       "slaves": [
         "linear_honda.rtu"
       ],
-      "status": "enabled"
+      "status": "disabled"
     }
   ],
   "config_status": false

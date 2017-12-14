@@ -8,6 +8,7 @@ import minimalmodbus
 import serial
 import logging
 from lib.rtu_read import RTU_READ
+from lib.exceptions import HandleError
 
 minimalmodbus.CLOSE_PORT_AFTER_EACH_CALL = True
 
@@ -40,7 +41,7 @@ class ModbusNode(object):
 		# call RTU_READ node
 
 
-	def ReadInputFilesPortwise(self, file_path_string, files_name):
+	def ReadInputFilesPortwise(self, file_path_string, files_name):	
 		RTU = RTU_READ()
 		filename = file_path_string + files_name
 		RTU.ReadRtuFile(filename)
@@ -57,24 +58,28 @@ class ModbusNode(object):
 
 
 	def ReadInputFile(self, ports):
-		# List to store all the files attached on all active ports
-		file_path_string = sys.path[0] + "/config/"
-		for loop in range(len(ports)):
-			(address, length, datatype, endianness, device_address, retry_counts) = \
-										self.ReadInputFilesPortwise(file_path_string, ports[loop])
-			self.all_addresses.append(address)
-			self.all_length.append(length)
-			self.all_datatype.append(datatype)
-			self.all_endianness.append(endianness)
-			self.all_device_address.append(device_address)
-			self.all_retry_counts.append(retry_counts)
-			self.all_files = ports
-		# print (self.all_addresses)
-		# print (self.all_length)
-		# print (self.all_datatype)
-		# print (self.all_endianness)
-		# print (self.all_device_address)
-		# print (self.all_retry_counts)
+		try:
+			# List to store all the files attached on all active ports
+			file_path_string = sys.path[0] + "/config/"
+			for loop in range(len(ports)):
+				(address, length, datatype, endianness, device_address, retry_counts) = \
+											self.ReadInputFilesPortwise(file_path_string, ports[loop])
+				self.all_addresses.append(address)
+				self.all_length.append(length)
+				self.all_datatype.append(datatype)
+				self.all_endianness.append(endianness)
+				self.all_device_address.append(device_address)
+				self.all_retry_counts.append(retry_counts)
+				self.all_files = ports
+			# print (self.all_addresses)
+			# print (self.all_length)
+			# print (self.all_datatype)
+			# print (self.all_endianness)
+			# print (self.all_device_address)
+			# print (self.all_retry_counts)
+		except Exception as e:
+			handler = HandleError('51', 'Can\'t read Input files, RTU read Error' )
+			linear_modbus.error("Error : {0} - {1}".format(handler.code, handler.str))
 
 
 
@@ -95,21 +100,6 @@ class ModbusNode(object):
 			return '>'
 		else:
 			return '<'
-
-
-
-	def init_modbus(self, port_addr, device_addr, baudrate, bytesize, parity, stopbits, timeout):
-		try:
-			instrument = minimalmodbus.Instrument(port_addr, device_addr)
-			instrument.serial.baudrate= baudrate
-			instrument.serial.bytesize = bytesize
-			instrument.serial.parity = parity
-			instrument.serial.stopbits = stopbits
-			instrument.serial.timeout = timeout
-			linear_modbus.info("Modbus Connection established successfully")
-			return instrument
-		except: 
-			linear_modbus.error("Error in establishing Modbus Connection")
 
 	def selectReadFunc(self, instrument, addr, datatype, endian=None):
 		if datatype == 'S32':
@@ -133,6 +123,21 @@ class ModbusNode(object):
 			return instrument.read_float(addr-1, functioncode=3, numberOfRegisters=2, endian= endian )
 
 
+	def init_modbus(self, port_addr, device_addr, baudrate, bytesize, parity, stopbits, timeout):
+			try:
+				instrument = minimalmodbus.Instrument(port_addr, device_addr)
+				instrument.serial.baudrate= baudrate
+				instrument.serial.bytesize = bytesize
+				instrument.serial.parity = parity
+				instrument.serial.stopbits = stopbits
+				instrument.serial.timeout = timeout
+				linear_modbus.info("Modbus Connection established successfully")
+				return instrument
+			except Exception as e:
+				handler = HandleError('52', 'can\'t establish connection, Device not connected' )
+				linear_modbus.error("Error : {0} - {1}".format(handler.code, handler.str))
+
+
 	def modRead(self, rjson, port_num):
 		# print("hello")
 		# print(rjson.mod_port_addr)
@@ -146,13 +151,13 @@ class ModbusNode(object):
 		for file_count in range(len(self.all_device_address)):
 			if self.all_addresses[file_count] == None:
 				continue
+			
+			file_result = []
+			instrument = self.init_modbus(rjson.mod_port_addr[port_num], self.all_device_address[file_count] ,\
+										  rjson.mod_baudrate[port_num], rjson.mod_databits[port_num],\
+										  rjson.mod_parity[port_num], rjson.mod_stopbits[port_num],\
+										  rjson.mod_poll_timeout[port_num])
 			try:
-				file_result = []
-				instrument = self.init_modbus(rjson.mod_port_addr[port_num], self.all_device_address[file_count] ,\
-											  rjson.mod_baudrate[port_num], rjson.mod_databits[port_num],\
-											  rjson.mod_parity[port_num], rjson.mod_stopbits[port_num],\
-											  rjson.mod_poll_timeout[port_num])
-				
 				instrument.debug = False
 				for addr_in_files in range(len(self.all_addresses[file_count])):
 					addr_data = []
@@ -167,9 +172,11 @@ class ModbusNode(object):
 									   self.getEndianness(self.all_endianness[file_count])))
 								addr_data.append(result)
 								break
-							except:
-								linear_modbus.info("Error in reading address " + str(self.all_addresses[file_count][addr_in_files]) + \
-										   ". Retrying...")
+							except Exception as e:
+								print (e)
+								handler = HandleError('53', "Error in reading address " + str(self.all_addresses[file_count][addr_in_files]) + \
+										   ". Retrying..." + "Check the data in rtu file again" )
+								linear_modbus.warn("Error : {0} - {1}".format(handler.code, handler.str))
 								if retry_counter == self.all_retry_counts[file_count]:
 									result = 'error'
 									addr_data.append(result)
@@ -215,7 +222,9 @@ class ModbusNode(object):
 				row += time.strftime("%d/%m/%Y-%H:%M:%S", time.localtime()) + ";" + addr_results + "\n" 
 			return row
 		except: 
-			linear_modbus.error("Error in File Conversion")
+			handler = HandleError('54', 'error in data file conversion' )
+			linear_modbus.error("Error : {0} - {1}".format(handler.code, handler.str))
+
 
 	def ModCreateFile(self, rjson, port_num):
 		# read the Modbus data for the specified addresses
@@ -238,4 +247,5 @@ class ModbusNode(object):
 			with open(self.mod_data_file, 'w') as f: 
 				f.write(value)	
 		except:
-			linear_modbus.error("WARNING!!! Data Created, Unable to write in file")
+			handler = HandleError('55', 'error in writing in file, Data successfully created' )
+			linear_modbus.error("Error : {0} - {1}".format(handler.code, handler.str))

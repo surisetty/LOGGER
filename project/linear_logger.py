@@ -13,6 +13,7 @@ import logging
 import logging.config
 import logging.handlers
 from lib.json_read import ReadConfig
+from lib.exceptions import HandleError
 from lib.ftpServer import FtpNode
 from lib.mod_gen import ModbusNode
 
@@ -34,35 +35,38 @@ def ModRead(threadName, delay, rjson, ports, port_num):
 		
 def FtpSendFile(threadName, delay, ports):
 	while 1:
-		data_files = glob.glob(Modbus_Nodes_lists[0].mod_data_file_path + '*.csv')
-		data_files = sorted(data_files, key=os.path.getmtime)
-		if len(data_files) > 0:
-			del data_files[-ports:]
-		files_to_send = len(data_files)
-		if files_to_send > 0:
-			cred = Ftp.FtpConnect(RJSON.ftp_user_id, RJSON.ftp_password, RJSON.ftp_ip_addr,\
-										 RJSON.ftp_port_num, RJSON.ftp_path)
-			# continue reading the data until exit flag is set high
-			if exitFlag:
-				# exit the thread when exit flag is set
-				threadName.exit()
-			# sleep for the required time
-			time.sleep(delay)
-			for loop in range(files_to_send):
-				# Upload the required file
-				try: 
-					test = Ftp.FtpUpload(cred, data_files[loop])
-					# remove the uploaded file when sent
-					if Ftp.ftp_all_good:
-						os.remove(data_files[loop])
-						linear.info("Uploaded file removed from the location")
-						Ftp.ftp_all_good = 0
-				except ftplib.error_temp as e:
-						linear.error("File Transfer error, Trying again ...({0})"\
-										.format(e))
-			# FTP connection close
-			Ftp.FtpClose()
-
+		try:
+			data_files = glob.glob(Modbus_Nodes_lists[0].mod_data_file_path + '*.csv')
+			data_files = sorted(data_files, key=os.path.getmtime)
+			if len(data_files) > 0:
+				del data_files[-ports:]
+			files_to_send = len(data_files)
+			if files_to_send > 0:
+				cred = Ftp.FtpConnect(RJSON.ftp_user_id, RJSON.ftp_password, RJSON.ftp_ip_addr,\
+											 RJSON.ftp_port_num, RJSON.ftp_path)
+				# continue reading the data until exit flag is set high
+				if exitFlag:
+					# exit the thread when exit flag is set
+					threadName.exit()
+				# sleep for the required time
+				time.sleep(delay)
+				for loop in range(files_to_send):
+					# Upload the required file
+					try: 
+						test = Ftp.FtpUpload(cred, data_files[loop])
+						# remove the uploaded file when sent
+						if Ftp.ftp_all_good:
+							os.remove(data_files[loop])
+							linear.info("Uploaded file removed from the location")
+							Ftp.ftp_all_good = 0
+					except ftplib.error_temp as e:
+							linear.error("File Transfer error, Trying again ...({0})"\
+											.format(e))
+				# FTP connection close
+				Ftp.FtpClose()
+		except:
+			handler = HandleError('103', 'can\'t find mod file path' )
+			linear.error("Error : {0} - {1}".format(handler.code, handler.str))
 
 log_dir = sys.path[0] + '/Log_files'
 data_dir = sys.path[0] + '/Data'
@@ -81,11 +85,15 @@ logging.config.dictConfig(conf)
 cred_file = sys.path[0] + "/config/linear_config.json"
 linear = logging.getLogger('linear')
 
-# call the Read Json node
-RJSON = ReadConfig()
-# Read the JSON file (config) 
-RJSON.ReadJson(cred_file)
 
+try:
+	# call the Read Json node
+	RJSON = ReadConfig()
+	# Read the JSON file (config) 
+	RJSON.ReadJson(cred_file)
+except:
+	handler = HandleError('101', 'Can\'t read config (JSON) file' )
+	linear.error("Error : {0} - {1}".format(handler.code, handler.str))
 
 # Get the modbus input file as an input
 mod_files = []
@@ -121,7 +129,8 @@ try:
    
 except:
    # print ("Error: unable to start _thread")
-   linear.error("Unable to start thread")
+   handler = HandleError('102', 'Can\'t create Threads' )
+   linear.error("Error : {0} - {1}".format(handler.code, handler.str))
 
 while 1:
    pass
