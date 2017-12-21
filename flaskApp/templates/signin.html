@@ -39,7 +39,7 @@
 				<section class="row">
 					<div class="col-sm-12">
 					{% if error %}<p class="error"><strong>Error:</strong> {{ error }}{% endif %}
-						<form class="form-horizontal" action="/signup" method="post">
+						<form class="form-horizontal" action="/signin" method="post">
 							<fieldset>
 								<!-- username-->
 								<div class="form-group">
@@ -59,19 +59,10 @@
 									</div>
 								</div>
 								
-								<!-- confirm password-->
-								<div class="form-group">
-									<label class="col-12 control-label no-padding" for="conf_pass">Confirm Password</label>
-									
-									<div class="col-12 no-padding">
-										<input id="confirm_password" name="confirm_password" type="password" placeholder="Enter Password again" class="form-control">
-									</div>
-								</div>
-								
 								<!-- Form actions -->
 								<div class="form-group">
 									<div class="col-12 widget-right no-padding">
-										<button type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+										<button type="submit" class="btn btn-primary btn-md float-right">Login</button>
 									</div>
 								</div>
 							</fieldset>

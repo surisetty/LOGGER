@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<meta name="description" content="">
+	
+	<meta name="author" content="">
+	
+	<link rel="icon" href="images/favicon.ico">
+	
+	<title>Linear Logger</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="static/css/font-awesome.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid" id="wrapper">
+		<div class="row">
+			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
+				<h1 class="site-title"><a href="/"><em class="fa fa-television"></em> Logger</a></h1>
+				
+				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
+				
+				<ul class="nav nav-pills flex-column sidebar-nav">
+					<li class="nav-item"><a class="nav-link" href="/welcome"><em class="fa fa-th"></em> Welcome</a></li>
+					<li class="nav-item"><a class="nav-link" href="/ftp_settings"><em class="fa fa-cog"></em> FTP Settings</a></li>
+					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU <span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="/data_files"><em class="fa fa-folder-o"></em> Data Files</a></li>
+					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
+				</ul>
+				
+				<a href="/signout" class="logout-button"><em class="fa fa-power-off"></em> Signout</a></nav>
+			
+			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
+				<header class="page-header row justify-center">
+					<div class="col-md-6 col-lg-8" >
+						<h1 class="float-left text-center text-md-left">RTU File Generator</h1>
+					</div>
+					
+					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="static/images/Linear.jpg" alt="profile photo" class="circle float-left profile-photo" width="100" height="auto">
+						
+						<div class="username mt-1">
+							<h4 class="mb-1">{{active_user}}</h4>
+							
+							<h6 class="text-muted">Admin</h6>
+						</div>
+						</a>
+						
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+						     <a class="dropdown-item" href="/"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
+					</div>
+					
+					<div class="clear"></div>
+				</header>
+
+				
+				<section class="row">
+					<div class="col-sm-12">
+						<section class="row">
+							<div class="col-md-12 col-lg-8">
+								<form class="form-horizontal" action="" method="post">
+									<fieldset>
+										<!-- file name input-->
+										<div class="form-group">
+											<label class="col-12 control-label no-padding" for="name">File Name</label>
+											
+											<div class="col-12 no-padding">
+												<input id="name" name="name" type="text" placeholder="Enter a file name (starting with an alphabet)" class="form-control">
+											</div>
+										</div>
+									
+										<!-- device address-->
+										<div class="form-group">
+											<label class="col-12 control-label no-padding" for="device">Device Address</label>
+											
+											<div class="col-12 no-padding">
+												<input id="device" name="device" type="text" placeholder="Enter the Device Address (Only in decimal)" class="form-control">
+											</div>
+										</div>
+
+										<!-- Endianness-->
+										<div class="form-group">
+											<label class="col-12 control-label no-padding" for="name">Endian Mode</label>
+											
+											<div class="col-12 no-padding">
+												<input id="endian" name="endian" type="text" placeholder="Endianness supported (little or big)" class="form-control">
+											</div>
+										</div>
+
+										<!-- Read Addresses-->
+										<div class="form-group">
+											<label class="col-12 control-label no-padding" for="addresses">Read Addresses</label>
+											
+											<div class="input-group">
+												<input id="btn-input" type="text" class="form-control input-md" placeholder="Add new addresses" /><span class="input-group-btn">
+													<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
+											</span></div>
+										</div>
+													
+										<!-- Form actions -->
+										<div class="form-group">
+											<div class="col-12 widget-right no-padding">
+												<button type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+											</div>
+										</div>
+									</fieldset>
+								</form>	
+							</div>
+						</section>
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/dist/js/bootstrap.min.js"></script>
+    
+    <script src="static/js/tether.min.js"></script>
+    
+	  </body>
+</html>
