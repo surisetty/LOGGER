@@ -17,7 +17,7 @@
     <link href="static/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!--Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="static/css/fonts-all.css" rel="stylesheet">
     
     <!-- Icons -->
     <link href="static/css/font-awesome.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 						</a>
 						
 						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-						     <a class="dropdown-item" href="/"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
+						     <a class="dropdown-item" href="/signout"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
 					</div>
 					
 					<div class="clear"></div>
@@ -72,14 +72,14 @@
 					<div class="col-sm-12">
 						<section class="row">
 							<div class="col-md-12 col-lg-8">
-								<form class="form-horizontal" action="" method="post">
+								<form class="form-horizontal" action="/rtu_create" method="post">
 									<fieldset>
 										<!-- file name input-->
 										<div class="form-group">
 											<label class="col-12 control-label no-padding" for="name">File Name</label>
 											
 											<div class="col-12 no-padding">
-												<input id="name" name="name" type="text" placeholder="Enter a file name (starting with an alphabet)" class="form-control">
+												<input id="filename" name="filename" type="text" placeholder="Enter a file name (starting with an alphabet)" class="form-control">
 											</div>
 										</div>
 									
@@ -92,25 +92,138 @@
 											</div>
 										</div>
 
-										<!-- Endianness-->
+										<!-- retry count -->
 										<div class="form-group">
-											<label class="col-12 control-label no-padding" for="name">Endian Mode</label>
+											<label class="col-12 control-label no-padding" for="device">Retry Count</label>
 											
 											<div class="col-12 no-padding">
-												<input id="endian" name="endian" type="text" placeholder="Endianness supported (little or big)" class="form-control">
+												<input id="retry" name="retry" type="text" placeholder="Number of retry counts for each address in case of error" class="form-control">
 											</div>
 										</div>
 
-										<!-- Read Addresses-->
+										<!-- Activeness-->
 										<div class="form-group">
-											<label class="col-12 control-label no-padding" for="addresses">Read Addresses</label>
-											
-											<div class="input-group">
-												<input id="btn-input" type="text" class="form-control input-md" placeholder="Add new addresses" /><span class="input-group-btn">
-													<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
-											</span></div>
+											<label class="col-12 control-label no-padding" for="name">File Activeness Status</label>
+											<div class="btn-group" data-toggle="buttons">
+											  <label class="btn btn-primary active">
+											    <input type="radio" name="status" id="option1" value="True" autocomplete="off" checked> True
+											  </label>
+											  <label class="btn btn-primary">
+											    <input type="radio" name="status" id="option2" value="False" autocomplete="off"> False
+											  </label>
+											</div>
 										</div>
-													
+
+										<!-- Endianness-->
+										<div class="form-group">
+											<label class="col-12 control-label no-padding" for="name">Endian Mode</label>
+											<div class="btn-group" data-toggle="buttons">
+											  <label class="btn btn-primary active">
+											    <input type="radio" name="endian" id="option1" value="little" autocomplete="off" checked> Little
+											  </label>
+											  <label class="btn btn-primary">
+											    <input type="radio" name="endian" id="option2" value="big" autocomplete="off"> Big
+											  </label>
+											</div>
+										</div>
+
+
+										<div class="container">
+									        <div class="form-group">
+									        	<label class="col-12 control-label no-padding" for="name"><h5>Read Addresses</h5></label>
+									      		<div class="after-add-more">	
+									      			<br>
+										      		<label class="col-12 control-label no-padding" for="addresses">Start Address</label>
+										      		<div class="input-group control-group">
+													   <input type="text" name="start_addr[]" class="form-control" placeholder="Enter start read address">
+													</div>
+
+													<br>
+
+													<label class="col-12 control-label no-padding" for="length">Read Length</label>
+										      		<div class="input-group control-group">
+													   <input type="text" name="length[]" class="form-control" placeholder="Length (consecutive addresses to read)">
+													</div>
+
+													<br>
+
+													<label class="col-12 control-label no-padding" for="datatype">Select Datatype</label>
+													<div class="btn-group control-group" data-toggle="buttons">
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="datatype[]" id="option1" value="U16" autocomplete="off" checked> U16
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option2" value="U32" autocomplete="off"> U32
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option3" value="S16" autocomplete="off" > S16
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option4" value="S32" autocomplete="off"> S32
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option5" value="F" autocomplete="off" > Float
+													  </label>
+													</div>
+													<br>
+
+													<div class="input-group-btn"> 
+														<div class="col-12 widget-right no-padding"> 
+															<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
+														</div>
+													</div>
+
+												</div>
+												
+									        </div>
+
+									        <!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
+									        
+									        <div class="copy-fields hidden-sm-up">
+									        	<div class="control-group" style="margin-top:10px">
+									        		
+									        		<label class="col-12 control-label no-padding" for="addresses">Start Address</label>
+									        		<div class="col-12 no-padding">
+														<input type="text" name="start_addr[]" class="form-control" placeholder="Enter start read address">
+													</div>
+
+													<br>
+
+													<label class="col-12 control-label no-padding" for="length">Read Length</label>
+													<div class="col-12 widget-right no-padding">
+														<input type="text" name="length[]" class="form-control" placeholder="Length (consecutive addresses to read)">
+													</div>
+
+													<br>
+
+													<label class="col-12 control-label no-padding" for="datatype">Select Datatype</label>
+													<div class="btn-group control-group" data-toggle="buttons">
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="datatype[]" id="option1" value="U16" autocomplete="off" checked> U16
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option2" value="U32" autocomplete="off"> U32
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option3" value="S16" autocomplete="off" > S16
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option4" value="S32" autocomplete="off"> S32
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="datatype[]" id="option5" value="F" autocomplete="off" > Float
+													  </label>
+													</div>
+													<br>
+														
+									        		<div class="input-group-btn"> 
+									        			<div class="col-12 widget-right no-padding"> 
+									        				<button class="btn btn-primary btn-md float-right remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+									        			</div>
+									        		</div>
+									        	</div>
+									        </div>
+										<br>
 										<!-- Form actions -->
 										<div class="form-group">
 											<div class="col-12 widget-right no-padding">
@@ -134,6 +247,21 @@
     <script src="static/dist/js/bootstrap.min.js"></script>
     
     <script src="static/js/tether.min.js"></script>
-    
+    	
+    <script type="text/javascript">
+    $(document).ready(function() {
+	//here first get the contents of the div with name class copy-fields and add it to after "after-add-more" div class.
+     $(".add-more").click(function(){ 
+          var html = $(".copy-fields").html();
+          $(".after-add-more").after(html);
+      });
+	//here it will remove the current value of the remove button which has been pressed
+      $("body").on("click",".remove",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+    });
+	</script>
+
+
 	  </body>
 </html>

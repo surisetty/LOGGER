@@ -21,8 +21,20 @@ def home():
 def welcome():
 	return render_template('welcome.html', active_user=active_user) 
 
-@app.route('/rtu_create')
+@app.route('/rtu_create', methods=['GET','POST'])
 def rtu_create():
+	if request.method == 'POST':
+		filename = request.form['filename']
+		device = request.form['device']
+		endian = request.form['endian']
+		datatype = request.form['datatype']
+		start_addr = request.form['start_addr']
+		print(filename)
+		print(device)
+		print(endian)
+		print(datatype)
+		print(start_addr)
+
 	return render_template('rtu_create.html', active_user=active_user) 
 
 @app.route('/modbus_settings')
