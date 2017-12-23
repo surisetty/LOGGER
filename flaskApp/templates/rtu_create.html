@@ -127,7 +127,7 @@
 											</div>
 										</div>
 
-
+										<!-- Read Addresses-->
 										<div class="container">
 									        <div class="form-group">
 									        	<label class="col-12 control-label no-padding" for="name"><h5>Read Addresses</h5></label>
@@ -147,24 +147,25 @@
 
 													<br>
 
-													<label class="col-12 control-label no-padding" for="datatype">Select Datatype</label>
+													<label class="col-12 control-label no-padding" for="datatype[]">Select Datatype</label>
 													<div class="btn-group control-group" data-toggle="buttons">
 													  <label class="btn btn-primary active">
-													    <input type="radio" name="datatype[]" id="option1" value="U16" autocomplete="off" checked> U16
+													    <input type="radio" class="dtt" name="datatype1" id="option1" value="U16" autocomplete="off" checked> U16
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option2" value="U32" autocomplete="off"> U32
+													    <input type="radio" class="dtt" name="datatype1" id="option2" value="U32" autocomplete="off"> U32
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option3" value="S16" autocomplete="off" > S16
+													    <input type="radio" class="dtt" name="datatype1" id="option3" value="S16" autocomplete="off" > S16
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option4" value="S32" autocomplete="off"> S32
+													    <input type="radio" class="dtt" name="datatype1" id="option4" value="S32" autocomplete="off"> S32
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option5" value="F" autocomplete="off" > Float
+													    <input type="radio" class="dtt" name="datatype1" id="option5" value="F" autocomplete="off" > Float
 													  </label>
 													</div>
+													<input type="text" name="datatype[]" id="datatp1" class=" hidden-sm-up datatype_entry" value="U16">
 													<br>
 
 													<div class="input-group-btn"> 
@@ -172,26 +173,24 @@
 															<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
 														</div>
 													</div>
-
 												</div>
-												
 									        </div>
 
 									        <!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
 									        
 									        <div class="copy-fields hidden-sm-up">
-									        	<div class="control-group" style="margin-top:10px">
-									        		
-									        		<label class="col-12 control-label no-padding" for="addresses">Start Address</label>
-									        		<div class="col-12 no-padding">
-														<input type="text" name="start_addr[]" class="form-control" placeholder="Enter start read address">
+									        	<div class="after-add-more">	
+									      			<br>
+										      		<label class="col-12 control-label no-padding" for="addresses">Start Address</label>
+										      		<div class="input-group control-group">
+													   <input type="text" name="start_addr[]" class="form-control" placeholder="Enter start read address">
 													</div>
 
 													<br>
 
 													<label class="col-12 control-label no-padding" for="length">Read Length</label>
-													<div class="col-12 widget-right no-padding">
-														<input type="text" name="length[]" class="form-control" placeholder="Length (consecutive addresses to read)">
+										      		<div class="input-group control-group">
+													   <input type="text" name="length[]" class="form-control" placeholder="Length (consecutive addresses to read)">
 													</div>
 
 													<br>
@@ -199,35 +198,39 @@
 													<label class="col-12 control-label no-padding" for="datatype">Select Datatype</label>
 													<div class="btn-group control-group" data-toggle="buttons">
 													  <label class="btn btn-primary active">
-													    <input type="radio" name="datatype[]" id="option1" value="U16" autocomplete="off" checked> U16
+													    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option2" value="U32" autocomplete="off"> U32
+													    <input type="radio" class="dtt" name="datatypex" id="option2" value="U32" autocomplete="off"> U32
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option3" value="S16" autocomplete="off" > S16
+													    <input type="radio" class="dtt" name="datatypex" id="option3" value="S16" autocomplete="off" > S16
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option4" value="S32" autocomplete="off"> S32
+													    <input type="radio" class="dtt" name="datatypex" id="option4" value="S32" autocomplete="off"> S32
 													  </label>
 													  <label class="btn btn-primary">
-													    <input type="radio" name="datatype[]" id="option5" value="F" autocomplete="off" > Float
+													    <input type="radio" class="dtt" name="datatypex" id="option5" value="F" autocomplete="off" > Float
 													  </label>
 													</div>
 													<br>
-														
-									        		<div class="input-group-btn"> 
-									        			<div class="col-12 widget-right no-padding"> 
-									        				<button class="btn btn-primary btn-md float-right remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-									        			</div>
-									        		</div>
+													<input type="text" name="datatype[]" id="datatpx" class="hidden-sm-up datatype_entry" value="U16">
+
+													<div class="input-group-btn"> 
+														<div class="col-12 widget-right no-padding"> 
+															<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
+
+														</div>
+													</div>
 									        	</div>
 									        </div>
-										<br>
+											<br>
+										</div>
+
 										<!-- Form actions -->
 										<div class="form-group">
 											<div class="col-12 widget-right no-padding">
-												<button type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
 											</div>
 										</div>
 									</fieldset>
@@ -250,18 +253,26 @@
     	
     <script type="text/javascript">
     $(document).ready(function() {
-	//here first get the contents of the div with name class copy-fields and add it to after "after-add-more" div class.
-     $(".add-more").click(function(){ 
+    	var field_counts = 1;
+     	$("body").on("click",".add-more",function(e){ 
+     		field_counts++;
           var html = $(".copy-fields").html();
-          $(".after-add-more").after(html);
+          html = html.replace(/datatypex/g, 'datatype'+field_counts)
+          html = html.replace(/datatpx/g, 'datatp'+field_counts)
+          $(this).parents(".after-add-more").after(html);
+          $(this).replaceWith( "<button class=\"btn btn-primary btn-md float-right remove\" type=\"button\"><i class=\"fa fa-minus-square\"></i> Remove</button>" );
       });
-	//here it will remove the current value of the remove button which has been pressed
       $("body").on("click",".remove",function(){ 
-          $(this).parents(".control-group").remove();
+      	field_counts--;
+          $(this).parents(".after-add-more").remove();
       });
+      $(document).on('change', ".dtt", function(){
+      	name = $(this).attr('name').replace('datatype', '')
+      	$("#datatp"+name).val($(this).val())
+      })
     });
 	</script>
 
 
-	  </body>
+	</body>
 </html>

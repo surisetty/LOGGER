@@ -27,14 +27,12 @@ def rtu_create():
 		filename = request.form['filename']
 		device = request.form['device']
 		endian = request.form['endian']
-		datatype = request.form['datatype']
-		start_addr = request.form['start_addr']
-		print(filename)
-		print(device)
-		print(endian)
-		print(datatype)
-		print(start_addr)
-
+		retry = request.form['retry']
+		status = request.form['status']
+		start_addr = request.form.getlist('start_addr[]')
+		datatype = request.form.getlist('datatype[]')
+		length = request.form.getlist('length[]')
+		createJson(filename, device, retry, status, endian, start_addr, length, datatype)
 	return render_template('rtu_create.html', active_user=active_user) 
 
 @app.route('/modbus_settings')
@@ -97,6 +95,30 @@ def signout():
 	active_user = ""
 	session['logged_in'] = False
 	return redirect(url_for('home'))
+
+def createJson(filename, device_addr, retry_count, active, endian, addrlist, lenlist, dtypelist):
+	val = ""
+	address_value = ""
+	for loop in range(len(addrlist) - 1): # last value of the list is garbage (hidden stream)
+		address_value += "\t\t{\n" + \
+			"\t\t\t\t\"addr\": " + str(addrlist[loop]) + ",\n" + \
+			"\t\t\t\t\"length\" : "+ str(lenlist[loop]) + ",\n" + \
+			"\t\t\t\t\"data_type\": \"" + str(dtypelist[loop]) + "\"\n" + \
+		"\t\t},\n"\
+
+	address_value = address_value[:-2]
+	val = "{\n\t" + "\"address\": [\n" + address_value + "\n\t],\n" +\
+	 "\t\"retry_count\": " + str(retry_count) + ",\n" +\
+	 "\t\"device_address\": " + str(device_addr) + ",\n" +\
+	 "\t\"active\": \"" + active + "\",\n" +\
+	 "\t\"endian_type\": \"" + endian + "\",\n" +\
+	 "\t\"Description\": \"This is linear_" + filename + ".rtu file.\"" + "\n" +\
+	 "}"
+	path = "../project/config/"
+	rtu_file_name = path + "linear_" + filename + ".rtu"
+	with open(rtu_file_name, 'w') as file:  # Use file to refer to the file object
+		file.write(val) 
+
 # @app.route('/login', methods=['POST'])
 # def do_admin_login():
 # 	if request.form['password'] == 'pes' and request.form['username'] == 'pes':
