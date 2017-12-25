@@ -33,19 +33,61 @@ def rtu_create():
 		datatype = request.form.getlist('datatype[]')
 		length = request.form.getlist('length[]')
 		createJson(filename, device, retry, status, endian, start_addr, length, datatype)
+	return render_template('rtu_create.html', active_user=active_user, value_passed=5) 
+
+@app.route('/rtu_edit', methods=['GET','POST'])
+def rtu_edit():
 	return render_template('rtu_create.html', active_user=active_user) 
 
-@app.route('/modbus_settings')
+@app.route('/modbus_settings', methods=['GET','POST'])
 def modbus_settings():
+	if request.method == 'POST':
+		interval = request.form['interval']
+		filename = request.form['filename']
 	return render_template('modbus_settings.html', active_user=active_user) 
+
+@app.route('/com_settings', methods=['GET','POST'])
+def com_settings():
+	if request.method == 'POST':
+		status_a = request.form['status_a']
+		baudrate_a = request.form['baudrate_a']
+		parity_a = request.form['parity_a']
+		databits_a = request.form['databits_a']
+		stopbits_a = request.form['stopbits_a']
+		timeout_a = request.form['timeout_a']
+
+		status_b = request.form['status_b']
+		baudrate_b = request.form['baudrate_b']
+		parity_b = request.form['parity_b']
+		databits_b = request.form['databits_b']
+		stopbits_b = request.form['stopbits_b']
+		timeout_b = request.form['timeout_b']
+	return render_template('modbus_settings.html', active_user=active_user) 
+
+
 
 @app.route('/data_files')
 def data_files():
 	return render_template('data_files.html', active_user=active_user) 
 
-@app.route('/ftp_settings')
+@app.route('/zigbee_settings')
+def zigbee_settings():
+	return render_template('zigbee_settings.html', active_user=active_user) 
+
+@app.route('/ftp_settings', methods=['GET','POST'])
 def ftp_settings():
+	if request.method == 'POST':
+		ip = request.form['ip']
+		port = request.form['port']
+		path = request.form['path']
+		password = request.form['password']
+		interval = request.form['interval']
+		username = request.form['username']
 	return render_template('ftp_settings.html', active_user=active_user) 
+
+@app.route('/general_settings')
+def general_settings():
+	return render_template('general_settings.html', active_user=active_user) 
 
 @app.route('/log')
 def log():

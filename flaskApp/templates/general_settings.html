@@ -16,11 +16,11 @@
     <!-- Bootstrap core CSS -->
     <link href="static/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!--Fonts-->
-    <link href="static/css/fonts-all.css" rel="stylesheet">
-    
     <!-- Icons -->
     <link href="static/css/font-awesome.css" rel="stylesheet">
+    
+    <!--Fonts-->
+    <link href="static/css/fonts-all.css" rel="stylesheet">
     
     <!-- Custom styles for this template -->
     <link href="static/css/style.css" rel="stylesheet">
@@ -35,10 +35,10 @@
 				
 				<ul class="nav nav-pills flex-column sidebar-nav">
 					<li class="nav-item"><a class="nav-link" href="/welcome"><em class="fa fa-th"></em> Welcome</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/ftp_settings"><em class="fa fa-cog"></em> Network Setting <span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="/ftp_settings"><em class="fa fa-cog"></em> Network Setting</a></li>
 					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
-					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/general_settings"><em class="fa fa-cog"></em> General Settings <span class="sr-only">(current)</span></a></li>
 					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
 			          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
 			            <i class="fa fa-file-o"></i>
@@ -58,7 +58,7 @@
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
 				<header class="page-header row justify-center">
 					<div class="col-md-6 col-lg-8" >
-						<h1 class="float-left text-center text-md-left">Network Settings</h1>
+						<h1 class="float-left text-center text-md-left">General Settings</h1>
 					</div>
 					
 					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -82,54 +82,9 @@
 					<div class="col-sm-12">
 						<section class="row">
 							<div class="col-md-12 col-lg-8">
-								<form class="form-horizontal" action="/ftp_settings" method="post">
+								<form class="form-horizontal" action="/zigbee_settings" method="post">
 									<fieldset>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label class="col" for="IP">FTP hostname</label>
-													<div class="col">
-														<input id="ip" name="ip" type="text" placeholder="IP Address" class="form-control">
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<label class="col" for="username">FTP Username</label>
-													<div class="col">
-														<input id="username" name="username" type="text" placeholder="username" class="form-control">
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<label class="col" for="password">FTP Password</label>
-													<div class="col">
-														<input id="password" name="password" type="password" placeholder="password" class="form-control">
-													</div>
-												</div>
-											</div>
-										</div>
-
-
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-4">
-													<label class="col" for="port">FTP Port</label>
-													<div class="col">
-														<input id="port" name="port" type="number" step="1" min="21" max="22" placeholder="Enter Port (21)" class="form-control">
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<label class="col" for="path">FTP Path</label>
-													<div class="col">
-														<input id="path" name="path" type="text" placeholder="Enter Path" class="form-control">
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<label class="col" for="interval">FTP Interval</label>
-													<div class="col">
-														<input id="interval" name="interval" type="number" step=".5" min="5" max="7200" placeholder="Enter FTP Interval" class="form-control">
-													</div>
-												</div>
-											</div>
-										</div>
+										
 
 										<!-- Form actions -->
 										<div class="form-group">
@@ -147,13 +102,13 @@
 		</div>
 	</div>
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="static/js/jquery-3.2.1.min.js"></script>
     <script src="static/dist/js/bootstrap.min.js"></script>
     
-    <script src="static/js/tether.min.js"></script>
+	<script src="static/js/tether.min.js"></script>
     
 	  </body>
 </html>

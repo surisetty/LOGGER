@@ -9,7 +9,7 @@
 	
 	<meta name="author" content="">
 	
-	<link rel="icon" href="images/favicon.ico">
+	<link rel="icon" href="static/images/Linear.jpg">
 	
 	<title>Linear Logger</title>
 
@@ -35,9 +35,20 @@
 				
 				<ul class="nav nav-pills flex-column sidebar-nav">
 					<li class="nav-item"><a class="nav-link" href="/welcome"><em class="fa fa-th"></em> Welcome</a></li>
-					<li class="nav-item"><a class="nav-link" href="/ftp_settings"><em class="fa fa-cog"></em> FTP Settings</a></li>
+					<li class="nav-item"><a class="nav-link" href="/ftp_settings"><em class="fa fa-cog"></em> Network Setting</a></li>
 					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU <span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
+					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
+					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+			          <a class="nav-link active nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+			            <i class="fa fa-file-o"></i>
+			            <span class="nav-link-text">Rtu file settings</span>
+			          </a>
+			          <ul class="sidenav-second-level collapse" id="collapseComponents">
+			            <li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
+			            <li class="nav-item"><a class="nav-link" href="/rtu_edit"><em class="fa fa-file-o"></em> Edit RTU</a></li>
+			          </ul>
+			        </li>
 					<li class="nav-item"><a class="nav-link" href="/data_files"><em class="fa fa-folder-o"></em> Data Files</a></li>
 					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
 				</ul>
@@ -75,104 +86,95 @@
 								<form class="form-horizontal" action="/rtu_create" method="post">
 									<fieldset>
 										<!-- file name input-->
-										<div class="form-group">
-											<label class="col-12 control-label no-padding" for="name">File Name</label>
-											
-											<div class="col-12 no-padding">
-												<input id="filename" name="filename" type="text" placeholder="Enter a file name (starting with an alphabet)" class="form-control">
-											</div>
-										</div>
-									
-										<!-- device address-->
-										<div class="form-group">
-											<label class="col-12 control-label no-padding" for="device">Device Address</label>
-											
-											<div class="col-12 no-padding">
-												<input id="device" name="device" type="text" placeholder="Enter the Device Address (Only in decimal)" class="form-control">
-											</div>
-										</div>
-
-										<!-- retry count -->
-										<div class="form-group">
-											<label class="col-12 control-label no-padding" for="device">Retry Count</label>
-											
-											<div class="col-12 no-padding">
-												<input id="retry" name="retry" type="text" placeholder="Number of retry counts for each address in case of error" class="form-control">
+										<div class="form-group">											
+											<div class="row">
+												<div class="col-sm-4">
+													<label class="col" for="name">File Name</label>
+													<input id="filename" name="filename" type="text" placeholder="use A-Z, 0-9" class="form-control">
+												</div>	
+												<div class="col-sm-4">
+													<label class="col" for="device">Device Address</label>
+													<input id="device" name="device" type="number" min="1" max="250" placeholder="1-250 " class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label class="col" for="retry">Retry Count</label>
+													<input id="retry" name="retry" type="number" min="0" max="5" placeholder="0-5" class="form-control">
+												</div>
 											</div>
 										</div>
 
-										<!-- Activeness-->
-										<div class="form-group">
-											<label class="col-12 control-label no-padding" for="name">File Activeness Status</label>
-											<div class="btn-group" data-toggle="buttons">
-											  <label class="btn btn-primary active">
-											    <input type="radio" name="status" id="option1" value="True" autocomplete="off" checked> True
-											  </label>
-											  <label class="btn btn-primary">
-											    <input type="radio" name="status" id="option2" value="False" autocomplete="off"> False
-											  </label>
-											</div>
-										</div>
-
-										<!-- Endianness-->
-										<div class="form-group">
-											<label class="col-12 control-label no-padding" for="name">Endian Mode</label>
-											<div class="btn-group" data-toggle="buttons">
-											  <label class="btn btn-primary active">
-											    <input type="radio" name="endian" id="option1" value="little" autocomplete="off" checked> Little
-											  </label>
-											  <label class="btn btn-primary">
-											    <input type="radio" name="endian" id="option2" value="big" autocomplete="off"> Big
-											  </label>
+										<div class="form-group">											
+											<div class="row">
+												<div class="col-sm-6">
+													<label class="col" for="name">File Activeness Status</label>
+													<div class="btn-group" data-toggle="buttons">
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="status" id="option1" value="True" autocomplete="off" checked> True
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="status" id="option2" value="False" autocomplete="off"> False
+													  </label>
+													</div>
+												</div>	
+												<div class="col-sm-6">
+													<label class="col" for="name">Endian Mode</label>
+													<div class="btn-group" data-toggle="buttons">
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="endian" id="option1" value="little" autocomplete="off" checked> Little
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="endian" id="option2" value="big" autocomplete="off"> Big
+													  </label>
+													</div>
+												</div>
 											</div>
 										</div>
 
 										<!-- Read Addresses-->
 										<div class="container">
 									        <div class="form-group">
-									        	<label class="col-12 control-label no-padding" for="name"><h5>Read Addresses</h5></label>
-									      		<div class="after-add-more">	
-									      			<br>
-										      		<label class="col-12 control-label no-padding" for="addresses">Start Address</label>
-										      		<div class="input-group control-group">
-													   <input type="text" name="start_addr[]" class="form-control" placeholder="Enter start read address">
-													</div>
-
-													<br>
-
-													<label class="col-12 control-label no-padding" for="length">Read Length</label>
-										      		<div class="input-group control-group">
-													   <input type="text" name="length[]" class="form-control" placeholder="Length (consecutive addresses to read)">
-													</div>
-
-													<br>
-
-													<label class="col-12 control-label no-padding" for="datatype[]">Select Datatype</label>
-													<div class="btn-group control-group" data-toggle="buttons">
-													  <label class="btn btn-primary active">
-													    <input type="radio" class="dtt" name="datatype1" id="option1" value="U16" autocomplete="off" checked> U16
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatype1" id="option2" value="U32" autocomplete="off"> U32
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatype1" id="option3" value="S16" autocomplete="off" > S16
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatype1" id="option4" value="S32" autocomplete="off"> S32
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatype1" id="option5" value="F" autocomplete="off" > Float
-													  </label>
-													</div>
-													<input type="text" name="datatype[]" id="datatp1" class=" hidden-sm-up datatype_entry" value="U16">
-													<br>
-
-													<div class="input-group-btn"> 
-														<div class="col-12 widget-right no-padding"> 
-															<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
+							        			<label class="col" for="name"><h5>Read Addresses</h5></label>
+							      				<div class="after-add-more">		
+							      					<div class="row">
+									        			<div class="col-sm-3">
+										      				<label class="col" for="addresses">Start Address</label>
+										      				<div class="input-group control-group">
+													   			<input name="start_addr[]" class="form-control" type="number" min="0" max="50000" placeholder="0-50000">
+															</div>
+														</div>
+														<div class="col-sm-3">
+															<label class="col" for="length">Read Length</label>
+										      				<div class="input-group control-group">
+													   			<input name="length[]" class="form-control" type="number" min="1" max="500" placeholder="1-500">
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<label class="col" for="datatype[]">Select Datatype</label>
+															<div class="btn-group control-group" data-toggle="buttons">
+															  <label class="btn btn-primary active">
+															    <input type="radio" class="dtt" name="datatype1" id="option1" value="U16" autocomplete="off" checked> U16
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatype1" id="option2" value="U32" autocomplete="off"> U32
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatype1" id="option3" value="S16" autocomplete="off" > S16
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatype1" id="option4" value="S32" autocomplete="off"> S32
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatype1" id="option5" value="F" autocomplete="off" > Float
+															  </label>
+															</div>
 														</div>
 													</div>
+													<input type="text" name="datatype[]" id="datatp1" class=" hidden-sm-up datatype_entry" value="U16">
+													<div class="col-12 widget-right no-padding"> 
+														<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
+													</div>
+													<br>
+													<br>
 												</div>
 									        </div>
 
@@ -180,51 +182,53 @@
 									        
 									        <div class="copy-fields hidden-sm-up">
 									        	<div class="after-add-more">	
-									      			<br>
-										      		<label class="col-12 control-label no-padding" for="addresses">Start Address</label>
-										      		<div class="input-group control-group">
-													   <input type="text" name="start_addr[]" class="form-control" placeholder="Enter start read address">
+									      			<div class="row">
+									      				<div class="col-sm-3">
+												      		<label class="col" for="addresses">Start Address</label>
+												      		<div class="input-group control-group">
+															   <input name="start_addr[]" class="form-control" type="number" min="0" max="50000" placeholder="0-50000">
+															</div>
+														</div>	
+														<div class="col-sm-3">
+															<label class="col" for="length">Read Length</label>
+												      		<div class="input-group control-group">
+															   <input name="length[]" class="form-control" type="number" min="1" max="500" placeholder="1-500">
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<label class="col" for="datatype">Select Datatype</label>
+															<div class="btn-group control-group" data-toggle="buttons">
+															  <label class="btn btn-primary active">
+															    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatypex" id="option2" value="U32" autocomplete="off"> U32
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatypex" id="option3" value="S16" autocomplete="off" > S16
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatypex" id="option4" value="S32" autocomplete="off"> S32
+															  </label>
+															  <label class="btn btn-primary">
+															    <input type="radio" class="dtt" name="datatypex" id="option5" value="F" autocomplete="off" > Float
+															  </label>
+															</div>
+														</div>
 													</div>
-
-													<br>
-
-													<label class="col-12 control-label no-padding" for="length">Read Length</label>
-										      		<div class="input-group control-group">
-													   <input type="text" name="length[]" class="form-control" placeholder="Length (consecutive addresses to read)">
-													</div>
-
-													<br>
-
-													<label class="col-12 control-label no-padding" for="datatype">Select Datatype</label>
-													<div class="btn-group control-group" data-toggle="buttons">
-													  <label class="btn btn-primary active">
-													    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatypex" id="option2" value="U32" autocomplete="off"> U32
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatypex" id="option3" value="S16" autocomplete="off" > S16
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatypex" id="option4" value="S32" autocomplete="off"> S32
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" class="dtt" name="datatypex" id="option5" value="F" autocomplete="off" > Float
-													  </label>
-													</div>
-													<br>
 													<input type="text" name="datatype[]" id="datatpx" class="hidden-sm-up datatype_entry" value="U16">
-
 													<div class="input-group-btn"> 
 														<div class="col-12 widget-right no-padding"> 
 															<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
 
 														</div>
+														<br>
 													</div>
 									        	</div>
 									        </div>
-											<br>
+									        <br>
+									        <br>
+									        <br>
 										</div>
 
 										<!-- Form actions -->
@@ -235,6 +239,24 @@
 										</div>
 									</fieldset>
 								</form>	
+							</div>
+
+							<div class="col-md-12 col-lg-4">
+							<h5 class="text">Existing Files</h5>
+								<div class="card mb-4">
+									<ul class="list-group">
+									  	<li class="list-group-item justify-content-between">
+									    linear_honda
+									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Edit the File"> Edit the File><a href="#" class="edit"><em class="fa fa-edit"></em></a></div>
+									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Delete the File"> Delete the File><a href="#" class="trash"><em class="fa fa-trash"></em></a></div>
+									 	</li>
+									  	<li class="list-group-item justify-content-between">
+									    linear_hitachi
+									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Edit the File"> Edit the File><a href="#" class="edit"><em class="fa fa-edit"></em></a></div>
+									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Delete the File"> Delete the File><a href="#" class="trash"><em class="fa fa-trash"></em></a></div>
+									 	</li>
+									</ul>
+								</div>
 							</div>
 						</section>
 					</div>

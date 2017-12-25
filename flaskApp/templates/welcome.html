@@ -9,7 +9,7 @@
 	
 	<meta name="author" content="">
 	
-	<link rel="icon" href="images/favicon.ico">
+	<link rel="icon" href="static/images/Linear.jpg">
 	
 	<title>Linear Logger</title>
 
@@ -35,13 +35,28 @@
 				
 				<ul class="nav nav-pills flex-column sidebar-nav">
 					<li class="nav-item"><a class="nav-link active" href="/welcome"><em class="fa fa-th"></em> Welcome <span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="/ftp_settings"><em class="fa fa-cog"></em> FTP Settings</a></li>
+					<li class="nav-item"><a class="nav-link" href="/ftp_settings"><em class="fa fa-cog"></em> Network Setting</a></li>
 					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
-					<li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
+					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
+					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
+					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+			          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+			            <i class="fa fa-file-o"></i>
+			            <span class="nav-link-text">Rtu file settings</span>
+			          </a>
+			          <ul class="sidenav-second-level collapse" id="collapseComponents">
+			            <li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
+			            <li class="nav-item"><a class="nav-link" href="/rtu_edit"><em class="fa fa-file-o"></em> Edit RTU</a></li>
+			          </ul>
+			        </li>
 					<li class="nav-item"><a class="nav-link" href="/data_files"><em class="fa fa-folder-o"></em> Data Files</a></li>
 					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
 				</ul>
-				
+					
+
+
+
+
 				<a href="/signout" class="logout-button"><em class="fa fa-power-off"></em> Signout</a></nav>
 			
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
