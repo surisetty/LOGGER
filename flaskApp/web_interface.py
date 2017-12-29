@@ -4,6 +4,7 @@ import redis
 import os
 import sys
 import json
+import glob
 
 active_user = ""
 
@@ -23,6 +24,13 @@ def welcome():
 
 @app.route('/rtu_create', methods=['GET','POST'])
 def rtu_create():
+	saved_rtus = os.listdir('../project/config/')#glob.glob('../project/config/*.rtu')
+	rtu_names = []
+	for loop in range(len(saved_rtus)):
+		ext = os.path.splitext(saved_rtus[loop])
+		if ext[1] == '.rtu':
+			rtu_names.append(ext[0])
+
 	if request.method == 'POST':
 		filename = request.form['filename']
 		device = request.form['device']
@@ -33,11 +41,21 @@ def rtu_create():
 		datatype = request.form.getlist('datatype[]')
 		length = request.form.getlist('length[]')
 		createJson(filename, device, retry, status, endian, start_addr, length, datatype)
-	return render_template('rtu_create.html', active_user=active_user, value_passed=5) 
+	return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names) 
 
 @app.route('/rtu_edit', methods=['GET','POST'])
 def rtu_edit():
-	return render_template('rtu_create.html', active_user=active_user) 
+	edit_file = ""
+	if request.method == 'POST':
+		edit_file = request.form['edit_btn']
+		ext = edit_file.split('.')
+		path = '../project/config/' + ext[0] + '.rtu'
+
+		if ext[1] == 'del':
+			os.remove(path)
+		if ext[1] == 'edit':
+			print("Will edit soon")
+	return redirect(url_for('rtu_create'))
 
 @app.route('/modbus_settings', methods=['GET','POST'])
 def modbus_settings():

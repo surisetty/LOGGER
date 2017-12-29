@@ -139,13 +139,13 @@
 									        			<div class="col-sm-3">
 										      				<label class="col" for="addresses">Start Address</label>
 										      				<div class="input-group control-group">
-													   			<input name="start_addr[]" class="form-control" type="number" min="0" max="50000" placeholder="0-50000">
+													   			<input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
 															</div>
 														</div>
 														<div class="col-sm-3">
 															<label class="col" for="length">Read Length</label>
 										      				<div class="input-group control-group">
-													   			<input name="length[]" class="form-control" type="number" min="1" max="500" placeholder="1-500">
+													   			<input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
 															</div>
 														</div>
 														<div class="col-sm-6">
@@ -186,13 +186,13 @@
 									      				<div class="col-sm-3">
 												      		<label class="col" for="addresses">Start Address</label>
 												      		<div class="input-group control-group">
-															   <input name="start_addr[]" class="form-control" type="number" min="0" max="50000" placeholder="0-50000">
+															   <input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
 															</div>
 														</div>	
 														<div class="col-sm-3">
 															<label class="col" for="length">Read Length</label>
 												      		<div class="input-group control-group">
-															   <input name="length[]" class="form-control" type="number" min="1" max="500" placeholder="1-500">
+															   <input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
 															</div>
 														</div>
 														<div class="col-sm-6">
@@ -242,21 +242,22 @@
 							</div>
 
 							<div class="col-md-12 col-lg-4">
-							<h5 class="text">Existing Files</h5>
-								<div class="card mb-4">
-									<ul class="list-group">
-									  	<li class="list-group-item justify-content-between">
-									    linear_honda
-									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Edit the File"> Edit the File><a href="#" class="edit"><em class="fa fa-edit"></em></a></div>
-									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Delete the File"> Delete the File><a href="#" class="trash"><em class="fa fa-trash"></em></a></div>
-									 	</li>
-									  	<li class="list-group-item justify-content-between">
-									    linear_hitachi
-									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Edit the File"> Edit the File><a href="#" class="edit"><em class="fa fa-edit"></em></a></div>
-									    	<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Delete the File"> Delete the File><a href="#" class="trash"><em class="fa fa-trash"></em></a></div>
-									 	</li>
-									</ul>
-								</div>
+								<form class="form-horizontal" action="/rtu_edit" method="post">
+									<h5 class="text">Existing Files</h5>
+									<div class="card mb-4">
+										<ul class="list-group">
+											{% for n in rtu_names %}
+									        	<li class="list-group-item justify-content-between">{{n}}
+										        		<div class="col-12 widget-right no-padding"> 
+										        			<button id="sub" class="btn btn-primary btn-md float-right" type="submit" name="edit_btn" value="{{n}}.edit"><i class="fa fa-edit"></i></button>
+
+															<button id="sub" class="btn btn-primary btn-md float-right" type="submit" name="edit_btn" value="{{n}}.del"><i class="fa fa-trash"></i></button>
+														</div>
+									        	</li>
+									        {% endfor %}
+										</ul>
+									</div>
+								</form>
 							</div>
 						</section>
 					</div>
@@ -298,3 +299,7 @@
 
 	</body>
 </html>
+
+
+<!-- 									        		<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Edit the File"> Edit the File><a href="/rtu_edit" class="edit"><em class="fa fa-edit"></em></a>
+									        		</div> -->
