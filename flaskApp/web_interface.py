@@ -7,6 +7,8 @@ import json
 import glob
 
 active_user = ""
+rtu_data = None
+edit_en = False
 
 r = redis.Redis(host='localhost', port=6379, db=0)
 app = Flask(__name__)
@@ -18,44 +20,28 @@ def home():
 	else:
 		return render_template('welcome.html', active_user=active_user)
 
+
 @app.route('/welcome')
 def welcome():
 	return render_template('welcome.html', active_user=active_user) 
 
-@app.route('/rtu_create', methods=['GET','POST'])
-def rtu_create():
-	saved_rtus = os.listdir('../project/config/')#glob.glob('../project/config/*.rtu')
-	rtu_names = []
-	for loop in range(len(saved_rtus)):
-		ext = os.path.splitext(saved_rtus[loop])
-		if ext[1] == '.rtu':
-			rtu_names.append(ext[0])
 
+@app.route('/ftp_settings', methods=['GET','POST'])
+def ftp_settings():
 	if request.method == 'POST':
-		filename = request.form['filename']
-		device = request.form['device']
-		endian = request.form['endian']
-		retry = request.form['retry']
-		status = request.form['status']
-		start_addr = request.form.getlist('start_addr[]')
-		datatype = request.form.getlist('datatype[]')
-		length = request.form.getlist('length[]')
-		createJson(filename, device, retry, status, endian, start_addr, length, datatype)
-	return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names) 
+		ip = request.form['ip']
+		port = request.form['port']
+		path = request.form['path']
+		password = request.form['password']
+		interval = request.form['interval']
+		username = request.form['username']
+	return render_template('ftp_settings.html', active_user=active_user) 
 
-@app.route('/rtu_edit', methods=['GET','POST'])
-def rtu_edit():
-	edit_file = ""
-	if request.method == 'POST':
-		edit_file = request.form['edit_btn']
-		ext = edit_file.split('.')
-		path = '../project/config/' + ext[0] + '.rtu'
 
-		if ext[1] == 'del':
-			os.remove(path)
-		if ext[1] == 'edit':
-			print("Will edit soon")
-	return redirect(url_for('rtu_create'))
+@app.route('/gprs_settings', methods=['GET','POST'])
+def com_settings():
+	return render_template('ftp_settings.html', active_user=active_user) 
+
 
 @app.route('/modbus_settings', methods=['GET','POST'])
 def modbus_settings():
@@ -63,6 +49,7 @@ def modbus_settings():
 		interval = request.form['interval']
 		filename = request.form['filename']
 	return render_template('modbus_settings.html', active_user=active_user) 
+
 
 @app.route('/com_settings', methods=['GET','POST'])
 def com_settings():
@@ -83,33 +70,82 @@ def com_settings():
 	return render_template('modbus_settings.html', active_user=active_user) 
 
 
-
-@app.route('/data_files')
-def data_files():
-	return render_template('data_files.html', active_user=active_user) 
-
 @app.route('/zigbee_settings')
 def zigbee_settings():
 	return render_template('zigbee_settings.html', active_user=active_user) 
 
-@app.route('/ftp_settings', methods=['GET','POST'])
-def ftp_settings():
-	if request.method == 'POST':
-		ip = request.form['ip']
-		port = request.form['port']
-		path = request.form['path']
-		password = request.form['password']
-		interval = request.form['interval']
-		username = request.form['username']
-	return render_template('ftp_settings.html', active_user=active_user) 
 
 @app.route('/general_settings')
 def general_settings():
 	return render_template('general_settings.html', active_user=active_user) 
 
+
+@app.route('/rtu_create', methods=['GET','POST'])
+def rtu_create():
+	global edit_en
+	saved_rtus = os.listdir('../project/config/')#glob.glob('../project/config/*.rtu')
+	rtu_names = []
+	for loop in range(len(saved_rtus)):
+		ext = os.path.splitext(saved_rtus[loop])
+		if ext[1] == '.rtu':
+			rtu_names.append(ext[0])
+
+	if request.method == 'POST':
+		edit_en = False
+		filename = request.form['filename']
+		device = request.form['device']
+		endian = request.form['endian']
+		retry = request.form['retry']
+		status = request.form['status']
+		start_addr = request.form.getlist('start_addr[]')
+		datatype = request.form.getlist('datatype[]')
+		length = request.form.getlist('length[]')
+		createJson(filename, device, retry, status, endian, start_addr, length, datatype)
+		return redirect(url_for('rtu_create'))
+	return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names, rtu_data=rtu_data, \
+							edit_en=edit_en) 
+
+
+@app.route('/rtu_edit', methods=['GET','POST'])
+def rtu_edit():
+	global rtu_data
+	global edit_en
+	edit_en = False
+	edit_file = ""
+	if request.method == 'POST':
+		edit_file = request.form['edit_btn']
+		ext = edit_file.split('.')
+		path = '../project/config/' + ext[0] + '.rtu'
+
+		if ext[1] == 'del':
+			os.remove(path)
+		if ext[1] == 'edit':
+			edit_en = True
+			rtu_data = getRtuData(path)
+	return redirect(url_for('rtu_create'))
+
+
+@app.route('/data_files')
+def data_files():
+	files = os.listdir('static/Data')
+	data_files = []
+	for loop in range(len(files)):
+		ext = files[loop].split('.')
+		if ext[1] == 'csv':
+			data_files.append(files[loop])
+	return render_template('data_files.html', active_user=active_user, files=data_files) 
+
+
 @app.route('/log')
 def log():
-	return render_template('log.html', active_user=active_user) 
+	files = os.listdir('static/Log_files')
+	log_files = []
+	for loop in range(len(files)):
+		ext = files[loop].split('.')
+		if ext[1] == 'log':
+			log_files.append(files[loop])
+	return render_template('log.html', active_user=active_user, files=log_files) 
+
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
@@ -156,6 +192,28 @@ def signout():
 	session['logged_in'] = False
 	return redirect(url_for('home'))
 
+
+def getRtuData(path):
+	with open(path) as data_file: 
+		base = os.path.basename(path)
+		filename = os.path.splitext(base)[0][7:]  
+		data = json.load(data_file)
+		active = data["active"]
+		endian = data["endian_type"]
+		description = data["Description"]
+		device = data["device_address"]
+		retry = data["retry_count"]
+		addr_len = data["address"]
+		all_addr = []
+		length = []
+		datatypes = []
+		for i in range(len(addr_len)):
+			all_addr.append(data["address"][i]["addr"])
+			length.append(data["address"][i]["length"])
+			datatypes.append(data["address"][i]["data_type"])
+		return (filename, active, endian, device, retry, all_addr, length, datatypes)
+
+
 def createJson(filename, device_addr, retry_count, active, endian, addrlist, lenlist, dtypelist):
 	val = ""
 	address_value = ""
@@ -179,6 +237,12 @@ def createJson(filename, device_addr, retry_count, active, endian, addrlist, len
 	with open(rtu_file_name, 'w') as file:  # Use file to refer to the file object
 		file.write(val) 
 
+if __name__ == "__main__":
+	app.secret_key = os.urandom(12)
+	app.run(debug=True)
+
+
+
 # @app.route('/login', methods=['POST'])
 # def do_admin_login():
 # 	if request.form['password'] == 'pes' and request.form['username'] == 'pes':
@@ -186,74 +250,3 @@ def createJson(filename, device_addr, retry_count, active, endian, addrlist, len
 # 	else:
 # 		flash('wrong password!')
 # 	return home()
-
-# @app.route("/configure", methods=['GET', 'POST'])
-# def configure():
-# 	cred_file = sys.path[0] + "/../config/config.json"
-# 	RJSON = ReadConfig()
-# 	RJSON.ReadJson(cred_file)
-# 	print request.method
-# 	if request.method == "POST":
-# 		if request.form['action'] == 'General Settings':
-# 			return render_template('gen_set.html', rjson = RJSON)
-# 		elif request.form['action'] == 'FTP Settings':
-# 			return render_template('ftp_set.html', rjson = RJSON)
-# 		elif request.form['action'] == 'MODBUS Settings':
-# 			return render_template('mod_set.html', rjson = RJSON)
-# 		elif request.form['action'] == 'Log files':
-# 			return render_template('log_files.html')
-# 	else:
-# 		pass
-
-# @app.route("/read_file", methods=['POST'])
-# def read_file():
-# 	file_number = request.form['log_number']
-# 	log_file_path = sys.path[0] + "/../Log_files/test" + str(file_number) + ".html"
-# 	data_file_path = sys.path[0] + "/../Data/"
-# 	with open(log_file_path, "r") as f:
-# 		content = f.read()
-# 	return render_template('show_file_content.html', content = content)
-
-# @app.route("/update_general", methods=['POST'])
-# def update_general():
-# 	cred_file = sys.path[0] + "/../config/config.json"
-
-# 	with open(cred_file, "r") as jsonFile:
-# 		data = json.load(jsonFile)
-
-# 	data["Output_Filename"] = request.form['Output_Filename']
-
-# 	with open(cred_file, "w") as jsonFile:
-# 		json.dump(data, jsonFile, indent=4)
-# 	return home()
-
-# @app.route("/update_ftp", methods=['POST'])
-# def update_ftp():
-# 	cred_file = sys.path[0] + "/../config/config.json"
-
-# 	with open(cred_file, "r") as jsonFile:
-# 		data = json.load(jsonFile)
-
-# 	data["Ftp_interval"] = request.form['Ftp_interval']
-
-# 	with open(cred_file, "w") as jsonFile:
-# 		json.dump(data, jsonFile, indent=4)
-# 	return home()
-
-# @app.route("/update_modbus", methods=['POST'])
-# def update_modbus():
-# 	cred_file = sys.path[0] + "/../config/config.json"
-
-# 	with open(cred_file, "r") as jsonFile:
-# 		data = json.load(jsonFile)
-
-# 	data["Modbus_interval"] = request.form['Modbus_interval']
-
-# 	with open(cred_file, "w") as jsonFile:
-# 		json.dump(data, jsonFile, indent=4)
-# 	return home()
-
-if __name__ == "__main__":
-	app.secret_key = os.urandom(12)
-	app.run(debug=True)
-

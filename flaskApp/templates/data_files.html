@@ -9,7 +9,7 @@
 	
 	<meta name="author" content="">
 	
-	<link rel="icon" href="images/favicon.ico">
+	<link rel="icon" href="static/images/favicon.ico">
 	
 	<title>Linear Logger</title>
 
@@ -39,16 +39,7 @@
 					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
-					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-			          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-			            <i class="fa fa-file-o"></i>
-			            <span class="nav-link-text">Rtu file settings</span>
-			          </a>
-			          <ul class="sidenav-second-level collapse" id="collapseComponents">
-			            <li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
-			            <li class="nav-item"><a class="nav-link" href="/rtu_edit"><em class="fa fa-file-o"></em> Edit RTU</a></li>
-			          </ul>
-			        </li>
+					<li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Rtu file settings</a></li>
 					<li class="nav-item"><a class="nav-link active" href="/data_files"><em class="fa fa-folder-o"></em> Data Files <span class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
 				</ul>
@@ -58,21 +49,20 @@
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
 				<header class="page-header row justify-center">
 					<div class="col-md-6 col-lg-8" >
-						<h1 class="float-left text-center text-md-left">UI Elements</h1>
+						<h1 class="float-left text-center text-md-left">Output Data Files</h1>
 					</div>
 					
 					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="static/images/Linear.jpg" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+						<img src="static/images/Linear.jpg" alt="profile photo" class="circle float-left profile-photo" width="100" height="auto">
 						
 						<div class="username mt-1">
 							<h4 class="mb-1">{{active_user}}</h4>
 							
-							<h6 class="text-muted">Super Admin</h6>
+							<h6 class="text-muted">Admin</h6>
 						</div>
 						</a>
 						
-						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>
-						     <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
 						     <a class="dropdown-item" href="#"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
 					</div>
 					
@@ -82,76 +72,15 @@
 				<section class="row">
 					<div class="col-sm-12">
 						<section class="row">
-							<div class="col-12 mb-2">
-								<h3 class="mb-4">Buttons</h3>
-								
-								<h5 class="mb-2 mt-4 pl-1 text-muted">Small</h5>
-								
-								<button type="button" class="btn btn-sm btn-primary">Primary</button>
-								
-								<button type="button" class="btn btn-sm btn-secondary">Secondary</button>
-								
-								<button type="button" class="btn btn-sm btn-success">Success</button>
-								
-								<button type="button" class="btn btn-sm btn-info">Info</button>
-								
-								<button type="button" class="btn btn-sm btn-warning">Warning</button>
-								
-								<button type="button" class="btn btn-sm btn-danger">Danger</button>
-								
-								<button type="button" class="btn btn-sm btn-link">Link</button>
-								
-								<h5 class="mb-2 mt-4 pl-1 text-muted">Medium</h5>
-								
-								<button type="button" class="btn btn-md btn-primary">Primary</button>
-								
-								<button type="button" class="btn btn-md btn-secondary">Secondary</button>
-								
-								<button type="button" class="btn btn-md btn-success">Success</button>
-								
-								<button type="button" class="btn btn-md btn-info">Info</button>
-								
-								<button type="button" class="btn btn-md btn-warning">Warning</button>
-								
-								<button type="button" class="btn btn-md btn-danger">Danger</button>
-								
-								<button type="button" class="btn btn-md btn-link">Link</button>
-								
-								<h5 class="mb-2 mt-4 pl-1 text-muted">Large</h5>
-								
-								<button type="button" class="btn btn-lg btn-primary">Primary</button>
-								
-								<button type="button" class="btn btn-lg btn-secondary">Secondary</button>
-								
-								<button type="button" class="btn btn-lg btn-success">Success</button>
-								
-								<button type="button" class="btn btn-lg btn-info">Info</button>
-								
-								<button type="button" class="btn btn-lg btn-warning">Warning</button>
-								
-								<button type="button" class="btn btn-lg btn-danger">Danger</button>
-								
-								<button type="button" class="btn btn-lg btn-link">Link</button>
+							<div class="col-md-12 col-lg-8">
+								<div class="jumbotron">
+									<ul>
+										{% for file in range(files|length) %}
+										<li><a href="{{ url_for('static', filename='Data/') }}{{files[file]}}">{{ files[file] }}</a></li>
+									    {% endfor %}
+									</ul>
+								</div>
 							</div>
-						</section>
-						
-						<section class="row">
-							<div class="col-12 mb-2">
-								<h3 class="mt-4 mb-4">Alerts</h3>
-								
-								<div class="alert bg-primary" role="alert"><em class="fa fa-comment mr-2"></em> Welcome to the admin dashboard panel bootstrap template <a href="#" class="float-right"><em class="fa fa-remove"></em></a></div>
-								
-								<div class="alert bg-info" role="alert"><em class="fa fa-tag mr-2"></em> Welcome to the admin dashboard panel bootstrap template <a href="#" class="float-right"><em class="fa fa-remove"></em></a></div>
-								
-								<div class="alert bg-success" role="alert"><em class="fa fa-check-circle mr-2"></em> Welcome to the admin dashboard panel bootstrap template <a href="#" class="float-right"><em class="fa fa-remove"></em></a></div>
-								
-								<div class="alert bg-warning" role="alert"><em class="fa fa-exclamation-triangle mr-2"></em> Welcome to the admin dashboard panel bootstrap template <a href="#" class="float-right"><em class="fa fa-remove"></em></a></div>
-								
-								<div class="alert bg-danger" role="alert"><em class="fa fa-minus-circle mr-2"></em> Welcome to the admin dashboard panel bootstrap template <a href="#" class="float-right"><em class="fa fa-remove"></em></a></div>
-							</div>
-						</section>
-						<section class="row">
-							<div class="col-12 mt-1 mb-4">Template by <a href="https://www.medialoot.com">Medialoot</a></div>
 						</section>
 					</div>
 				</section>

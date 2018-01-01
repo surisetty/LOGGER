@@ -39,16 +39,7 @@
 					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
-					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-			          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-			            <i class="fa fa-file-o"></i>
-			            <span class="nav-link-text">Rtu file settings</span>
-			          </a>
-			          <ul class="sidenav-second-level collapse" id="collapseComponents">
-			            <li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
-			            <li class="nav-item"><a class="nav-link" href="/rtu_edit"><em class="fa fa-file-o"></em> Edit RTU</a></li>
-			          </ul>
-			        </li>
+					<li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Rtu file settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/data_files"><em class="fa fa-folder-o"></em> Data Files</a></li>
 					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
 				</ul>
@@ -125,7 +116,7 @@
 												<div class="col-sm-4">
 													<label class="col" for="interval">FTP Interval</label>
 													<div class="col">
-														<input id="interval" name="interval" type="number" step=".5" min="5" max="7200" placeholder="Enter FTP Interval" class="form-control">
+														<input id="interval" name="interval" type="number" step=".5" min="5" max="7200" placeholder="1-60" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -144,6 +135,109 @@
 					</div>
 				</section>
 			</main>
+
+			<!-- GPRS/LAN Settings -->
+			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
+				<header class="page-header row justify-left">
+					<div class="col-md-6 col-lg-8" >
+						<h1 class="float-left text-center text-md-left">GPRS/LAN Settings</h1>
+					</div>
+					
+					<div class="clear"></div>
+				</header>
+				
+				<section class="row">
+					<div class="col-sm-12">
+						<section class="row">
+							<div class="col-md-12 col-lg-8">
+								<form class="form-horizontal" action="/gprs_settings" method="post">
+									<fieldset>
+										<!-- PORT A -->
+										<div class="col" >
+											<h4 class="float-left text-center text-md-left">PORT A</h4>
+										</div>
+										<br>
+										<br>
+										<div class="form-group">
+											<div class="row">
+												
+												<div class="col-sm-3">
+													<label class="col" for="status_a">Status</label>
+													<div class="col">
+														<select id="inputState" name="status_a" class="form-control">
+												        <option selected>Choose...</option>
+												        <option value="Enabled">Enabled</option>
+												        <option value="Disabled">Disabled</option>
+												      </select>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="baudrate_a">Baudrate</label>
+												      <select id="inputState" name="baudrate_a" class="form-control">
+												        <option selected>Choose...</option>
+												        <option value="9600">9600</option>
+												        <option value="19200">19200</option>
+												      </select>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="parity_a">Parity</label>
+													<div class="col">
+														<select id="inputState" name="parity_a" class="form-control">
+												        <option selected>Choose...</option>
+												        <option value="O">Odd</option>
+												        <option value="E">Even</option>
+												        <option value="N">None</option>
+												      </select>
+													</div>
+												</div>
+												
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-3">
+													<label class="col" for="stopbits_a">Stopbits</label>
+													<div class="col">
+														<select id="inputState" name="stopbits_a" class="form-control">
+												        <option selected>Choose...</option>
+												        <option value="1">1</option>
+												        <option value="2">2</option>
+												      </select>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="databits_a">Databits</label>
+													<select id="inputState" name="databits_a" class="form-control">
+												        <option selected>Choose...</option>
+												        <option value="7">7</option>
+												        <option value="8">8</option>
+												      </select>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="timeout_a">timeout</label>
+													<div class="col">
+														<input id="timeout" name="timeout_a" type="number" min="1" max="5" placeholder="1-5" class="form-control">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Form actions -->
+										<div class="form-group">
+											<div class="col-12 widget-right no-padding">
+												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+											</div>
+										</div>
+									</fieldset>
+								</form>	
+							</div>
+						</section>
+					</div>
+				</section>
+			</main>
+
+
+
 		</div>
 	</div>
 

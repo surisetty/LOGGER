@@ -9,7 +9,7 @@
 	
 	<meta name="author" content="">
 	
-	<link rel="icon" href="images/favicon.ico">
+	<link rel="icon" href="static/images/favicon.ico">
 	
 	<title>Linear Logger</title>
 
@@ -39,16 +39,7 @@
 					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
-					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-			          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-			            <i class="fa fa-file-o"></i>
-			            <span class="nav-link-text">Rtu file settings</span>
-			          </a>
-			          <ul class="sidenav-second-level collapse" id="collapseComponents">
-			            <li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
-			            <li class="nav-item"><a class="nav-link" href="/rtu_edit"><em class="fa fa-file-o"></em> Edit RTU</a></li>
-			          </ul>
-			        </li>
+					<li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Rtu file settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/data_files"><em class="fa fa-folder-o"></em> Data Files</a></li>
 					<li class="nav-item"><a class="nav-link active" href="/log"><em class="fa fa-file-text-o"></em> Log Files <span class="sr-only">(current)</span></a></li>
 				</ul>
@@ -58,7 +49,7 @@
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
 				<header class="page-header row justify-center">
 					<div class="col-md-6 col-lg-8" >
-						<h1 class="float-left text-center text-md-left">Cards</h1>
+						<h1 class="float-left text-center text-md-left">Log Files</h1>
 					</div>
 					
 					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,12 +58,11 @@
 						<div class="username mt-1">
 							<h4 class="mb-1">{{active_user}}</h4>
 							
-							<h6 class="text-muted">Super Admin</h6>
+							<h6 class="text-muted">Admin</h6>
 						</div>
 						</a>
 						
-						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#"><em class="fa fa-user-circle mr-1"></em> View Profile</a>
-						     <a class="dropdown-item" href="#"><em class="fa fa-sliders mr-1"></em> Preferences</a>
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
 						     <a class="dropdown-item" href="#"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
 					</div>
 					
@@ -82,134 +72,18 @@
 				<section class="row">
 					<div class="col-sm-12">
 						<section class="row">
-							<div class="col-12">
-								<h3 class="mb-4">Basic Cards</h3>
-							</div>
-							
-							<div class="col-lg-4 mb-4">
-								<div class="card">
-									<div class="card-header">Default Card</div>
-									
-									<div class="card-block">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-						                    ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus
-						                    nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui
-						                    pharetra molestie. Fusce et dui urna.</p>
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-lg-4 mb-4">
-								<div class="card card-inverse card-primary">
-									<div class="card-header">Primary Card</div>
-									
-									<div class="card-block">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-						                    ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus
-						                    nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui
-						                    pharetra molestie. Fusce et dui urna.</p>
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-lg-4 mb-4">
-								<div class="card card-inverse card-success">
-									<div class="card-header">Success Card</div>
-									
-									<div class="card-block">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-						                    ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus
-						                    nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui
-						                    pharetra molestie. Fusce et dui urna.</p>
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-lg-4 mb-4">
-								<div class="card card-inverse card-info">
-									<div class="card-header">Info Card</div>
-									
-									<div class="card-block">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					                        ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus
-					                        nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui
-					                        pharetra molestie. Fusce et dui urna.</p>
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-lg-4 mb-4">
-								<div class="card card-inverse card-warning">
-									<div class="card-header">Warning Card</div>
-									
-									<div class="card-block">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					                        ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus
-					                        nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui
-					                        pharetra molestie. Fusce et dui urna.</p>
-									</div>
-								</div>
-							</div>
-							
-							<div class="col-lg-4 mb-4">
-								<div class="card card-inverse card-danger">
-									<div class="card-header">Danger Card</div>
-									
-									<div class="card-block">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					                        ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus
-					                        nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui
-					                        pharetra molestie. Fusce et dui urna.</p>
-									</div>
+							<div class="col-md-12 col-lg-8">
+								<div class="jumbotron">
+									<ul>
+										{% for file in range(files|length) %}
+										<li><a href="{{ url_for('static', filename='Log_files/') }}{{files[file]}}">{{ files[file] }}</a></li>
+									    {% endfor %}
+									</ul>
 								</div>
 							</div>
 						</section>
-						
-						<section class="row">
-							<div class="col-12">
-								<h3 class="mt-4 mb-4">Cards with Navigation</h3>
-							</div>
-							
-							<div class="col-lg-6 mb-4">
-								<div class="card text-center">
-									<div class="card-header">
-										<ul class="nav nav-tabs card-header-tabs">
-											<li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
-											<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-											<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-										</ul>
-									</div>
-									
-									<div class="card-block">
-										<h4 class="card-title">Special title treatment</h4>
-										
-										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							            <a href="#" class="btn btn-md btn-primary">Go somewhere</a></div>
-								</div>
-							</div>
-							
-							<div class="col-lg-6 mb-4">
-								<div class="card text-center">
-									<div class="card-header">
-										<ul class="nav nav-pills card-header-pills">
-											<li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
-											<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-											<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-										</ul>
-									</div>
-									
-									<div class="card-block">
-										<h4 class="card-title">Special title treatment</h4>
-										
-										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							            <a href="#" class="btn btn-primary">Go somewhere</a></div>
-								</div>
-							</div>
-							</div>
-						</section>
-						<section class="row">
-							<div class="col-12 mt-1 mb-4">Template by <a href="https://www.medialoot.com">Medialoot</a></div>
-						</section>
+					</div>
+				</section>
 					</div>
 				</section>
 			</main>

@@ -39,16 +39,7 @@
 					<li class="nav-item"><a class="nav-link" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
-					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-			          <a class="nav-link active nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-			            <i class="fa fa-file-o"></i>
-			            <span class="nav-link-text">Rtu file settings</span>
-			          </a>
-			          <ul class="sidenav-second-level collapse" id="collapseComponents">
-			            <li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
-			            <li class="nav-item"><a class="nav-link" href="/rtu_edit"><em class="fa fa-file-o"></em> Edit RTU</a></li>
-			          </ul>
-			        </li>
+					<li class="nav-item"><a class="nav-link active" href="/rtu_create"><em class="fa fa-file-o"></em> Rtu file settings <span class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="/data_files"><em class="fa fa-folder-o"></em> Data Files</a></li>
 					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
 				</ul>
@@ -78,190 +69,488 @@
 					<div class="clear"></div>
 				</header>
 
-				
-				<section class="row">
-					<div class="col-sm-12">
-						<section class="row">
-							<div class="col-md-12 col-lg-8">
-								<form class="form-horizontal" action="/rtu_create" method="post">
-									<fieldset>
-										<!-- file name input-->
-										<div class="form-group">											
-											<div class="row">
-												<div class="col-sm-4">
-													<label class="col" for="name">File Name</label>
-													<input id="filename" name="filename" type="text" placeholder="use A-Z, 0-9" class="form-control">
-												</div>	
-												<div class="col-sm-4">
-													<label class="col" for="device">Device Address</label>
-													<input id="device" name="device" type="number" min="1" max="250" placeholder="1-250 " class="form-control">
-												</div>
-												<div class="col-sm-4">
-													<label class="col" for="retry">Retry Count</label>
-													<input id="retry" name="retry" type="number" min="0" max="5" placeholder="0-5" class="form-control">
-												</div>
-											</div>
-										</div>
-
-										<div class="form-group">											
-											<div class="row">
-												<div class="col-sm-6">
-													<label class="col" for="name">File Activeness Status</label>
-													<div class="btn-group" data-toggle="buttons">
-													  <label class="btn btn-primary active">
-													    <input type="radio" name="status" id="option1" value="True" autocomplete="off" checked> True
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" name="status" id="option2" value="False" autocomplete="off"> False
-													  </label>
+				<div>
+				{% if edit_en %}
+				    <section class="row">
+						<div class="col-sm-12">
+							<section class="row">
+								<div class="col-md-12 col-lg-9">
+									<form class="form-horizontal" action="/rtu_create" method="post">
+										<fieldset>
+											<!-- file name input-->
+											<div class="form-group">											
+												<div class="row">
+													<div class="col-sm-4">
+														<label class="col" for="name">File Name</label>
+														<input id="filename" name="filename" type="text" placeholder="use A-Z, 0-9" class="form-control" value={{rtu_data[0]}} >
+													</div>	
+													<div class="col-sm-4">
+														<label class="col" for="device">Device Address</label>
+														<input id="device" name="device" type="number" min="1" max="250" placeholder="1-250 " class="form-control" value={{rtu_data[3]}}>
 													</div>
-												</div>	
-												<div class="col-sm-6">
-													<label class="col" for="name">Endian Mode</label>
-													<div class="btn-group" data-toggle="buttons">
-													  <label class="btn btn-primary active">
-													    <input type="radio" name="endian" id="option1" value="little" autocomplete="off" checked> Little
-													  </label>
-													  <label class="btn btn-primary">
-													    <input type="radio" name="endian" id="option2" value="big" autocomplete="off"> Big
-													  </label>
+													<div class="col-sm-4">
+														<label class="col" for="retry">Retry Count</label>
+														<input id="retry" name="retry" type="number" min="0" max="5" placeholder="0-5" class="form-control" value={{rtu_data[4]}}>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<!-- Read Addresses-->
-										<div class="container">
-									        <div class="form-group">
-							        			<label class="col" for="name"><h5>Read Addresses</h5></label>
-							      				<div class="after-add-more">		
-							      					<div class="row">
-									        			<div class="col-sm-3">
-										      				<label class="col" for="addresses">Start Address</label>
-										      				<div class="input-group control-group">
-													   			<input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
-															</div>
+											<div class="form-group">											
+												<div class="row">
+													<div class="col-sm-6">
+														<label class="col" for="name">File Activeness Status</label>
+														{% if rtu_data[1] == 'True' %}
+														<div class="btn-group" data-toggle="buttons">
+														  <label class="btn btn-primary active">
+														    <input type="radio" name="status" id="option1" value="True" autocomplete="off" checked> True
+														  </label>
+														  <label class="btn btn-primary">
+														    <input type="radio" name="status" id="option2" value="False" autocomplete="off"> False
+														  </label>
 														</div>
-														<div class="col-sm-3">
-															<label class="col" for="length">Read Length</label>
-										      				<div class="input-group control-group">
-													   			<input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
-															</div>
+														{% else %}
+														<div class="btn-group" data-toggle="buttons">
+														  <label class="btn btn-primary">
+														    <input type="radio" name="status" id="option1" value="True" autocomplete="off"> True
+														  </label>
+														  <label class="btn btn-primary active">
+														    <input type="radio" name="status" id="option2" value="False" autocomplete="off" checked> False
+														  </label>
 														</div>
-														<div class="col-sm-6">
-															<label class="col" for="datatype[]">Select Datatype</label>
-															<div class="btn-group control-group" data-toggle="buttons">
-															  <label class="btn btn-primary active">
-															    <input type="radio" class="dtt" name="datatype1" id="option1" value="U16" autocomplete="off" checked> U16
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatype1" id="option2" value="U32" autocomplete="off"> U32
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatype1" id="option3" value="S16" autocomplete="off" > S16
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatype1" id="option4" value="S32" autocomplete="off"> S32
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatype1" id="option5" value="F" autocomplete="off" > Float
-															  </label>
-															</div>
+														{% endif %}
+													</div>	
+													<div class="col-sm-6">
+														<label class="col" for="name">Endian Mode</label>
+														{% if rtu_data[2] == 'little' %}
+														<div class="btn-group" data-toggle="buttons">
+														  <label class="btn btn-primary active">
+														    <input type="radio" name="endian" id="option1" value="little" autocomplete="off" checked> Little
+														  </label>
+														  <label class="btn btn-primary">
+														    <input type="radio" name="endian" id="option2" value="big" autocomplete="off"> Big
+														  </label>
 														</div>
+														{% else %}
+														<div class="btn-group" data-toggle="buttons">
+														  <label class="btn btn-primary">
+														    <input type="radio" name="endian" id="option1" value="little" autocomplete="off"> Little
+														  </label>
+														  <label class="btn btn-primary active">
+														    <input type="radio" name="endian" id="option2" value="big" autocomplete="off" checked> Big
+														  </label>
+														</div>
+														{% endif %}
 													</div>
-													<input type="text" name="datatype[]" id="datatp1" class=" hidden-sm-up datatype_entry" value="U16">
-													<div class="col-12 widget-right no-padding"> 
-														<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
-													</div>
-													<br>
-													<br>
 												</div>
-									        </div>
+											</div>
 
-									        <!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
-									        
-									        <div class="copy-fields hidden-sm-up">
-									        	<div class="after-add-more">	
-									      			<div class="row">
-									      				<div class="col-sm-3">
-												      		<label class="col" for="addresses">Start Address</label>
-												      		<div class="input-group control-group">
-															   <input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
+											<!-- Read Addresses-->
+											<div class="container">
+										        <div class="form-group">
+								        			<label class="col" for="name"><h5>Read Addresses</h5></label>
+
+								        			{% for cnt in range(rtu_data[5]|length) %}
+								        			<div class="after-add-more">		
+								      					<div class="row">
+										        			<div class="col-sm-3">
+											      				<label class="col" for="addresses">Start Address</label>
+											      				<div class="input-group control-group">
+														   			<input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999" value={{rtu_data[5][cnt]}}>
+																</div>
 															</div>
-														</div>	
-														<div class="col-sm-3">
-															<label class="col" for="length">Read Length</label>
-												      		<div class="input-group control-group">
-															   <input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
+															<div class="col-sm-3">
+																<label class="col" for="length">Read Length</label>
+											      				<div class="input-group control-group">
+														   			<input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100" value={{rtu_data[6][cnt]}}>
+																</div>
+															</div>
+															<div class="col-sm-6">
+																<label class="col" for="datatype[]">Select Datatype</label>
+
+																{% if rtu_data[7][cnt] == 'U16' %}
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary active">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option1" value="U16" autocomplete="off" checked> U16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option2" value="U32" autocomplete="off"> U32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option3" value="S16" autocomplete="off" > S16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option4" value="S32" autocomplete="off"> S32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option5" value="F" autocomplete="off" > Float
+																  </label>
+																</div>
+																{% elif rtu_data[7][cnt] == 'U32' %}
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option1" value="U16" autocomplete="off"> U16
+																  </label>
+																  <label class="btn btn-primary active">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option2" value="U32" autocomplete="off" checked> U32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option3" value="S16" autocomplete="off" > S16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option4" value="S32" autocomplete="off"> S32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option5" value="F" autocomplete="off" > Float
+																  </label>
+																</div>
+																{% elif rtu_data[7][cnt] == 'S16' %}
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option1" value="U16" autocomplete="off"> U16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option2" value="U32" autocomplete="off"> U32
+																  </label>
+																  <label class="btn btn-primary active">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option3" value="S16" autocomplete="off" checked> S16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option4" value="S32" autocomplete="off"> S32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option5" value="F" autocomplete="off" > Float
+																  </label>
+																</div>
+																{% elif rtu_data[7][cnt] == 'S32' %}
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option1" value="U16" autocomplete="off" > U16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option2" value="U32" autocomplete="off"> U32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option3" value="S16" autocomplete="off" > S16
+																  </label>
+																  <label class="btn btn-primary active" >
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option4" value="S32" autocomplete="off" checked> S32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option5" value="F" autocomplete="off" > Float
+																  </label>
+																</div>
+																{% elif rtu_data[7][cnt] == 'F' %}
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option1" value="U16" autocomplete="off"> U16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option2" value="U32" autocomplete="off"> U32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option3" value="S16" autocomplete="off" > S16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option4" value="S32" autocomplete="off"> S32
+																  </label>
+																  <label class="btn btn-primary active">
+																    <input type="radio" class="dtt" name="datatype{{cnt+1}}" id="option5" value="F" autocomplete="off" checked > Float
+																  </label>
+																</div>
+																{% endif %}
 															</div>
 														</div>
-														<div class="col-sm-6">
-															<label class="col" for="datatype">Select Datatype</label>
-															<div class="btn-group control-group" data-toggle="buttons">
-															  <label class="btn btn-primary active">
-															    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatypex" id="option2" value="U32" autocomplete="off"> U32
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatypex" id="option3" value="S16" autocomplete="off" > S16
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatypex" id="option4" value="S32" autocomplete="off"> S32
-															  </label>
-															  <label class="btn btn-primary">
-															    <input type="radio" class="dtt" name="datatypex" id="option5" value="F" autocomplete="off" > Float
-															  </label>
-															</div>
-														</div>
-													</div>
-													<input type="text" name="datatype[]" id="datatpx" class="hidden-sm-up datatype_entry" value="U16">
-													<div class="input-group-btn"> 
+														
+														<input type="text" name="datatype[]" id="datatp{{cnt+1}}" class=" hidden-sm-up datatype_entry" value="{{rtu_data[7][cnt]}}">
+
+														{% if cnt < (rtu_data[5]|length)-1 %}
 														<div class="col-12 widget-right no-padding"> 
+														 	<button class="btn btn-primary btn-md float-right remove" type="button"><i class="fa fa-minus-square"></i> Remove</button>
+														 </div>
+														{% else %}
+														 <div class="col-12 widget-right no-padding"> 
 															<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
-
 														</div>
+														 {% endif %}
+
+														<br>
 														<br>
 													</div>
-									        	</div>
-									        </div>
-									        <br>
-									        <br>
-									        <br>
-										</div>
+								        			{% endfor %}
 
-										<!-- Form actions -->
-										<div class="form-group">
-											<div class="col-12 widget-right no-padding">
-												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
-											</div>
-										</div>
-									</fieldset>
-								</form>	
-							</div>
+										        </div>
 
-							<div class="col-md-12 col-lg-4">
-								<form class="form-horizontal" action="/rtu_edit" method="post">
-									<h5 class="text">Existing Files</h5>
-									<div class="card mb-4">
-										<ul class="list-group">
-											{% for n in rtu_names %}
-									        	<li class="list-group-item justify-content-between">{{n}}
-										        		<div class="col-12 widget-right no-padding"> 
-										        			<button id="sub" class="btn btn-primary btn-md float-right" type="submit" name="edit_btn" value="{{n}}.edit"><i class="fa fa-edit"></i></button>
-
-															<button id="sub" class="btn btn-primary btn-md float-right" type="submit" name="edit_btn" value="{{n}}.del"><i class="fa fa-trash"></i></button>
+										        <!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
+										        
+										        <div class="copy-fields hidden-sm-up">
+										        	<div class="after-add-more">	
+										      			<div class="row">
+										      				<div class="col-sm-3">
+													      		<label class="col" for="addresses">Start Address</label>
+													      		<div class="input-group control-group">
+																   <input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
+																</div>
+															</div>	
+															<div class="col-sm-3">
+																<label class="col" for="length">Read Length</label>
+													      		<div class="input-group control-group">
+																   <input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
+																</div>
+															</div>
+															<div class="col-sm-6">
+																<label class="col" for="datatype">Select Datatype</label>
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary active">
+																    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option2" value="U32" autocomplete="off"> U32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option3" value="S16" autocomplete="off" > S16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option4" value="S32" autocomplete="off"> S32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option5" value="F" autocomplete="off" > Float
+																  </label>
+																</div>
+															</div>
 														</div>
-									        	</li>
-									        {% endfor %}
-										</ul>
-									</div>
-								</form>
-							</div>
-						</section>
-					</div>
-				</section>
+
+														<input type="text" name="datatype[]" id="datatpx" class="hidden-sm-up datatype_entry" value="U16">
+														<div class="input-group-btn"> 
+															<div class="col-12 widget-right no-padding"> 
+																<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
+
+															</div>
+															<br>
+														</div>
+										        	</div>
+										        </div>
+										        <br>
+										        <br>
+										        <br>
+											</div>
+
+											<!-- Form actions -->
+											<div class="form-group">
+												<div class="col-12 widget-right no-padding">
+													<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+												</div>
+											</div>
+										</fieldset>
+									</form>	
+								</div>
+
+								<div class="col-md-12 col-lg-3">
+									<form class="form-horizontal" action="/rtu_edit" method="post">
+										<h5 class="text">Existing Files</h5>
+										<div class="card mb-4">
+											<ul class="list-group">
+												{% for n in rtu_names %}
+										        	<li style="font-size: 12px;" class="list-group-item justify-content-between">{{n}}
+										        		<div class="col"> 
+										        			<button id="sub" class="float-right" type="submit" style="border:0px; margin:0px" name="edit_btn" value="{{n}}.del"><i class="fa fa-trash"></i></button>
+
+										        			<button id="sub" class="float-right" type="submit" style="border:0px; margin-right:8px" name="edit_btn" value="{{n}}.edit"><i class="fa fa-edit"></i></button>
+														</div>
+										        	</li>
+										        {% endfor %}
+											</ul>
+										</div>
+									</form>
+								</div>
+							</section>
+						</div>
+					</section>
+				{% else %}
+					<section class="row">
+						<div class="col-sm-12">
+							<section class="row">
+								<div class="col-md-12 col-lg-9">
+									<form class="form-horizontal" action="/rtu_create" method="post">
+										<fieldset>
+											<!-- file name input-->
+											<div class="form-group">											
+												<div class="row">
+													<div class="col-sm-4">
+														<label class="col" for="name">File Name</label>
+														<input id="filename" name="filename" type="text" placeholder="use A-Z, 0-9" class="form-control" >
+													</div>	
+													<div class="col-sm-4">
+														<label class="col" for="device">Device Address</label>
+														<input id="device" name="device" type="number" min="1" max="250" placeholder="1-250 " class="form-control">
+													</div>
+													<div class="col-sm-4">
+														<label class="col" for="retry">Retry Count</label>
+														<input id="retry" name="retry" type="number" min="0" max="5" placeholder="0-5" class="form-control">
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group">											
+												<div class="row">
+													<div class="col-sm-6">
+														<label class="col" for="name">File Activeness Status</label>
+														<div class="btn-group" data-toggle="buttons">
+														  <label class="btn btn-primary active">
+														    <input type="radio" name="status" id="option1" value="True" autocomplete="off" checked> True
+														  </label>
+														  <label class="btn btn-primary">
+														    <input type="radio" name="status" id="option2" value="False" autocomplete="off"> False
+														  </label>
+														</div>
+													</div>	
+													<div class="col-sm-6">
+														<label class="col" for="name">Endian Mode</label>
+														<div class="btn-group" data-toggle="buttons">
+														  <label class="btn btn-primary active">
+														    <input type="radio" name="endian" id="option1" value="little" autocomplete="off" checked> Little
+														  </label>
+														  <label class="btn btn-primary">
+														    <input type="radio" name="endian" id="option2" value="big" autocomplete="off"> Big
+														  </label>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!-- Read Addresses-->
+											<div class="container">
+										        <div class="form-group">
+								        			<label class="col" for="name"><h5>Read Addresses</h5></label>
+								      				<div class="after-add-more">		
+								      					<div class="row">
+										        			<div class="col-sm-3">
+											      				<label class="col" for="addresses">Start Address</label>
+											      				<div class="input-group control-group">
+														   			<input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
+																</div>
+															</div>
+															<div class="col-sm-3">
+																<label class="col" for="length">Read Length</label>
+											      				<div class="input-group control-group">
+														   			<input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
+																</div>
+															</div>
+															<div class="col-sm-6">
+																<label class="col" for="datatype[]">Select Datatype</label>
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary active">
+																    <input type="radio" class="dtt" name="datatype1" id="option1" value="U16" autocomplete="off" checked> U16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype1" id="option2" value="U32" autocomplete="off"> U32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype1" id="option3" value="S16" autocomplete="off" > S16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype1" id="option4" value="S32" autocomplete="off"> S32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatype1" id="option5" value="F" autocomplete="off" > Float
+																  </label>
+																</div>
+															</div>
+														</div>
+														<input type="text" name="datatype[]" id="datatp1" class=" hidden-sm-up datatype_entry" value="U16">
+														<div class="col-12 widget-right no-padding"> 
+															<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
+														</div>
+														<br>
+														<br>
+													</div>
+										        </div>
+
+										        <!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
+										        
+										        <div class="copy-fields hidden-sm-up">
+										        	<div class="after-add-more">	
+										      			<div class="row">
+										      				<div class="col-sm-3">
+													      		<label class="col" for="addresses">Start Address</label>
+													      		<div class="input-group control-group">
+																   <input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
+																</div>
+															</div>	
+															<div class="col-sm-3">
+																<label class="col" for="length">Read Length</label>
+													      		<div class="input-group control-group">
+																   <input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
+																</div>
+															</div>
+															<div class="col-sm-6">
+																<label class="col" for="datatype">Select Datatype</label>
+																<div class="btn-group control-group" data-toggle="buttons">
+																  <label class="btn btn-primary active">
+																    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option2" value="U32" autocomplete="off"> U32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option3" value="S16" autocomplete="off" > S16
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option4" value="S32" autocomplete="off"> S32
+																  </label>
+																  <label class="btn btn-primary">
+																    <input type="radio" class="dtt" name="datatypex" id="option5" value="F" autocomplete="off" > Float
+																  </label>
+																</div>
+															</div>
+														</div>
+														<input type="text" name="datatype[]" id="datatpx" class="hidden-sm-up datatype_entry" value="U16">
+														<div class="input-group-btn"> 
+															<div class="col-12 widget-right no-padding"> 
+																<button class="btn btn-primary btn-md float-right add-more" type="button"><i class="fa fa-plus-square"></i> Add</button>
+
+															</div>
+															<br>
+														</div>
+										        	</div>
+										        </div>
+										        <br>
+										        <br>
+										        <br>
+											</div>
+
+											<!-- Form actions -->
+											<div class="form-group">
+												<div class="col-12 widget-right no-padding">
+													<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+												</div>
+											</div>
+										</fieldset>
+									</form>	
+								</div>
+
+								<div class="col-md-12 col-lg-3">
+									<form class="form-horizontal" action="/rtu_edit" method="post">
+										<h5 class="text">Existing Files</h5>
+										<div class="card mb-4">
+											<ul class="list-group">
+												{% for n in rtu_names %}
+										        	<li style="font-size: 12px;" class="list-group-item justify-content-between">{{n}}
+										        		<div class="col"> 
+										        			<button id="sub" class="float-right" type="submit" style="border:0px; margin:0px" name="edit_btn" value="{{n}}.del"><i class="fa fa-trash"></i></button>
+
+										        			<button id="sub" class="float-right" type="submit" style="border:0px; margin-right:8px" name="edit_btn" value="{{n}}.edit"><i class="fa fa-edit"></i></button>
+														</div>
+										        	</li>
+										        {% endfor %}
+											</ul>
+										</div>
+									</form>
+								</div>
+							</section>
+						</div>
+					</section>
+				{% endif %}
+				</div>
 			</main>
 		</div>
 	</div>
@@ -276,7 +565,11 @@
     	
     <script type="text/javascript">
     $(document).ready(function() {
-    	var field_counts = 1;
+    	if ("{{edit_en}}") {
+		    var field_counts = ({{rtu_data[5]}}.length);
+		} else {
+		    var field_counts = 1;
+		}
      	$("body").on("click",".add-more",function(e){ 
      		field_counts++;
           var html = $(".copy-fields").html();
@@ -299,7 +592,3 @@
 
 	</body>
 </html>
-
-
-<!-- 									        		<div class="badge badge-pill" data-toggle="tooltip" data-placement="top" title="Edit the File"> Edit the File><a href="/rtu_edit" class="edit"><em class="fa fa-edit"></em></a>
-									        		</div> -->

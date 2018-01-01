@@ -39,16 +39,7 @@
 					<li class="nav-item"><a class="nav-link active" href="/modbus_settings"><em class="fa fa-cog"></em> MODBUS Settings <span class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="/zigbee_settings"><em class="fa fa-cog"></em> Zigbee Settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/general_settings"><em class="fa fa-cog"></em> General Settings</a></li>
-					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-			          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-			            <i class="fa fa-file-o"></i>
-			            <span class="nav-link-text">Rtu file settings</span>
-			          </a>
-			          <ul class="sidenav-second-level collapse" id="collapseComponents">
-			            <li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Create RTU</a></li>
-			            <li class="nav-item"><a class="nav-link" href="/rtu_edit"><em class="fa fa-file-o"></em> Edit RTU</a></li>
-			          </ul>
-			        </li>
+					<li class="nav-item"><a class="nav-link" href="/rtu_create"><em class="fa fa-file-o"></em> Rtu file settings</a></li>
 					<li class="nav-item"><a class="nav-link" href="/data_files"><em class="fa fa-folder-o"></em> Data Files</a></li>
 					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
 				</ul>
@@ -93,7 +84,7 @@
 														<input id="filename" name="filename" type="text" placeholder="Enter name for the Output file " class="form-control">
 													</div>
 												</div>
-												<div class="col-sm-4">
+												<div class="col-sm-6">
 													<label class="col" for="filename">MODBUS Interval</label>
 													<div class="col">
 														<input id="interval" name="interval" type="number" step=".5" min="10" max="7200" placeholder="10-7200 Seconds" class="form-control">
@@ -141,7 +132,7 @@
 										<div class="form-group">
 											<div class="row">
 												
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="status_a">Status</label>
 													<div class="col">
 														<select id="inputState" name="status_a" class="form-control">
@@ -151,7 +142,7 @@
 												      </select>
 													</div>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="baudrate_a">Baudrate</label>
 												      <select id="inputState" name="baudrate_a" class="form-control">
 												        <option selected>Choose...</option>
@@ -159,7 +150,7 @@
 												        <option value="19200">19200</option>
 												      </select>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="parity_a">Parity</label>
 													<div class="col">
 														<select id="inputState" name="parity_a" class="form-control">
@@ -175,7 +166,7 @@
 										</div>
 										<div class="form-group">
 											<div class="row">
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="stopbits_a">Stopbits</label>
 													<div class="col">
 														<select id="inputState" name="stopbits_a" class="form-control">
@@ -185,7 +176,7 @@
 												      </select>
 													</div>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="databits_a">Databits</label>
 													<select id="inputState" name="databits_a" class="form-control">
 												        <option selected>Choose...</option>
@@ -193,7 +184,7 @@
 												        <option value="8">8</option>
 												      </select>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="timeout_a">timeout</label>
 													<div class="col">
 														<input id="timeout" name="timeout_a" type="number" min="1" max="5" placeholder="1-5" class="form-control">
@@ -212,7 +203,7 @@
 										<div class="form-group">
 											<div class="row">
 												
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="status_b">Status</label>
 													<div class="col">
 														<select id="inputState" name="status_b" class="form-control">
@@ -222,7 +213,7 @@
 												      </select>
 													</div>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="baudrate_b">Baudrate</label>
 												      <select id="inputState" name="baudrate_b" class="form-control">
 												        <option selected>Choose...</option>
@@ -230,7 +221,7 @@
 												        <option value="19200">19200</option>
 												      </select>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="parity_b">Parity</label>
 													<div class="col">
 														<select id="inputState" name="parity_b" class="form-control">
@@ -246,7 +237,7 @@
 										</div>
 										<div class="form-group">
 											<div class="row">
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="stopbits_b">Stopbits</label>
 													<div class="col">
 														<select id="inputState" name="stopbits_b" class="form-control">
@@ -256,7 +247,7 @@
 												      </select>
 													</div>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="databits_b">Databits</label>
 													<select id="inputState" name="databits_b" class="form-control">
 												        <option selected>Choose...</option>
@@ -264,7 +255,7 @@
 												        <option value="8">8</option>
 												      </select>
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label class="col" for="timeout_b">timeout</label>
 													<div class="col">
 														<input id="timeout" name="timeout_b" type="number" min="1" max="5" placeholder="1-5" class="form-control">
