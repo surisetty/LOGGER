@@ -76,11 +76,57 @@
 				<section class="row">
 					<div class="col-sm-12">
 						<section class="row">
+							<div class="col-sm-12 col-md-6 ">
+								<div class="card mb-4">
+									<div class="card-block">
+										<h3 class="card-title">Donut Chart</h3>
+										
+										<div class="dropdown card-title-btn-container">
+											<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
+											
+											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
+												<a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
+												<a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
+										</div>
+										
+										<h6 class="card-subtitle mb-2 text-muted">Sample Data</h6>
+										
+										<div class="canvas-wrapper">
+											<canvas class="main-chart" id="doughnut-chart" height="300" width="600"></canvas>
+										</div>
+									</div>
+								</div>
+								
+								<div class="card mb-4">
+									<div class="card-block">
+										<h3 class="card-title">Pie Chart</h3>
+										
+										<div class="dropdown card-title-btn-container">
+											<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
+											
+											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
+												<a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
+												<a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
+										</div>
+										
+										<h6 class="card-subtitle mb-2 text-muted">Sample Data</h6>
+										
+										<div class="canvas-wrapper">
+											<canvas class="main-chart" id="pie-chart" height="300" width="600"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
 							<div class="col-md-12 col-lg-8">
+								<div class="card mb-4">
+									<div class="card-block">
+										<h3 class="card-title">Calendar</h3>
+										<div id="calendar"></div>
+									</div>
+								</div>
 								<div class="jumbotron">
 									
 									<p class="lead">This is a simple Logger Web Application which can be used to monitor the device functionality such as generation of the RTU files, viewing the output files and viewing the logging activities.</p>
-									
 								</div>	
 							</div>
 						</section>
@@ -95,7 +141,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="static/js/jquery-3.2.1.min.js"></script>
     <script src="static/dist/js/bootstrap.min.js"></script>
-    
+    <script src="static/js/bootstrap-datepicker.js"></script>
+    <script src="static/js/custom.js"></script>
     <script src="static/js/tether.min.js"></script>
     
 	  </body>

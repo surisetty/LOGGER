@@ -150,77 +150,117 @@
 					<div class="col-sm-12">
 						<section class="row">
 							<div class="col-md-12 col-lg-8">
-								<form class="form-horizontal" action="/gprs_settings" method="post">
+								<form id="nwForm" class="form-horizontal" action="/nw_select" method="post">
 									<fieldset>
-										<!-- PORT A -->
-										<div class="col" >
-											<h4 class="float-left text-center text-md-left">PORT A</h4>
-										</div>
-										<br>
-										<br>
 										<div class="form-group">
 											<div class="row">
-												
-												<div class="col-sm-3">
-													<label class="col" for="status_a">Status</label>
-													<div class="col">
-														<select id="inputState" name="status_a" class="form-control">
-												        <option selected>Choose...</option>
-												        <option value="Enabled">Enabled</option>
-												        <option value="Disabled">Disabled</option>
-												      </select>
+												<div class="col-sm-4">
+													<label class="col" for="nw_type">Network Type</label>
+													{% if nw_type == "LAN" %}
+													<div  class="btn-group" data-toggle="buttons">
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="nw_type" id="option1" value="LAN" autocomplete="off" checked> LAN
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="nw_type" id="option2" value="GPRS" autocomplete="off"> GPRS
+													  </label>
 													</div>
-												</div>
-												<div class="col-sm-3">
-													<label class="col" for="baudrate_a">Baudrate</label>
-												      <select id="inputState" name="baudrate_a" class="form-control">
-												        <option selected>Choose...</option>
-												        <option value="9600">9600</option>
-												        <option value="19200">19200</option>
-												      </select>
-												</div>
-												<div class="col-sm-3">
-													<label class="col" for="parity_a">Parity</label>
-													<div class="col">
-														<select id="inputState" name="parity_a" class="form-control">
-												        <option selected>Choose...</option>
-												        <option value="O">Odd</option>
-												        <option value="E">Even</option>
-												        <option value="N">None</option>
-												      </select>
+													{% elif nw_type == "GPRS" %}
+													<div  class="btn-group" data-toggle="buttons">
+													  <label class="btn btn-primary">
+													    <input type="radio" name="nw_type" id="option1" value="LAN" autocomplete="off"> LAN
+													  </label>
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="nw_type" id="option2" value="GPRS" autocomplete="off" checked> GPRS
+													  </label>
 													</div>
-												</div>
-												
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="row">
-												<div class="col-sm-3">
-													<label class="col" for="stopbits_a">Stopbits</label>
-													<div class="col">
-														<select id="inputState" name="stopbits_a" class="form-control">
-												        <option selected>Choose...</option>
-												        <option value="1">1</option>
-												        <option value="2">2</option>
-												      </select>
+													{% else %}
+													<div  class="btn-group" data-toggle="buttons">
+													  <label class="btn btn-primary">
+													    <input type="radio" name="nw_type" id="option1" value="LAN" autocomplete="off"> LAN
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="nw_type" id="option2" value="GPRS" autocomplete="off"> GPRS
+													  </label>
 													</div>
-												</div>
-												<div class="col-sm-3">
-													<label class="col" for="databits_a">Databits</label>
-													<select id="inputState" name="databits_a" class="form-control">
-												        <option selected>Choose...</option>
-												        <option value="7">7</option>
-												        <option value="8">8</option>
-												      </select>
-												</div>
-												<div class="col-sm-3">
-													<label class="col" for="timeout_a">timeout</label>
-													<div class="col">
-														<input id="timeout" name="timeout_a" type="number" min="1" max="5" placeholder="1-5" class="form-control">
-													</div>
+													{% endif %}
 												</div>
 											</div>
 										</div>
+									</fieldset>
+								</form>	
+
+								{% if nw_type=="LAN" %}
+								<br>
+								<h4 class="float-left text-center text-md-left">LAN Settings</h4>
+								<br>
+								<br>
+
+								<form id="ipForm" class="form-horizontal" action="/conn_type" method="post">
+									<fieldset>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label class="col" for="ip_type">Connection Type</label>
+													{% if ip_type=="static" %}
+													<div  class="btn-group" data-toggle="buttons">
+													  <label class="btn btn-primary">
+													    <input type="radio" name="ip_type" id="option1" value="dhcp" autocomplete="off"> DHCP
+													  </label>
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="ip_type" id="option2" value="static" autocomplete="off" checked> STATIC
+													  </label>
+													</div>
+													
+													{% else %}
+													<div  class="btn-group" data-toggle="buttons">
+													  <label class="btn btn-primary active">
+													    <input type="radio" name="ip_type" id="option1" value="dhcp" autocomplete="off" checked> DHCP
+													  </label>
+													  <label class="btn btn-primary">
+													    <input type="radio" name="ip_type" id="option2" value="static" autocomplete="off"> STATIC
+													  </label>
+													</div>
+
+													{% endif %}
+												</div>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+
+								<form class="form-horizontal" action="/lan_settings" method="post">
+									<fieldset>
+										{% if ip_type=="static" %}
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-3">
+													<label class="col" for="IP">IP address</label>
+													<div class="col">
+														<input id="ip" name="ip" type="text" placeholder="address" class="form-control">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="subnet">Subnet Mask</label>
+													<div class="col">
+														<input id="subnet" name="subnet" type="text" placeholder="Subnet" class="form-control">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="gateway">Gateway</label>
+													<div class="col">
+														<input id="gateway" name="gateway" type="text" placeholder="gateway" class="form-control">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="">DNS server</label>
+													<div class="col">
+														<input id="dns" name="dns" type="text" placeholder="DNS" class="form-control">
+													</div>
+												</div>
+											</div>
+										</div>
+										{% endif %}
 
 										<!-- Form actions -->
 										<div class="form-group">
@@ -228,8 +268,61 @@
 												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
 											</div>
 										</div>
+
 									</fieldset>
-								</form>	
+								</form>
+								{% endif %}
+
+
+								{% if nw_type=="GPRS" %}
+								<br>
+								<h4 class="float-left text-center text-md-left">GPRS Settings</h4>
+								<br>
+								<br>
+								<form class="form-horizontal" action="/gprs_settings" method="post">
+									<fieldset>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-3">
+													<label class="col" for="APN_name">APN Name</label>
+													<div class="col">
+														<input id="APN_name" name="APN_name" type="text" placeholder="Name" class="form-control">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="APN_num">APN Number</label>
+													<div class="col">
+														<input id="APN_num" name="APN_num" type="text" placeholder="Number" class="form-control">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="user">Username</label>
+													<div class="col">
+														<input id="user" name="gprs_user" type="text" placeholder="Username" class="form-control">
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<label class="col" for="pass">Password</label>
+													<div class="col">
+														<input id="pass" name="gprs_pass" type="text" placeholder="Password" class="form-control">
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+										<!-- Form actions -->
+										<div class="form-group">
+											<div class="col-12 widget-right no-padding">
+												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+											</div>
+										</div>
+
+									</fieldset>
+								</form>
+								{% endif %}
+
+
 							</div>
 						</section>
 					</div>
@@ -248,6 +341,18 @@
     <script src="static/dist/js/bootstrap.min.js"></script>
     
     <script src="static/js/tether.min.js"></script>
-    
+    <script>
+    	$('input[name=nw_type]').change(function(){
+		    document.getElementById("nwForm").submit();
+		});
+    	// document.getElementById("myForm").submit();
+    </script>
+
+     <script>
+    	$('input[name=ip_type]').change(function(){
+		    document.getElementById("ipForm").submit();
+		});
+    </script>
+
 	  </body>
 </html>

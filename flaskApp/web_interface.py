@@ -4,9 +4,11 @@ import redis
 import os
 import sys
 import json
-import glob
+import shutil
 
 active_user = ""
+ip_type = None
+nw_type = None
 rtu_data = None
 edit_en = False
 
@@ -28,20 +30,53 @@ def welcome():
 
 @app.route('/ftp_settings', methods=['GET','POST'])
 def ftp_settings():
+	global nw_type 
+	global ip_type
 	if request.method == 'POST':
+		nw_type = None
+		ip_type = None
 		ip = request.form['ip']
 		port = request.form['port']
 		path = request.form['path']
 		password = request.form['password']
 		interval = request.form['interval']
 		username = request.form['username']
-	return render_template('ftp_settings.html', active_user=active_user) 
+	return render_template('ftp_settings.html', active_user=active_user, nw_type=nw_type, ip_type=ip_type) 
 
+
+@app.route('/nw_select', methods=['GET','POST'])
+def nw_select():
+	global nw_type
+	if request.method == 'POST':
+		nw_type = request.form['nw_type']
+	return redirect(url_for('ftp_settings'))
+
+@app.route('/conn_type', methods=['GET','POST'])
+def conn_type():
+	global ip_type
+	if request.method == 'POST':
+		ip_type = request.form['ip_type']
+		print("hello")
+		print(ip_type)
+	return redirect(url_for('ftp_settings'))
+
+@app.route('/lan_settings', methods=['GET','POST'])
+def lan_settings():
+	global nw_type
+	global ip_type
+	if request.method == 'POST':
+		nw_type = request.form['nw_type']
+		ip_type = request.form['ip_type']
+	return redirect(url_for('ftp_settings'))
 
 @app.route('/gprs_settings', methods=['GET','POST'])
-def com_settings():
-	return render_template('ftp_settings.html', active_user=active_user) 
-
+def gprs_settings():
+	if request.method == 'POST':
+		apn_name = request.form['APN_name']
+		apn_num = request.form['APN_num']
+		username = request.form['gprs_user']
+		password = request.form['pass']
+	return redirect(url_for('ftp_settings'))
 
 @app.route('/modbus_settings', methods=['GET','POST'])
 def modbus_settings():
@@ -75,8 +110,13 @@ def zigbee_settings():
 	return render_template('zigbee_settings.html', active_user=active_user) 
 
 
-@app.route('/general_settings')
+@app.route('/general_settings', methods=['GET','POST'])
 def general_settings():
+	if request.method == 'POST':
+		date = request.form['date']
+		time = request.form['time']
+		print(time)
+		print(date)
 	return render_template('general_settings.html', active_user=active_user) 
 
 
@@ -127,6 +167,12 @@ def rtu_edit():
 
 @app.route('/data_files')
 def data_files():
+	SRC_DIR = '/home/pulkit/Desktop/LinearCircuits/Linear_Logger/project/Data/'
+	deleteFolder('static/Data')
+	os.mkdir('static/Data', 0777)
+	for item in os.listdir(SRC_DIR):
+		os.symlink(SRC_DIR + item, 'static/Data/' + item)
+
 	files = os.listdir('static/Data')
 	data_files = []
 	for loop in range(len(files)):
@@ -138,6 +184,12 @@ def data_files():
 
 @app.route('/log')
 def log():
+	SRC_DIR = '/home/pulkit/Desktop/LinearCircuits/Linear_Logger/project/Log_files/'
+	deleteFolder('static/Log_files')
+	os.mkdir('static/Log_files', 0777)
+	for item in os.listdir(SRC_DIR):
+		os.symlink(SRC_DIR + item, 'static/Log_files/' + item)
+
 	files = os.listdir('static/Log_files')
 	log_files = []
 	for loop in range(len(files)):
@@ -146,6 +198,19 @@ def log():
 			log_files.append(files[loop])
 	return render_template('log.html', active_user=active_user, files=log_files) 
 
+def deleteFolder(directory):
+    if os.path.exists(directory):
+        try:
+            if os.path.isdir(directory):
+                # delete folder
+                shutil.rmtree(directory, ignore_errors=True)
+            else:
+                # delete file
+                os.remove(directory)
+        except:
+            print("Exception")
+    else:
+        print("not found ",directory)
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
