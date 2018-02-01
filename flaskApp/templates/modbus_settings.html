@@ -53,16 +53,14 @@
 					</div>
 					
 					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="static/images/Linear.jpg" alt="profile photo" class="circle float-left profile-photo" width="100" height="auto">
+						<img src="static/images/pes.png" alt="profile photo" class="circle float-left profile-photo" width="40" height="auto">
 						
 						<div class="username mt-1">
 							<h4 class="mb-1">{{active_user}}</h4>
-							
-							<h6 class="text-muted">Admin</h6>
 						</div>
 						</a>
 						
-						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5;" aria-labelledby="dropdownMenuLink">
 						     <a class="dropdown-item" href="/signout"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
 					</div>
 					
@@ -78,16 +76,22 @@
 										<!-- MODBUS filename Output-->
 										<div class="form-group">
 											<div class="row">
-												<div class="col-sm-6">
-													<label class="col" for="filename">MODBUS Output Filename</label>
+												<div class="col-sm-4">
+													<label class="col" for="site">Site Name</label>
 													<div class="col">
-														<input id="filename" name="filename" type="text" placeholder="Enter name for the Output file " class="form-control">
+														<input id="site" name="site" type="text" placeholder="Enter site name" class="form-control">
 													</div>
 												</div>
-												<div class="col-sm-6">
+												<div class="col-sm-4">
+													<label class="col" for="filename">Output Filename</label>
+													<div class="col">
+														<input id="filename" name="filename" type="text" placeholder="Enter file name" class="form-control">
+													</div>
+												</div>
+												<div class="col-sm-4">
 													<label class="col" for="filename">MODBUS Interval</label>
 													<div class="col">
-														<input id="interval" name="interval" type="number" step=".5" min="10" max="7200" placeholder="10-7200 Seconds" class="form-control">
+														<input id="interval" name="interval" type="number" step=".5" min="10" max="7200" placeholder="10-7200 Sec" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -137,8 +141,8 @@
 													<div class="col">
 														<select id="inputState" name="status_a" class="form-control">
 												        <option selected>Choose...</option>
-												        <option value="Enabled">Enabled</option>
-												        <option value="Disabled">Disabled</option>
+												        <option value="enabled">Enabled</option>
+												        <option value="disabled">Disabled</option>
 												      </select>
 													</div>
 												</div>
@@ -208,8 +212,8 @@
 													<div class="col">
 														<select id="inputState" name="status_b" class="form-control">
 												        <option selected>Choose...</option>
-												        <option value="Enabled">Enabled</option>
-												        <option value="Disabled">Disabled</option>
+												        <option value="enabled">Enabled</option>
+												        <option value="disabled">Disabled</option>
 												      </select>
 													</div>
 												</div>
@@ -278,7 +282,95 @@
 				</section>
 			</main>
 
+			<!-- Comport Mapping -->
+			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
+				<header class="page-header row justify-left">
+					<div class="col-md-6 col-lg-8" >
+						<h1 class="float-left text-center text-md-left">File Mapping on COM Port</h1>
+					</div>
+					<div class="clear"></div>
+				</header>
 
+				<section class="row">
+					<div class="col-sm-12">
+						<form class="form-horizontal" action="/file_mapping" method="post">
+							<fieldset>
+								<!-- PORT A -->
+								<div class="col-sm-6" >
+									<h4 class="float-left text-center text-md-left">COM PORT A</h4>
+									<h4 class="float-right text-center text-md-right">COM PORT B</h4>
+								</div>
+								<br>
+								<br>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-4">
+											<div class="card mb-5">
+												<table class="table  table-sm">
+										            <thead class="table-info">
+										                <tr>
+										                    <th></th>
+										                    <th>Filename</th>
+										                </tr>
+										            </thead>
+										            <tbody>
+										            {% for n in rtu_names %}
+										                <tr>
+									                    <td>
+									                        <label class="custom-control custom-checkbox">
+									                            <input type="checkbox" class="custom-control-input" name="files_portA" value="{{n}}"> 
+									                            <span class="custom-control-indicator"></span>
+									                        </label>
+									                    </td>
+										                <td>{{n}}</td>
+										                </tr>
+										            {% endfor %}
+										            </tbody>
+										        </table>
+											</div>
+										</div>
+
+										<div class="col-sm-4">
+											<div class="card mb-5">
+												<table class="table  table-sm">
+										            <thead class="table-info">
+										                <tr>
+										                    <th></th>
+										                    <th>Filename</th>
+										                </tr>
+										            </thead>
+										            <tbody>
+										            {% for n in rtu_names %}
+										                <tr>
+									                    <td>
+									                        <label class="custom-control custom-checkbox">
+									                            <input type="checkbox" class="custom-control-input" name="files_portB" value="{{n}}"> 
+									                            <span class="custom-control-indicator"></span>
+									                        </label>
+									                    </td>
+										                <td>{{n}}</td>
+										                </tr>
+										            {% endfor %}
+										            </tbody>
+										        </table>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="col-8 widget-right no-padding">
+										<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</section>
+			</main>
 		</div>
 	</div>
 

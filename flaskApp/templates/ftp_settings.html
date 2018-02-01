@@ -53,16 +53,14 @@
 					</div>
 					
 					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img src="static/images/Linear.jpg" alt="profile photo" class="circle float-left profile-photo" width="100" height="auto">
+						<img src="static/images/pes.png" alt="profile photo" class="circle float-left profile-photo" width="40" height="auto">
 						
 						<div class="username mt-1">
 							<h4 class="mb-1">{{active_user}}</h4>
-							
-							<h6 class="text-muted">Admin</h6>
 						</div>
 						</a>
 						
-						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5;" aria-labelledby="dropdownMenuLink">
 						     <a class="dropdown-item" href="/signout"><em class="fa fa-power-off mr-1"></em> Logout</a></div>
 					</div>
 					
@@ -73,7 +71,7 @@
 					<div class="col-sm-12">
 						<section class="row">
 							<div class="col-md-12 col-lg-8">
-								<form class="form-horizontal" action="/ftp_settings" method="post">
+								<form name="ip_check" class="form-horizontal" action="/ftp_settings" method="post">
 									<fieldset>
 										<div class="form-group">
 											<div class="row">
@@ -84,15 +82,15 @@
 													</div>
 												</div>
 												<div class="col-sm-4">
-													<label class="col" for="username">FTP Username</label>
+													<label class="col" for="name_ftp">FTP Username</label>
 													<div class="col">
-														<input id="username" name="username" type="text" placeholder="username" class="form-control">
+														<input id="name_ftp" name="name_ftp" type="text" placeholder="username" class="form-control">
 													</div>
 												</div>
 												<div class="col-sm-4">
-													<label class="col" for="password">FTP Password</label>
+													<label class="col" for="ftp_key">FTP Password</label>
 													<div class="col">
-														<input id="password" name="password" type="password" placeholder="password" class="form-control">
+														<input id="ftp_key" name="ftp_key" type="password" placeholder="password" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -125,7 +123,7 @@
 										<!-- Form actions -->
 										<div class="form-group">
 											<div class="col-12 widget-right no-padding">
-												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+												<button id="sub" type="submit" class="btn btn-primary btn-md float-right" onclick="ValidateIPaddress(document.ip_check.ip)">Submit</button>
 											</div>
 										</div>
 									</fieldset>
@@ -229,7 +227,7 @@
 									</fieldset>
 								</form>
 
-								<form class="form-horizontal" action="/lan_settings" method="post">
+								<form name="lan_ip" class="form-horizontal" action="/lan_settings" method="post">
 									<fieldset>
 										{% if ip_type=="static" %}
 										<div class="form-group">
@@ -265,14 +263,13 @@
 										<!-- Form actions -->
 										<div class="form-group">
 											<div class="col-12 widget-right no-padding">
-												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Submit</button>
+												<button id="sub" type="submit" class="btn btn-primary btn-md float-right" onclick="ValidateIPaddress(document.lan_ip.ip)">Submit</button>
 											</div>
 										</div>
 
 									</fieldset>
 								</form>
 								{% endif %}
-
 
 								{% if nw_type=="GPRS" %}
 								<br>
@@ -304,7 +301,7 @@
 												<div class="col-sm-3">
 													<label class="col" for="pass">Password</label>
 													<div class="col">
-														<input id="pass" name="gprs_pass" type="text" placeholder="Password" class="form-control">
+														<input id="pass" name="pass" type="text" placeholder="Password" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -353,6 +350,24 @@
 		    document.getElementById("ipForm").submit();
 		});
     </script>
+
+    <script>
+	  function ValidateIPaddress(inputText)  
+	  {  
+	    var ipformat = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/; 
+	     ipformat = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/; 
+	   if(inputText.value.match(ipformat))  
+	 {  
+	   return true;
+	 }  
+	 else  
+	 {  
+	 alert("You have entered an invalid IP address!");  
+	           
+	 }  
+	  }  
+	</script>
+
 
 	  </body>
 </html>
