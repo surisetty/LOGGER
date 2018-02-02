@@ -14,11 +14,11 @@ rtu_data = None # Rtu file content read
 edit_en = False # Rtu file editing
 rtu_names = [] # contains all rtu file names
 
-ftp = {'path':'', 'password':'', 'port':'', 'server':'', 'name':'', 'interval':''}
-modbus = {'interval':'', 'output_filename':'', 'site_location':''}
-network = {'username':'', 'password':'', 'apn_name':'', 'apn_num':'', 'nw_type':''}
-porta = {'parity':'', 'databits':'', 'stopbits':'', 'timeout':'', 'status':'', 'baudrate':'', 'files':''}
-portb = {'parity':'', 'databits':'', 'stopbits':'', 'timeout':'', 'status':'', 'baudrate':'', 'files':''}
+ftp = {}
+modbus = {}
+network = {}
+porta = {}
+portb = {}
 
 # Activate Redis database for saving the login Password/username
 r = redis.Redis(host='localhost', port=6379, db=0)
@@ -48,6 +48,11 @@ def welcome():
 # Route for Ftp/Network Settings Page
 @app.route('/ftp_settings', methods=['GET','POST'])
 def ftp_settings():
+	global ftp
+	global modbus
+	global network
+	global porta
+	global portb
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
@@ -72,12 +77,17 @@ def ftp_settings():
 			ftp['name'] = username
 			ftp['interval'] = interval
 			createJsonConfig(ftp, network, modbus, porta, portb)
-		return render_template('ftp_settings.html', active_user=active_user, nw_type=nw_type, ip_type=ip_type) 
+		return render_template('ftp_settings.html', active_user=active_user, nw_type=nw_type,\
+								 ip_type=ip_type) 
 
 # Route for selecting network type
 @app.route('/nw_select', methods=['GET','POST'])
 def nw_select():
+	global ftp
+	global modbus
 	global network
+	global porta
+	global portb
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
@@ -125,7 +135,11 @@ def lan_settings():
 # Route for GPRS Settings Page
 @app.route('/gprs_settings', methods=['GET','POST'])
 def gprs_settings():
+	global ftp
+	global modbus
 	global network
+	global porta
+	global portb
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
@@ -146,6 +160,11 @@ def gprs_settings():
 # Route for MODBUS Settings Page
 @app.route('/modbus_settings', methods=['GET','POST'])
 def modbus_settings():
+	global ftp
+	global modbus
+	global network
+	global porta
+	global portb
 	global rtu_names
 	if not 'username' in session:
 		flash('You are Logged Out')
@@ -165,6 +184,11 @@ def modbus_settings():
 # Route for COM PORT Settings Page
 @app.route('/com_settings', methods=['GET','POST'])
 def com_settings():
+	global ftp
+	global modbus
+	global network
+	global porta
+	global portb
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
@@ -202,6 +226,11 @@ def com_settings():
 # Route for File mapping
 @app.route('/file_mapping', methods=['GET','POST'])
 def file_mapping():
+	global ftp
+	global modbus
+	global network
+	global porta
+	global portb
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
@@ -259,8 +288,8 @@ def rtu_create():
 			# Create a JSON file from the data collected from the user
 			createJsonRtu(filename, device, retry, status, endian, start_addr, length, datatype)
 			return redirect(url_for('rtu_create'))
-		return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names, rtu_data=rtu_data, \
-								edit_en=edit_en) 
+		return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names,\
+								rtu_data=rtu_data, edit_en=edit_en) 
 
 # Route for RTU file edit Page
 @app.route('/rtu_edit', methods=['GET','POST'])
@@ -399,8 +428,38 @@ def signout():
 	session.pop('username', None)
 	return redirect(url_for('home'))
 
+# Read the default Config file
 def readConfigFile():
-	print("to complete")
+	global ftp
+	global modbus
+	global network
+	global porta
+	global portb
+	file_path = '../project/config/linear_config.json'
+	if os.path.exists(file_path):
+		with open(file_path) as data_file:    
+			data = json.load(data_file)
+		ftp = {'path':data["ftp"]["path"], 'password':data["ftp"]["password"],\
+			   'port':data["ftp"]["port"], 'server':data["ftp"]["server"],\
+			   'name':data["ftp"]["name"], 'interval':data["Ftp_interval"]}
+		modbus = {'interval':data["Modbus_interval"], 'output_filename':data["Output_Filename"],\
+				  'site_location':data["Site_location"]}
+		network = {'username':data["GPRS"]["user"], 'password':data["GPRS"]["password"],\
+				   'apn_name':data["GPRS"]["apn"], 'apn_num':'', 'nw_type':data["NW_type"]}
+		porta = {'parity':data["serial"][0]["parity"], 'databits':data["serial"][0]["databits"],\
+				 'stopbits':data["serial"][0]["stopbits"], 'timeout':data["serial"][0]["timeout"],\
+				 'status':data["serial"][0]["status"], 'baudrate':data["serial"][0]["baudrate"],\
+				 'files':data["serial"][0]["slaves"]}
+		portb = {'parity':data["serial"][1]["parity"], 'databits':data["serial"][1]["databits"],\
+				 'stopbits':data["serial"][1]["stopbits"], 'timeout':data["serial"][1]["timeout"],\
+				 'status':data["serial"][1]["status"], 'baudrate':data["serial"][1]["baudrate"],\
+				 'files':data["serial"][1]["slaves"]}
+	else:
+		ftp = {'path':'', 'password':'', 'port':'', 'server':'', 'name':'', 'interval':''}
+		modbus = {'interval':'', 'output_filename':'', 'site_location':''}
+		network = {'username':'', 'password':'', 'apn_name':'', 'apn_num':'', 'nw_type':''}
+		porta = {'parity':'', 'databits':'', 'stopbits':'', 'timeout':'', 'status':'', 'baudrate':'', 'files':''}
+		portb = {'parity':'', 'databits':'', 'stopbits':'', 'timeout':'', 'status':'', 'baudrate':'', 'files':''}	
 
 def getRtuFileNames():
 	global rtu_names
@@ -465,10 +524,10 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
 	listA = porta['files']
 	listB = portb['files']
 	for loop in range(len(porta['files'])):
-		portA_files += "\t\"" + listA[loop] + ".rtu\",\n"
+		portA_files += "\t\t\"" + listA[loop] + ".rtu\",\n"
 
 	for loop in range(len(portb['files'])):
-		portB_files += "\t\"" + listB[loop] + ".rtu\",\n"
+		portB_files += "\t\t\"" + listB[loop] + ".rtu\",\n"
 
 	portA_files = portA_files[:-2] # Remove \n and , from the endian
 	portB_files = portB_files[:-2] # Remove \n and , from the end
@@ -496,11 +555,11 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
   		  "\"serial\": [\n" + \
   		  "\t{\n" + \
   		  "\t\"device\": \"/dev/ttyUSB0\",\n" + \
-  		  "\t\"baudrate\": " + porta['baudrate'] + ",\n" + \
+  		  "\t\"baudrate\": " + str(porta['baudrate']) + ",\n" + \
       	  "\t\"parity\": \"" + porta['parity'] + "\",\n" + \
-      	  "\t\"darabits\": " + porta['databits'] + ",\n" + \
-      	  "\t\"stopbits\": " + porta['stopbits'] + ",\n" + \
-      	  "\t\"timeout\": " + porta['timeout'] + ",\n" + \
+      	  "\t\"databits\": " + str(porta['databits']) + ",\n" + \
+      	  "\t\"stopbits\": " + str(porta['stopbits']) + ",\n" + \
+      	  "\t\"timeout\": " + str(porta['timeout']) + ",\n" + \
       	  "\t\"slaves\": [\n" + \
       	  portA_files + "\n" + \
       	  "\t],\n" + \
@@ -508,11 +567,11 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
       	  "\t},\n" + \
       	  "\t{\n" + \
   		  "\t\"device\": \"/dev/ttyUSB1\",\n" + \
-  		  "\t\"baudrate\": " + portb['baudrate'] + ",\n" + \
+  		  "\t\"baudrate\": " + str(portb['baudrate']) + ",\n" + \
       	  "\t\"parity\": \"" + portb['parity'] + "\",\n" + \
-      	  "\t\"darabits\": " + portb['databits'] + ",\n" + \
-      	  "\t\"stopbits\": " + portb['stopbits'] + ",\n" + \
-      	  "\t\"timeout\": " + portb['timeout'] + ",\n" + \
+      	  "\t\"databits\": " + str(portb['databits']) + ",\n" + \
+      	  "\t\"stopbits\": " + str(portb['stopbits']) + ",\n" + \
+      	  "\t\"timeout\": " + str(portb['timeout']) + ",\n" + \
       	  "\t\"slaves\": [\n" + \
       	  portB_files + "\n" + \
       	  "\t],\n" + \
@@ -522,7 +581,7 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
       	  "\"config_status\": false\n" + \
   		  "}\n"
 	path = "../project/config/"
-	config_file_name = path + "linear_config1.json"
+	config_file_name = path + "linear_config.json"
 	with open(config_file_name, 'w') as file:  # Use file to refer to the file object
 		file.write(val) 
 
@@ -530,7 +589,3 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
 if __name__ == "__main__":
 	app.secret_key = os.urandom(12)
 	app.run(debug=True)
-
-
-
-	
