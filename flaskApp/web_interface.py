@@ -325,7 +325,7 @@ def data_files():
 		return render_template('home.html')
 	else:
 		# Get all the files in the Data directory
-		SRC_DIR = '/home/pulkit/Desktop/LinearCircuits/Linear_Logger/project/Data/'
+		SRC_DIR = '../project/Data/'
 		# delete the existing folder
 		deleteFolder('static/Data')
 		# Copy the Data directory
@@ -349,7 +349,7 @@ def log():
 		return render_template('home.html')
 	else:
 		# Get all the files in the Log directory
-		SRC_DIR = '/home/pulkit/Desktop/LinearCircuits/Linear_Logger/project/Log_files/'
+		SRC_DIR = '../project/Log_files/'
 		# delete the existing folder
 		deleteFolder('static/Log_files')
 		# copy the Log directory
@@ -413,7 +413,7 @@ def signin():
 		except:
 			pass
 		# check if user is authentic, Raise error if not
-		if request.form['password'] != saved_pass:
+		if request.form['password'] != 'admin' or request.form['username'] != 'admin' :
 			error = 'Invalid Credentials. Please try again.'
 		else:
 			active_user = username
@@ -445,7 +445,7 @@ def readConfigFile():
 		modbus = {'interval':data["Modbus_interval"], 'output_filename':data["Output_Filename"],\
 				  'site_location':data["Site_location"]}
 		network = {'username':data["GPRS"]["user"], 'password':data["GPRS"]["password"],\
-				   'apn_name':data["GPRS"]["apn"], 'apn_num':'', 'nw_type':data["NW_type"]}
+				   'apn_name':data["GPRS"]["apn"], 'apn_num':data["GPRS"]["num"], 'nw_type':data["NW_type"]}
 		porta = {'parity':data["serial"][0]["parity"], 'databits':data["serial"][0]["databits"],\
 				 'stopbits':data["serial"][0]["stopbits"], 'timeout':data["serial"][0]["timeout"],\
 				 'status':data["serial"][0]["status"], 'baudrate':data["serial"][0]["baudrate"],\
@@ -535,7 +535,8 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
   		  "\t\"GPRS\": {\n" + \
     	  "\t\"password\": \"" + network['password'] + "\",\n"+\
     	  "\t\"apn\": \"" + network['apn_name'] + "\",\n"+\
-    	  "\t\"user\": \""+ network['username'] + "\"\n"+\
+    	  "\t\"user\": \""+ network['username'] + "\",\n"+\
+    	  "\t\"num\": \""+ network['apn_num'] + "\"\n"+\
   		  "\t},\n"+\
   		  "\t\"ftp\": {\n" + \
     	  "\t\"path\": \"" + ftp['path'] + "\",\n"+\
