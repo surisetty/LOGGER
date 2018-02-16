@@ -1,15 +1,15 @@
 {
-  "address": [
-  
-    {
-        "addr": 1221,
-        "length" : 1,
-        "data_type": "U16"
-    }
-   ],
-  "retry_count" : 3,
-  "device_address": 1,
-  "active": "True",
-  "endian_type": "little",
-  "Description": "XYZ2 inverter"
+	"address": [
+		{
+				"addr": 1221,
+				"length" : 1,
+				"func" : 3,
+				"data_type": "U16"
+		}
+	],
+	"retry_count": 3,
+	"device_address": 1,
+	"active": "True",
+	"endian_type": "little",
+	"Description": "This is linear_honda.rtu file."
 }

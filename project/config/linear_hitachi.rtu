@@ -1,28 +1,33 @@
 {
-  "address": [
-  
-    {
-        "addr": 6144,
-        "length" : 3,
-        "data_type": "S16"
-        
-    },
-    {
-        "addr": 6147,
-        "length" : 4,
-        "data_type": "U16"
-        
-    },
-    {
-        "addr": 6403,
-        "length" : 1,
-        "data_type": "U32"
-        
-    }
-   ],
-  "retry_count" : 3,
-  "device_address": 2,
-  "active": "False",
-  "endian_type": "little",
-  "Description": "XYZ2 inverter"
+	"address": [
+		{
+				"addr": 6144,
+				"length" : 3,
+				"func" : 3,
+				"data_type": "S16"
+		},
+		{
+				"addr": 6147,
+				"length" : 4,
+				"func" : 4,
+				"data_type": "U16"
+		},
+		{
+				"addr": 6403,
+				"length" : 1,
+				"func" : 3,
+				"data_type": "U32"
+		},
+		{
+				"addr": 456,
+				"length" : 34,
+				"func" : 3,
+				"data_type": "S16"
+		}
+	],
+	"retry_count": 3,
+	"device_address": 2,
+	"active": "False",
+	"endian_type": "little",
+	"Description": "This is linear_hitachi.rtu file."
 }

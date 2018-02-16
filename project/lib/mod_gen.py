@@ -21,6 +21,7 @@ class ModbusNode(object):
 		self.all_addresses = []
 		self.all_length = []
 		self.all_datatype = []
+		self.all_functionCodes = []
 		self.all_endianness = []
 		self.all_device_address = []
 		self.all_retry_counts = []
@@ -49,12 +50,13 @@ class ModbusNode(object):
 			address = RTU.file_addresses
 			length = RTU.address_length
 			datatype = RTU.datatypes
+			functionCodes = RTU.functionCodes
 			endianness = RTU.rtu_file_endian_mode
 			device_address = RTU.rtu_device_address
 			retry_counts = RTU.rtu_retry_count
-			return (address, length, datatype, endianness, device_address, retry_counts)
+			return (address, length, datatype, endianness, device_address, retry_counts, functionCodes)
 		else:
-			return(None, None, None, None, None, None)
+			return(None, None, None, None, None, None, None)
 
 
 	def ReadInputFile(self, ports):
@@ -62,11 +64,12 @@ class ModbusNode(object):
 			# List to store all the files attached on all active ports
 			file_path_string = sys.path[0] + "/config/"
 			for loop in range(len(ports)):
-				(address, length, datatype, endianness, device_address, retry_counts) = \
+				(address, length, datatype, endianness, device_address, retry_counts, functionCodes) = \
 											self.ReadInputFilesPortwise(file_path_string, ports[loop])
 				self.all_addresses.append(address)
 				self.all_length.append(length)
 				self.all_datatype.append(datatype)
+				self.all_functionCodes.append(functionCodes)
 				self.all_endianness.append(endianness)
 				self.all_device_address.append(device_address)
 				self.all_retry_counts.append(retry_counts)
@@ -74,6 +77,7 @@ class ModbusNode(object):
 			# print (self.all_addresses)
 			# print (self.all_length)
 			# print (self.all_datatype)
+			# print (self.all_functionCodes)
 			# print (self.all_endianness)
 			# print (self.all_device_address)
 			# print (self.all_retry_counts)
@@ -101,26 +105,26 @@ class ModbusNode(object):
 		else:
 			return '<'
 
-	def selectReadFunc(self, instrument, addr, datatype, endian=None):
+	def selectReadFunc(self, instrument, addr, datatype, functionCode, endian=None):
 		if datatype == 'S32':
 			# print("U32")
-			return instrument.read_long(addr-1, functioncode=3, signed=True, endian= endian)
+			return instrument.read_long(addr-1, functioncode=functionCode, signed=True, endian= endian)
 
 		if datatype == 'S16':
 			# print("U16")
-			return instrument.read_register(addr-1, numberOfDecimals=0, functioncode=3, signed=True)
+			return instrument.read_register(addr-1, numberOfDecimals=0, functioncode=functionCode, signed=True)
 
 		if datatype == 'U32':
 			# print("U32")
-			return instrument.read_long(addr-1, functioncode=3, signed=False, endian= endian)
+			return instrument.read_long(addr-1, functioncode=functionCode, signed=False, endian= endian)
 
 		if datatype == 'U16':
 			# print("U16")
-			return instrument.read_register(addr-1, numberOfDecimals=0, functioncode=3, signed=False)
+			return instrument.read_register(addr-1, numberOfDecimals=0, functioncode=functionCode, signed=False)
 
 		if datatype == 'F':
 			# print("Float")
-			return instrument.read_float(addr-1, functioncode=3, numberOfRegisters=2, endian= endian )
+			return instrument.read_float(addr-1, functioncode=functionCode, numberOfRegisters=2, endian= endian )
 
 
 	def init_modbus(self, port_addr, device_addr, baudrate, bytesize, parity, stopbits, timeout):
@@ -169,6 +173,7 @@ class ModbusNode(object):
 								result =  (self.selectReadFunc(instrument, \
 									  (self.all_addresses[file_count][addr_in_files] + len_count * bytelength), \
 									   self.all_datatype[file_count][addr_in_files], \
+									   self.all_functionCodes[file_count][addr_in_files], \
 									   self.getEndianness(self.all_endianness[file_count])))
 								addr_data.append(result)
 								break

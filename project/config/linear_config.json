@@ -14,9 +14,9 @@
 	},
 "product": "pes",
 "Ftp_interval": "3",
-"Output_Filename": "test_logger",
-"Modbus_interval": "5",
-"Site_location": "infosys",
+"Output_Filename": "",
+"Modbus_interval": "",
+"Site_location": "",
 "releaseDate": "2017-09-15T00:00:00.000Z",
 "version": 1,
 "NW_type": "GPRS",
@@ -29,7 +29,7 @@
 	"stopbits": 1,
 	"timeout": 3,
 	"slaves": [
-		"linear_honda.rtu.rtu"
+		"linear_honda.rtu.rtu.rtu"
 	],
 	"status": "enabled"
 	},
@@ -41,7 +41,7 @@
 	"stopbits": 1,
 	"timeout": 3,
 	"slaves": [
-		"linear_honda.rtu.rtu"
+		"linear_honda.rtu.rtu.rtu"
 	],
 	"status": "disabled"
 	}

@@ -4,6 +4,7 @@
     {
         "addr": 1301,
         "length" : 1,
+        "func" : 4,
         "data_type": "U16"
     }
    ],

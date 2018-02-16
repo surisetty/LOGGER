@@ -17,6 +17,7 @@ class RTU_READ(object):
 		self.file_addresses = []
 		self.address_length = []
 		self.datatypes = []
+		self.functionCodes = []
 		print("Reading the RTU file")
 		linear_rtu.info("Reading the RTU file")
 		
@@ -41,13 +42,16 @@ class RTU_READ(object):
 			all_addr_in_file = []
 			length = []
 			datatypes = []
+			functionCodes = []
 			for i in range(len(addresses)):
 				all_addr_in_file.append(data["address"][i]["addr"])
 				length.append(data["address"][i]["length"])
 				datatypes.append(data["address"][i]["data_type"])
+				functionCodes.append(data["address"][i]["func"])
 			self.file_addresses = all_addr_in_file
 			self.address_length = length
 			self.datatypes = datatypes
+			self.functionCodes = functionCodes
 
 		# if file type is not RTU
 		else:
