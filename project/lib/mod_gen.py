@@ -224,7 +224,7 @@ class ModbusNode(object):
 				for counts in range(len(self.all_length[files])):
 					total_count = total_count + self.all_length[files][counts]
 				for val in range(total_count):
-					counts_val.append(val)
+					counts_val.append(val+1)
 				addr_count = ';'.join(str(e) for e in counts_val)
 				row += str(total_count) + ";" + addr_count + "\n"
 				# adding 4th line in output file
