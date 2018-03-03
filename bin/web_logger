@@ -1,0 +1,4 @@
+#!/bin/sh
+DIR=$(dirname "$(readlink -f "$0")")
+# Absolute path this script is in. /home/user/bin
+python3 "${DIR}/../flaskApp/web_interface.py" $@

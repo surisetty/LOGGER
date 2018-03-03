@@ -29,7 +29,13 @@ class ModbusNode(object):
 		# File containing the modbus responses of the read addresses 
 		self.mod_data_file = ""
 		# File location and name containing the modbus responses of the read addresses 
-		self.mod_data_file_path = sys.path[0] + "/Data/"
+		rtu_file_path = os.path.dirname(os.path.abspath(__file__))
+		path, file = os.path.split(rtu_file_path)
+		self.rtu_file_path = os.path.join(path, 'config')
+		#print("r_path : ", self.rtu_file_path)
+		self.data_file_path = os.path.join(path, 'Data')		
+		#print("path : ",self.data_file_path)
+		self.mod_data_file_path = self.data_file_path
 		# File extension of the file containing the modbus responses of the read addresses 
 		self.mod_data_file_ext = '.csv'
 		#create file name initial
@@ -44,7 +50,8 @@ class ModbusNode(object):
 
 	def ReadInputFilesPortwise(self, file_path_string, files_name):	
 		RTU = RTU_READ()
-		filename = file_path_string + files_name
+		filename = file_path_string + '/' + files_name
+		#print("myName: ", filename)
 		RTU.ReadRtuFile(filename)
 		if RTU.rtu_file_active_status == "True":
 			address = RTU.file_addresses
@@ -62,7 +69,8 @@ class ModbusNode(object):
 	def ReadInputFile(self, ports):
 		try:
 			# List to store all the files attached on all active ports
-			file_path_string = sys.path[0] + "/config/"
+			file_path_string = self.rtu_file_path
+			#print("f_path: ", file_path_string)
 			for loop in range(len(ports)):
 				(address, length, datatype, endianness, device_address, retry_counts, functionCodes) = \
 											self.ReadInputFilesPortwise(file_path_string, ports[loop])
@@ -108,23 +116,24 @@ class ModbusNode(object):
 	def selectReadFunc(self, instrument, addr, datatype, functionCode, endian=None):
 		if datatype == 'S32':
 			# print("U32")
-			return instrument.read_long(addr-1, functioncode=functionCode, signed=True, endian= endian)
+			return instrument.read_long(addr, functioncode=functionCode, signed=True, endian= endian)
 
 		if datatype == 'S16':
 			# print("U16")
-			return instrument.read_register(addr-1, numberOfDecimals=0, functioncode=functionCode, signed=True)
+			return instrument.read_register(addr, numberOfDecimals=0, functioncode=functionCode, signed=True)
 
 		if datatype == 'U32':
 			# print("U32")
-			return instrument.read_long(addr-1, functioncode=functionCode, signed=False, endian= endian)
+			return instrument.read_long(addr, functioncode=functionCode, signed=False, endian= endian)
 
 		if datatype == 'U16':
 			# print("U16")
-			return instrument.read_register(addr-1, numberOfDecimals=0, functioncode=functionCode, signed=False)
+			return instrument.read_register(addr, numberOfDecimals=0, functioncode=functionCode, signed=False)
 
 		if datatype == 'F':
 			# print("Float")
-			return instrument.read_float(addr-1, functioncode=functionCode, numberOfRegisters=2, endian= endian )
+			value = instrument.read_float(addr, functioncode=functionCode, numberOfRegisters=2, endian= endian )
+			return float(format(value, ".3f"))
 
 
 	def init_modbus(self, port_addr, device_addr, baudrate, bytesize, parity, stopbits, timeout):
@@ -135,6 +144,7 @@ class ModbusNode(object):
 				instrument.serial.parity = parity
 				instrument.serial.stopbits = stopbits
 				instrument.serial.timeout = timeout
+				instrument.debug = True
 				linear_modbus.info("Modbus Connection established successfully")
 				return instrument
 			except Exception as e:
@@ -178,7 +188,7 @@ class ModbusNode(object):
 								addr_data.append(result)
 								break
 							except Exception as e:
-								print (e)
+								#print (e)
 								handler = HandleError('53', "Error in reading address " + str(self.all_addresses[file_count][addr_in_files]) + \
 										   ". Retrying..." + "Check the data in rtu file again" )
 								linear_modbus.warn("Error : {0} - {1}".format(handler.code, handler.str))
@@ -236,7 +246,7 @@ class ModbusNode(object):
 		read_value = self.modRead(rjson, port_num)
 		# convert the data read from modbus in a particular format
 		value = self.ModFileConversion(read_value, rjson)
-		print(value)
+		#print(value)
 		# get port address
 		self.mod_file_port_addr = "COM" + str(port_num) + "_"
 		# print(self.mod_file_port_addr)
@@ -244,7 +254,7 @@ class ModbusNode(object):
 		self.mod_data_file_timestamp = time.strftime("%Y%m%d-%H%M%S")
 
 		# create the file name
-		self.mod_data_file = self.mod_data_file_path + self.mod_file_port_addr +\
+		self.mod_data_file = self.mod_data_file_path +'/'+ self.mod_file_port_addr +\
 							 rjson.mod_data_file_initial + self.mod_data_file_timestamp +\
 							  self.mod_data_file_ext
 		# write the data into the file

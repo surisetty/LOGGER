@@ -6,16 +6,16 @@
 	"num": "123456"
 	},
 	"ftp": {
-	"path": "/ftptest",
-	"password": "bsrc1234",
+	"path": "/InfGac",
+	"password": "!Ftp909!!",
 	"port": "21",
-	"server": "10.2.28.84",
-	"name": "jd"
+	"server": "52.172.38.141",
+	"name": "ftpuser1"
 	},
 "product": "pes",
 "Ftp_interval": "3",
-"Output_Filename": "test",
-"Modbus_interval": "5",
+"Output_Filename": "SDB6_Logger",
+"Modbus_interval": "120",
 "Site_location": "infosys",
 "releaseDate": "2017-09-15T00:00:00.000Z",
 "version": 1,
@@ -29,7 +29,13 @@
 	"stopbits": 1,
 	"timeout": 3,
 	"slaves": [
-		"linear_honda.rtu"
+		"MFM.rtu",
+		"Schneider_Inverter_12.rtu",
+		"Schneider_Inverter_13.rtu",
+		"Schneider_Inverter_14.rtu",
+		"Schneider_Inverter_15.rtu",
+		"Schneider_Inverter_16.rtu",
+		"Schneider_Inverter_17.rtu"
 	],
 	"status": "enabled"
 	},

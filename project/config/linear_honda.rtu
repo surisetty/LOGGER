@@ -1,10 +1,16 @@
 {
 	"address": [
 		{
-				"addr": 1221,
+				"addr": 1214,
 				"length" : 1,
 				"func" : 3,
-				"data_type": "U16"
+				"data_type": "S16"
+		},
+		{
+				"addr": 1017,
+				"length" : 2,
+				"func" : 3,
+				"data_type": "F"
 		}
 	],
 	"retry_count": 3,

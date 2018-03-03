@@ -9,7 +9,7 @@
 	
 	<meta name="author" content="">
 	
-	<link rel="icon" href="static/images/Linear.jpg">
+	<link rel="icon" href="static/images/pes.png">
 	
 	<title>Linear Logger</title>
 
@@ -150,28 +150,21 @@
 								        			{% for cnt in range(rtu_data[5]|length) %}
 								        			<div class="after-add-more">		
 								      					<div class="row">
-										        			<div class="col-sm-2">
+										        			<div class="col-sm-3">
 											      				<label class="col" for="addresses">Start Address</label>
 											      				<div class="input-group control-group">
 														   			<input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999" value={{rtu_data[5][cnt]}}>
 																</div>
 															</div>
-															<div class="col-sm-2">
+															<div class="col-sm-3">
 																<label class="col" for="length">Read Length</label>
 											      				<div class="input-group control-group">
 														   			<input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100" value={{rtu_data[6][cnt]}}>
 																</div>
 															</div>
-															<div class="col-sm-2">
-																<label class="col" for="length">Function Code</label>
-											      				<div class="input-group control-group">
-														   			<input name="func[]" class="form-control" type="number" min="3" max="4" placeholder="3-4" value={{rtu_data[8][cnt]}}>
-																</div>
-															</div>
 															<div class="col-sm-6">
 																<label class="col" for="datatype[]">Select Datatype</label>
-																<br>
-																<br>
+
 																{% if rtu_data[7][cnt] == 'U16' %}
 																<div class="btn-group control-group" data-toggle="buttons">
 																  <label class="btn btn-primary active">
@@ -290,28 +283,20 @@
 										        <div class="copy-fields hidden-sm-up">
 										        	<div class="after-add-more">	
 										      			<div class="row">
-										      				<div class="col-sm-2">
+										      				<div class="col-sm-3">
 													      		<label class="col" for="addresses">Start Address</label>
 													      		<div class="input-group control-group">
 																   <input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
 																</div>
 															</div>	
-															<div class="col-sm-2">
+															<div class="col-sm-3">
 																<label class="col" for="length">Read Length</label>
 													      		<div class="input-group control-group">
 																   <input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
 																</div>
 															</div>
-															<div class="col-sm-2">
-																<label class="col" for="length">Function Code</label>
-													      		<div class="input-group control-group">
-																   <input name="func[]" class="form-control" type="number" min="3" max="4" placeholder="3-4">
-																</div>
-															</div>
 															<div class="col-sm-6">
 																<label class="col" for="datatype">Select Datatype</label>
-																<br>
-																<br>
 																<div class="btn-group control-group" data-toggle="buttons">
 																  <label class="btn btn-primary active">
 																    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
@@ -436,28 +421,20 @@
 								        			<label class="col" for="name"><h5>Read Addresses</h5></label>
 								      				<div class="after-add-more">		
 								      					<div class="row">
-										        			<div class="col-sm-2">
+										        			<div class="col-sm-3">
 											      				<label class="col" for="addresses">Start Address</label>
 											      				<div class="input-group control-group">
 														   			<input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
 																</div>
 															</div>
-															<div class="col-sm-2">
+															<div class="col-sm-3">
 																<label class="col" for="length">Read Length</label>
 											      				<div class="input-group control-group">
 														   			<input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
 																</div>
 															</div>
-															<div class="col-sm-2">
-																<label class="col" for="func">Function Code</label>
-											      				<div class="input-group control-group">
-														   			<input name="func[]" class="form-control" type="number" min="3" max="4" placeholder="3-4">
-																</div>
-															</div>
 															<div class="col-sm-6">
 																<label class="col" for="datatype[]">Select Datatype</label>
-																<br>
-																<br>
 																<div class="btn-group control-group" data-toggle="buttons">
 																  <label class="btn btn-primary active">
 																    <input type="radio" class="dtt" name="datatype1" id="option1" value="U16" autocomplete="off" checked> U16
@@ -491,28 +468,20 @@
 										        <div class="copy-fields hidden-sm-up">
 										        	<div class="after-add-more">	
 										      			<div class="row">
-										      				<div class="col-sm-2">
+										      				<div class="col-sm-3">
 													      		<label class="col" for="addresses">Start Address</label>
 													      		<div class="input-group control-group">
 																   <input name="start_addr[]" class="form-control" type="number" min="1" max="9999" placeholder="1-9999">
 																</div>
 															</div>	
-															<div class="col-sm-2">
+															<div class="col-sm-3">
 																<label class="col" for="length">Read Length</label>
 													      		<div class="input-group control-group">
 																   <input name="length[]" class="form-control" type="number" min="1" max="100" placeholder="1-100">
 																</div>
 															</div>
-															<div class="col-sm-2">
-																<label class="col" for="func">Function Code</label>
-											      				<div class="input-group control-group">
-														   			<input name="func[]" class="form-control" type="number" min="3" max="4" placeholder="3-4">
-																</div>
-															</div>
 															<div class="col-sm-6">
 																<label class="col" for="datatype">Select Datatype</label>
-																<br>
-																<br>
 																<div class="btn-group control-group" data-toggle="buttons">
 																  <label class="btn btn-primary active">
 																    <input type="radio" class="dtt" name="datatypex" id="option1" value="U16" autocomplete="off" checked> U16
@@ -595,7 +564,7 @@
     <script type="text/javascript">
     $(document).ready(function() {
     	if ("{{edit_en}}") {
-		    var field_counts = ('{{rtu_data[5]}}'.length);
+		    var field_counts = ({{rtu_data[5]}}.length);
 		} else {
 		    var field_counts = 1;
 		}

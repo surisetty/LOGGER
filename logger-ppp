@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+### BEGIN INIT INFO
+# Provides:          logger backend 
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     5
+# Default-Stop:      0 1 6
+# Short-Description: logger python backend modbus serivce
+# Description:       ----
+#                    
+### END INIT INFO
+
+LOGGER="/home/root/LOGGER/bin/logger"
+test -f ${LOGGER} || exit 0
+
+
+case "$1" in
+    start)
+	#echo "Starting logger..."
+        cd /home/root/LOGGER/bin
+        start-stop-daemon --start --quiet --exec sh ${LOGGER} >/dev/null 2>&1
+	;;
+    stop)
+        #echo "Stopping logger service..."
+        #start-stop-daemon --stop --quiet --exec ${LOGGER}
+        kill `ps -l | grep linear_logger.py | grep -v grep  | awk '{ print $3}'` >/dev/null 2>&1
+	;;
+    restart)
+        #echo "Stopping logger service..."
+        kill `ps -l | grep linear_logger.py | grep -v grep  | awk '{ print $3}'` >/dev/null 2>&1
+	#echo "Starting logger service..."
+        start-stop-daemon --start --quiet --exec sh ${LOGGER} >/dev/null 2>&1
+	;;
+    *)
+	echo "Usage: ${LOGGER} {start|stop|restart}"
+	exit 1
+	;;
+esac
+
+exit 0
+

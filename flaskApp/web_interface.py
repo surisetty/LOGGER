@@ -20,6 +20,15 @@ network = {}
 porta = {}
 portb = {}
 
+
+rtu_file_path = os.path.dirname(os.path.abspath(__file__))
+path, file = os.path.split(rtu_file_path)
+#print(path)
+rtu_file_path = os.path.join(path, 'project', 'config')
+#print("relative path", rtu_file_path)
+data_file_path = os.path.join(path, 'project', 'Data')
+log_file_path = os.path.join(path, 'project', 'Log_files')
+
 # Activate Redis database for saving the login Password/username
 r = redis.Redis(host='localhost', port=6379, db=0)
 # Create Flask App
@@ -269,7 +278,6 @@ def general_settings():
 @app.route('/rtu_create', methods=['GET','POST'])
 def rtu_create():
 	global rtu_names
-	getRtuFileNames()
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
@@ -286,9 +294,8 @@ def rtu_create():
 			start_addr = request.form.getlist('start_addr[]')
 			datatype = request.form.getlist('datatype[]')
 			length = request.form.getlist('length[]')
-			fcode = request.form.getlist('func[]')
 			# Create a JSON file from the data collected from the user
-			createJsonRtu(filename, device, retry, status, endian, start_addr, length, datatype, fcode)
+			createJsonRtu(filename, device, retry, status, endian, start_addr, length, datatype)
 			return redirect(url_for('rtu_create'))
 		return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names,\
 								rtu_data=rtu_data, edit_en=edit_en) 
@@ -308,7 +315,7 @@ def rtu_edit():
 		if request.method == 'POST':
 			edit_file = request.form['edit_btn']
 			ext = edit_file.split('.')
-			path = '../project/config/' + ext[0] + '.rtu'
+			path = rtu_file_path + ext[0] + '.rtu'
 
 			# check if the file needs to be deleted
 			if ext[1] == 'del':
@@ -317,9 +324,7 @@ def rtu_edit():
 			if ext[1] == 'edit':
 				edit_en = True
 				rtu_data = getRtuData(path)
-			return redirect(url_for('rtu_create'))
-		return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names,\
-								rtu_data=rtu_data, edit_en=edit_en) 
+		return redirect(url_for('rtu_create'))
 
 # Route for data files Page
 @app.route('/data_files')
@@ -329,7 +334,7 @@ def data_files():
 		return render_template('home.html')
 	else:
 		# Get all the files in the Data directory
-		SRC_DIR = '../project/Data/'
+		SRC_DIR = data_file_path
 		# delete the existing folder
 		deleteFolder('static/Data')
 		# Copy the Data directory
@@ -353,7 +358,7 @@ def log():
 		return render_template('home.html')
 	else:
 		# Get all the files in the Log directory
-		SRC_DIR = '../project/Log_files/'
+		SRC_DIR = log_file_path
 		# delete the existing folder
 		deleteFolder('static/Log_files')
 		# copy the Log directory
@@ -439,7 +444,7 @@ def readConfigFile():
 	global network
 	global porta
 	global portb
-	file_path = '../project/config/linear_config.json'
+	file_path = '../project/config/config.json'
 	if os.path.exists(file_path):
 		with open(file_path) as data_file:    
 			data = json.load(data_file)
@@ -468,7 +473,7 @@ def readConfigFile():
 def getRtuFileNames():
 	global rtu_names
 	# Get all the created rtu files to display on the edit page 
-	saved_rtus = os.listdir('../project/config/')#glob.glob('../project/config/*.rtu')
+	saved_rtus = os.listdir(rtu_file_path)#glob.glob('../project/config/*.rtu')
 	rtu_names = []
 	for loop in range(len(saved_rtus)):
 		ext = os.path.splitext(saved_rtus[loop])
@@ -491,23 +496,20 @@ def getRtuData(path):
 		all_addr = []
 		length = []
 		datatypes = []
-		func = []
 		for i in range(len(addr_len)):
 			all_addr.append(data["address"][i]["addr"])
 			length.append(data["address"][i]["length"])
-			func.append(data["address"][i]["func"])
 			datatypes.append(data["address"][i]["data_type"])
-		return (filename, active, endian, device, retry, all_addr, length, datatypes, func)
+		return (filename, active, endian, device, retry, all_addr, length, datatypes)
 
 # create a JSON file from the data collected from the user from RTU creation page
-def createJsonRtu(filename, device_addr, retry_count, active, endian, addrlist, lenlist, dtypelist, fcodelist):
+def createJsonRtu(filename, device_addr, retry_count, active, endian, addrlist, lenlist, dtypelist):
 	val = ""
 	address_value = ""
 	for loop in range(len(addrlist) - 1): # last value of the list is garbage (hidden stream)
 		address_value += "\t\t{\n" + \
 			"\t\t\t\t\"addr\": " + str(addrlist[loop]) + ",\n" + \
 			"\t\t\t\t\"length\" : "+ str(lenlist[loop]) + ",\n" + \
-			"\t\t\t\t\"func\" : "+ str(fcodelist[loop]) + ",\n" + \
 			"\t\t\t\t\"data_type\": \"" + str(dtypelist[loop]) + "\"\n" + \
 		"\t\t},\n"\
 
@@ -520,7 +522,7 @@ def createJsonRtu(filename, device_addr, retry_count, active, endian, addrlist, 
 	 "\t\"Description\": \"This is " + filename + ".rtu file.\"" + "\n" +\
 	 "}"
 	path = "../project/config/"
-	rtu_file_name = path + "linear_" + filename + ".rtu"
+	rtu_file_name = path + filename + ".rtu"
 	with open(rtu_file_name, 'w') as file:  # Use file to refer to the file object
 		file.write(val) 
 
@@ -588,12 +590,12 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
       	  "],\n" + \
       	  "\"config_status\": false\n" + \
   		  "}\n"
-	path = "../project/config/"
-	config_file_name = path + "linear_config.json"
+	path = rtu_file_path
+	config_file_name = path + "config.json"
 	with open(config_file_name, 'w') as file:  # Use file to refer to the file object
 		file.write(val) 
 
 # main function calling
 if __name__ == "__main__":
 	app.secret_key = os.urandom(12)
-	app.run(debug=True, host='0.0.0.0')
+	app.run(host='0.0.0.0')

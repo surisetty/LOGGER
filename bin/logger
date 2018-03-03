@@ -1,5 +1,6 @@
-#!/bin/bash
-SCRIPT=$(readlink -f $0)
-# Absolute path this script is in. /home/user/bin
-SCRIPTPATH=`dirname $SCRIPT`
-python3 "$SCRIPTPATH/../project/linear_logger.py" $@
+#!/bin/sh
+#DIR=$(dirname "$(readlink -f "$0")")
+DIR="/home/root/LOGGER"
+python3 "${DIR}/project/linear_logger.py"  &
+#python3 "${DIR}/flaskApp/web_interface.py"  & 
+

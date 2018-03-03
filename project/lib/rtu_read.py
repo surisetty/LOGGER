@@ -18,19 +18,22 @@ class RTU_READ(object):
 		self.address_length = []
 		self.datatypes = []
 		self.functionCodes = []
-		print("Reading the RTU file")
+		#print("Reading the RTU file")
 		linear_rtu.info("Reading the RTU file")
 		
 
 	def ReadRtuFile(self, filepath):
 		# Fetch the File name
 		file = os.path.basename(filepath)
+		#print("Insiders : ", file)
 		# Fetch the file extension
 		ext = os.path.splitext(file)[1]
 		# if file type is RTU
 		if ext in (".rtu"):
+			#print("1")
 			# Open and Load RTU File
-			with open(filepath) as data_file:    
+			with open(filepath) as data_file:
+				#print("2")    
 				data = json.load(data_file)
 
 			self.rtu_file_active_status = data["active"]

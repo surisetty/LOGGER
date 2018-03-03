@@ -15,7 +15,7 @@ handlers:
     file:
         class: logging.handlers.RotatingFileHandler
         formatter: custom_format
-        filename: '../project/Log_files/linear.log'
+        filename: '/run/media/mmcblk1p1/LOGGER/project/Log_files/linear.log'
         filters: [linear]
         level: DEBUG
         maxBytes: 102400000

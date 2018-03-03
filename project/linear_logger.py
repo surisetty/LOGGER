@@ -22,7 +22,7 @@ exitFlag = 0
 
 def ModRead(threadName, delay, rjson, ports, port_num):
 	while 1:
-		print("port : ", port_num)
+		#print("port : ", port_num)
 		if exitFlag:
 			# exit the thread when exit flag is set
 			threadName.exit()
@@ -36,7 +36,8 @@ def ModRead(threadName, delay, rjson, ports, port_num):
 def FtpSendFile(threadName, delay, ports):
 	while 1:
 		try:
-			data_files = glob.glob(Modbus_Nodes_lists[0].mod_data_file_path + '*.csv')
+			#print(Modbus_Nodes_lists[0])
+			data_files = glob.glob(Modbus_Nodes_lists[0].mod_data_file_path + '/*.csv')
 			data_files = sorted(data_files, key=os.path.getmtime)
 			if len(data_files) > 0:
 				del data_files[-ports:]
@@ -68,21 +69,30 @@ def FtpSendFile(threadName, delay, ports):
 			handler = HandleError('103', 'can\'t find mod file path' )
 			linear.error("Error : {0} - {1}".format(handler.code, handler.str))
 
-log_dir = sys.path[0] + '/Log_files'
-data_dir = sys.path[0] + '/Data'
+
+rtu_file_path = os.path.dirname(os.path.abspath(__file__))
+path, file = os.path.split(rtu_file_path)
+#print(path)
+rtu_file_path = os.path.join(path, 'project', 'config')
+#print("relative path", rtu_file_path)
+data_file_path = os.path.join(path, 'project', 'Data')
+log_file_path = os.path.join(path, 'project', 'Log_files')
+log_conf_path = os.path.join(path, 'project', 'config', 'linear_log_config.yaml')
+
+log_dir = log_file_path
+data_dir = data_file_path
 
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
 
-log_conf_path = sys.path[0] + '/config/linear_log_config.yaml'
 with open(log_conf_path, 'r') as f:
 	conf = yaml.load(f)
 
 logging.config.dictConfig(conf)
 # Get the credential file as an input
-cred_file = sys.path[0] + "/config/linear_config.json"
+cred_file = os.path.join(path, 'project', 'config', 'config.json')
 linear = logging.getLogger('linear')
 
 
@@ -115,7 +125,7 @@ for ports in range(len(mod_files)):
 	Modbus_Nodes_lists[ports].ReadInputFile(mod_files[ports])
 # create FTP node
 Ftp = FtpNode()
-print("Mod files : ", mod_files)
+#print("Mod files : ", mod_files)
 try:
    # Start Modbus Read Thread
    linear.info("Running Thread for Modbus")
