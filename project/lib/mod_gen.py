@@ -6,21 +6,6 @@ import os
 import time
 import minimalmodbus 
 import serial
-	def ModFileConversion(self, data, rjson):
-		try:
-			row = ""
-			for files in range(len(data)):
-				#add 1st line in output file	
-				row += "ADDRMODBUS" + ";" + str(self.all_device_address[files]) + "\n"
-				# add 2nd line in output file
-				row += "TypeMODBUS" + ";" + self.all_files[files] + "\n"
-				total_count = 0
-				# adding 3rd line in output  file
-				counts_val = []
-				for counts in range(len(self.all_length[files])):
-					total_count = total_count + self.all_length[files][counts]
-				for val in range(total_count):
-					counts_val.append(val+1)
 import logging
 from lib.rtu_read import RTU_READ
 from lib.exceptions import HandleError
