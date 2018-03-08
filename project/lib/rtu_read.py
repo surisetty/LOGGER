@@ -10,11 +10,11 @@ linear_rtu = logging.getLogger('linear.rtu')
 class RTU_READ(object):
 	def __init__(self):
 		self.rtu_file_active_status = False
-		self.rtu_file_endian_mode = ""
 		self.rtu_file_description = "" 
 		self.rtu_device_address = 0
 		self.rtu_retry_count = 0
 		self.file_addresses = []
+		self.endian_modes = []
 		self.address_length = []
 		self.datatypes = []
 		self.functionCodes = []
@@ -37,7 +37,6 @@ class RTU_READ(object):
 				data = json.load(data_file)
 
 			self.rtu_file_active_status = data["active"]
-			self.rtu_file_endian_mode = data["endian_type"]
 			self.rtu_file_description = data["Description"]
 			self.rtu_device_address = data["device_address"]
 			self.rtu_retry_count = data["retry_count"]
@@ -45,16 +44,19 @@ class RTU_READ(object):
 			all_addr_in_file = []
 			length = []
 			datatypes = []
+			endian = []
 			functionCodes = []
 			for i in range(len(addresses)):
 				all_addr_in_file.append(data["address"][i]["addr"])
 				length.append(data["address"][i]["length"])
 				datatypes.append(data["address"][i]["data_type"])
 				functionCodes.append(data["address"][i]["func"])
+				endian.append(data["address"][i]["endian_type"])
 			self.file_addresses = all_addr_in_file
 			self.address_length = length
 			self.datatypes = datatypes
 			self.functionCodes = functionCodes
+			self.endian_modes = endian
 
 		# if file type is not RTU
 		else:

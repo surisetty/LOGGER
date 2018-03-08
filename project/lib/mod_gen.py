@@ -6,6 +6,21 @@ import os
 import time
 import minimalmodbus 
 import serial
+	def ModFileConversion(self, data, rjson):
+		try:
+			row = ""
+			for files in range(len(data)):
+				#add 1st line in output file	
+				row += "ADDRMODBUS" + ";" + str(self.all_device_address[files]) + "\n"
+				# add 2nd line in output file
+				row += "TypeMODBUS" + ";" + self.all_files[files] + "\n"
+				total_count = 0
+				# adding 3rd line in output  file
+				counts_val = []
+				for counts in range(len(self.all_length[files])):
+					total_count = total_count + self.all_length[files][counts]
+				for val in range(total_count):
+					counts_val.append(val+1)
 import logging
 from lib.rtu_read import RTU_READ
 from lib.exceptions import HandleError
@@ -58,7 +73,7 @@ class ModbusNode(object):
 			length = RTU.address_length
 			datatype = RTU.datatypes
 			functionCodes = RTU.functionCodes
-			endianness = RTU.rtu_file_endian_mode
+			endianness = RTU.endian_modes
 			device_address = RTU.rtu_device_address
 			retry_counts = RTU.rtu_retry_count
 			return (address, length, datatype, endianness, device_address, retry_counts, functionCodes)
@@ -133,7 +148,7 @@ class ModbusNode(object):
 		if datatype == 'F':
 			# print("Float")
 			value = instrument.read_float(addr, functioncode=functionCode, numberOfRegisters=2, endian= endian )
-			return float(format(value, ".3f"))
+			return format(value, ".3f")
 
 
 	def init_modbus(self, port_addr, device_addr, baudrate, bytesize, parity, stopbits, timeout):
@@ -184,7 +199,7 @@ class ModbusNode(object):
 									  (self.all_addresses[file_count][addr_in_files] + len_count * bytelength), \
 									   self.all_datatype[file_count][addr_in_files], \
 									   self.all_functionCodes[file_count][addr_in_files], \
-									   self.getEndianness(self.all_endianness[file_count])))
+									   self.getEndianness(self.all_endianness[file_count][addr_in_files])))
 								addr_data.append(result)
 								break
 							except Exception as e:

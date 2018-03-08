@@ -4,18 +4,19 @@
 				"addr": 1214,
 				"length" : 1,
 				"func" : 3,
-				"data_type": "S16"
+				"data_type": "S16",
+				"endian_type": "little"
 		},
 		{
 				"addr": 1017,
 				"length" : 2,
 				"func" : 3,
-				"data_type": "F"
+				"data_type": "F",
+				"endian_type": "little"
 		}
 	],
 	"retry_count": 3,
 	"device_address": 1,
 	"active": "True",
-	"endian_type": "little",
 	"Description": "This is linear_honda.rtu file."
 }
