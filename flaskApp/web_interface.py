@@ -5,6 +5,7 @@ import os
 import sys
 import json
 import shutil
+import subprocess
 
 # Global Variables
 active_user = ""
@@ -20,7 +21,6 @@ network = {}
 porta = {}
 portb = {}
 
-
 rtu_file_path = os.path.dirname(os.path.abspath(__file__))
 path, file = os.path.split(rtu_file_path)
 #print(path)
@@ -28,6 +28,7 @@ rtu_file_path = os.path.join(path, 'project', 'config')
 #print("relative path", rtu_file_path)
 data_file_path = os.path.join(path, 'project', 'Data')
 log_file_path = os.path.join(path, 'project', 'Log_files')
+
 
 # Activate Redis database for saving the login Password/username
 r = redis.Redis(host='localhost', port=6379, db=0)
@@ -252,14 +253,14 @@ def file_mapping():
 			createJsonConfig(ftp, network, modbus, porta, portb)
 		return render_template('modbus_settings.html', active_user=active_user, rtu_names=rtu_names) 
 
-# Route for Zigbee Settings Page
-@app.route('/zigbee_settings')
-def zigbee_settings():
-	if not 'username' in session:
-		flash('You are Logged Out')
-		return render_template('home.html')
-	else:
-		return render_template('zigbee_settings.html', active_user=active_user) 
+# # Route for Zigbee Settings Page
+# @app.route('/zigbee_settings')
+# def zigbee_settings():
+# 	if not 'username' in session:
+# 		flash('You are Logged Out')
+# 		return render_template('home.html')
+# 	else:
+# 		return render_template('zigbee_settings.html', active_user=active_user) 
 
 # Route for General Settings Page (Date and time, Site location)
 @app.route('/general_settings', methods=['GET','POST'])
@@ -272,12 +273,18 @@ def general_settings():
 			# Read the date and time
 			date = request.form['date']
 			time = request.form['time']
+			time = time + ":00"
+			datetime = date + " " + time
+			subprocess.call(['date', '-s', datetime])
+			subprocess.call(['hwclock', '-w'])
 		return render_template('general_settings.html', active_user=active_user) 
 
 # Route for RTU file creation Page
 @app.route('/rtu_create', methods=['GET','POST'])
 def rtu_create():
 	global rtu_names
+	global rtu_data
+	getRtuFileNames()
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
@@ -288,14 +295,16 @@ def rtu_create():
 			edit_en = False
 			filename = request.form['filename']
 			device = request.form['device']
-			endian = request.form['endian']
+			# endian = request.form['endian']
 			retry = request.form['retry']
 			status = request.form['status']
 			start_addr = request.form.getlist('start_addr[]')
 			datatype = request.form.getlist('datatype[]')
 			length = request.form.getlist('length[]')
+			endian = request.form.getlist('endian[]')
+			fcode = request.form.getlist('func[]')
 			# Create a JSON file from the data collected from the user
-			createJsonRtu(filename, device, retry, status, endian, start_addr, length, datatype)
+			createJsonRtu(filename, device, retry, status, endian, start_addr, length, datatype, fcode)
 			return redirect(url_for('rtu_create'))
 		return render_template('rtu_create.html', active_user=active_user, rtu_names=rtu_names,\
 								rtu_data=rtu_data, edit_en=edit_en) 
@@ -315,7 +324,7 @@ def rtu_edit():
 		if request.method == 'POST':
 			edit_file = request.form['edit_btn']
 			ext = edit_file.split('.')
-			path = rtu_file_path + ext[0] + '.rtu'
+			path = rtu_file_path + '/' + ext[0] + '.rtu'
 
 			# check if the file needs to be deleted
 			if ext[1] == 'del':
@@ -444,7 +453,7 @@ def readConfigFile():
 	global network
 	global porta
 	global portb
-	file_path = '../project/config/config.json'
+	file_path = rtu_file_path + '/' + 'config.json'
 	if os.path.exists(file_path):
 		with open(file_path) as data_file:    
 			data = json.load(data_file)
@@ -485,10 +494,10 @@ def getRtuFileNames():
 def getRtuData(path):
 	with open(path) as data_file: 
 		base = os.path.basename(path)
-		filename = os.path.splitext(base)[0][7:]  
+		filename = os.path.splitext(base)[0] 
 		data = json.load(data_file)
 		active = data["active"]
-		endian = data["endian_type"]
+		# endian = data["endian_type"]
 		description = data["Description"]
 		device = data["device_address"]
 		retry = data["retry_count"]
@@ -496,33 +505,40 @@ def getRtuData(path):
 		all_addr = []
 		length = []
 		datatypes = []
+		func = []
+		endian = []
 		for i in range(len(addr_len)):
 			all_addr.append(data["address"][i]["addr"])
 			length.append(data["address"][i]["length"])
+			endian.append(data["address"][i]["endian_type"])
+			func.append(data["address"][i]["func"])
 			datatypes.append(data["address"][i]["data_type"])
-		return (filename, active, endian, device, retry, all_addr, length, datatypes)
+		return (filename, active, endian, device, retry, all_addr, length, datatypes, func)
 
 # create a JSON file from the data collected from the user from RTU creation page
-def createJsonRtu(filename, device_addr, retry_count, active, endian, addrlist, lenlist, dtypelist):
+def createJsonRtu(filename, device_addr, retry_count, active, endian, addrlist, lenlist, dtypelist, fcode):
 	val = ""
 	address_value = ""
 	for loop in range(len(addrlist) - 1): # last value of the list is garbage (hidden stream)
 		address_value += "\t\t{\n" + \
 			"\t\t\t\t\"addr\": " + str(addrlist[loop]) + ",\n" + \
 			"\t\t\t\t\"length\" : "+ str(lenlist[loop]) + ",\n" + \
+			"\t\t\t\t\"func\" : "+ str(fcode[loop]) + ",\n" + \
+			"\t\t\t\t\"endian_type\" : "+ str(endian[loop]) + ",\n" + \
 			"\t\t\t\t\"data_type\": \"" + str(dtypelist[loop]) + "\"\n" + \
 		"\t\t},\n"\
 
+			
+				 # "\t\"endian_type\": \"" + endian + "\",\n" +\
 	address_value = address_value[:-2] # Remove \n and , from the end
 	val = "{\n\t" + "\"address\": [\n" + address_value + "\n\t],\n" +\
 	 "\t\"retry_count\": " + str(retry_count) + ",\n" +\
 	 "\t\"device_address\": " + str(device_addr) + ",\n" +\
 	 "\t\"active\": \"" + active + "\",\n" +\
-	 "\t\"endian_type\": \"" + endian + "\",\n" +\
 	 "\t\"Description\": \"This is " + filename + ".rtu file.\"" + "\n" +\
 	 "}"
-	path = "../project/config/"
-	rtu_file_name = path + filename + ".rtu"
+	path = rtu_file_path
+	rtu_file_name = path + '/' + filename + ".rtu"
 	with open(rtu_file_name, 'w') as file:  # Use file to refer to the file object
 		file.write(val) 
 
@@ -591,11 +607,11 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
       	  "\"config_status\": false\n" + \
   		  "}\n"
 	path = rtu_file_path
-	config_file_name = path + "config.json"
+	config_file_name = path + '/' + "config.json"
 	with open(config_file_name, 'w') as file:  # Use file to refer to the file object
 		file.write(val) 
 
 # main function calling
 if __name__ == "__main__":
 	app.secret_key = os.urandom(12)
-	app.run(host='0.0.0.0')
+	app.run(debug=True, host='0.0.0.0')

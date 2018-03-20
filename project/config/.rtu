@@ -1,0 +1,21 @@
+{
+	"address": [
+		{
+				"addr": 658,
+				"length" : 74,
+				"func" : 3,
+				"data_type": "S32"
+		},
+		{
+				"addr": 78,
+				"length" : 6,
+				"func" : 4,
+				"data_type": "U32"
+		}
+	],
+	"retry_count": 3,
+	"device_address": 25,
+	"active": "True",
+	"endian_type": "little",
+	"Description": "This is .rtu file."
+}

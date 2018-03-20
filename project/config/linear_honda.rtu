@@ -4,15 +4,22 @@
 				"addr": 1214,
 				"length" : 1,
 				"func" : 3,
-				"data_type": "S16",
-				"endian_type": "little"
+				"endian_type" : little,
+				"data_type": "S16"
 		},
 		{
 				"addr": 1017,
 				"length" : 2,
 				"func" : 3,
-				"data_type": "F",
-				"endian_type": "little"
+				"endian_type" : little,
+				"data_type": "F"
+		},
+		{
+				"addr": 50,
+				"length" : 6,
+				"func" : 4,
+				"endian_type" : big,
+				"data_type": "S32"
 		}
 	],
 	"retry_count": 3,
