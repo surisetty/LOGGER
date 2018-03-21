@@ -44,10 +44,6 @@
 					<li class="nav-item"><a class="nav-link" href="/log"><em class="fa fa-file-text-o"></em> Log Files</a></li>
 				</ul>
 					
-
-
-
-
 				<a href="/signout" class="logout-button"><em class="fa fa-power-off"></em> Signout</a></nav>
 			
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
@@ -74,47 +70,6 @@
 				<section class="row">
 					<div class="col-sm-12">
 						<section class="row">
-							<div class="col-sm-12 col-md-6 ">
-								<!-- <div class="card mb-4">
-									<div class="card-block">
-										<h3 class="card-title">Donut Chart</h3>
-										
-										<div class="dropdown card-title-btn-container">
-											<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-											
-											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-												<a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-												<a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
-										</div>
-										
-										<h6 class="card-subtitle mb-2 text-muted">Sample Data</h6>
-										
-										<div class="canvas-wrapper">
-											<canvas class="main-chart" id="doughnut-chart" height="300" width="600"></canvas>
-										</div>
-									</div>
-								</div> -->
-								
-								<!-- <div class="card mb-4">
-									<div class="card-block">
-										<h3 class="card-title">Pie Chart</h3>
-										
-										<div class="dropdown card-title-btn-container">
-											<button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-											
-											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-												<a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-												<a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
-										</div>
-										
-										<h6 class="card-subtitle mb-2 text-muted">Sample Data</h6>
-										
-										<div class="canvas-wrapper">
-											<canvas class="main-chart" id="pie-chart" height="300" width="600"></canvas>
-										</div>
-									</div>
-								</div> -->
-							</div>
 							<div class="col-md-12 col-lg-8">
 								<div class="card mb-4">
 									<div class="card-block">
@@ -123,9 +78,20 @@
 									</div>
 								</div>
 								<div class="jumbotron">
-									
 									<p class="lead">This is a simple Logger Web Application which can be used to monitor the device functionality such as generation of the RTU files, viewing the output files and viewing the logging activities.</p>
 								</div>	
+							</div>
+							<div class="col-md-12 col-lg-3">
+								<form class="form-horizontal" action="/welcome" method="post"> 
+									<fieldset>
+									<!-- Form actions -->
+										<div class="form-group">
+											<div class="col-12 widget-right no-padding">
+												<button id="sub" type="submit" class="btn btn-primary btn-md float-right">Restart Device</button>
+											</div>
+										</div>
+									</fieldset>
+								</form>
 							</div>
 						</section>
 					</div>

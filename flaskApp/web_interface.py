@@ -47,12 +47,14 @@ def home():
 		return render_template('welcome.html', active_user=active_user)
 
 # Route for the Welcome page
-@app.route('/welcome')
+@app.route('/welcome', methods=['GET','POST'])
 def welcome():
 	if not 'username' in session:
 		flash('You are Logged Out')
 		return render_template('home.html')
 	else:
+		if request.method == 'POST':
+			subprocess.call(['shutdown', '-r', '1'])
 		return render_template('welcome.html', active_user=active_user) 
 
 # Route for Ftp/Network Settings Page
@@ -524,7 +526,7 @@ def createJsonRtu(filename, device_addr, retry_count, active, endian, addrlist, 
 			"\t\t\t\t\"addr\": " + str(addrlist[loop]) + ",\n" + \
 			"\t\t\t\t\"length\" : "+ str(lenlist[loop]) + ",\n" + \
 			"\t\t\t\t\"func\" : "+ str(fcode[loop]) + ",\n" + \
-			"\t\t\t\t\"endian_type\" : "+ str(endian[loop]) + ",\n" + \
+			"\t\t\t\t\"endian_type\" : \""+ str(endian[loop]) + "\",\n" + \
 			"\t\t\t\t\"data_type\": \"" + str(dtypelist[loop]) + "\"\n" + \
 		"\t\t},\n"\
 

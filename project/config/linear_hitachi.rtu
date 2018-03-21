@@ -4,29 +4,36 @@
 				"addr": 6144,
 				"length" : 3,
 				"func" : 3,
-				"endian_type" : little,
+				"endian_type" : "little",
 				"data_type": "S16"
 		},
 		{
 				"addr": 6147,
 				"length" : 4,
 				"func" : 4,
-				"endian_type" : big,
+				"endian_type" : "big",
 				"data_type": "U16"
 		},
 		{
 				"addr": 6403,
 				"length" : 1,
 				"func" : 3,
-				"endian_type" : big,
+				"endian_type" : "big",
 				"data_type": "U32"
 		},
 		{
 				"addr": 456,
 				"length" : 34,
 				"func" : 3,
-				"endian_type" : little,
+				"endian_type" : "little",
 				"data_type": "S16"
+		},
+		{
+				"addr": 1,
+				"length" : 7,
+				"func" : 3,
+				"endian_type" : "big",
+				"data_type": "F"
 		}
 	],
 	"retry_count": 3,
