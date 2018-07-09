@@ -1,9 +1,9 @@
 {
 	"GPRS": {
-	"password": "1234",
-	"apn": "airtelgprs.com",
-	"user": "test",
-	"num": "123456"
+	"password": "jai",
+	"apn": "",
+	"user": "veeru",
+	"num": "*99#"
 	},
 	"ftp": {
 	"path": "/InfGac",
@@ -29,13 +29,13 @@
 	"stopbits": 1,
 	"timeout": 3,
 	"slaves": [
-		"MFM.rtu",
-		"Schneider_Inverter_12.rtu",
-		"Schneider_Inverter_13.rtu",
-		"Schneider_Inverter_14.rtu",
-		"Schneider_Inverter_15.rtu",
-		"Schneider_Inverter_16.rtu",
-		"Schneider_Inverter_17.rtu"
+		"MFM.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu",
+		"Schneider_Inverter_12.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu",
+		"Schneider_Inverter_13.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu",
+		"Schneider_Inverter_14.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu",
+		"Schneider_Inverter_15.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu",
+		"Schneider_Inverter_16.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu",
+		"Schneider_Inverter_17.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu"
 	],
 	"status": "enabled"
 	},
@@ -47,7 +47,7 @@
 	"stopbits": 1,
 	"timeout": 3,
 	"slaves": [
-		"linear_honda.rtu"
+		"linear_honda.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu.rtu"
 	],
 	"status": "disabled"
 	}

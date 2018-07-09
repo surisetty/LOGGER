@@ -3,6 +3,7 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 import redis 
 import os
 import sys
+import glob
 import json
 import shutil
 import subprocess
@@ -167,6 +168,7 @@ def gprs_settings():
 			network['apn_name'] = apn_name
 			network['apn_num'] = apn_num
 			createJsonConfig(ftp, network, modbus, porta, portb)
+			configureGprs(network)
 		return redirect(url_for('ftp_settings'))
 
 # Route for MODBUS Settings Page
@@ -612,6 +614,48 @@ def createJsonConfig(ftp, network, modbus, porta, portb):
 	config_file_name = path + '/' + "config.json"
 	with open(config_file_name, 'w') as file:  # Use file to refer to the file object
 		file.write(val) 
+
+def configureGprs(network):
+	# file1_path = rtu_file_path + '/' + 'testing_gprs1'
+	# file2_path = rtu_file_path + '/' + 'testing_gprs2'
+	file2_path = '/etc/ppp/peers/provider'
+	file1_path = '/etc/ppp/chat-isp'
+
+	if network['username'] == "":
+  		test_name = '/0'
+  	else:
+  		test_name = network['username']
+
+	data_file_chat = "\
+	ABORT \"NO CARRIER\"\n\
+	ABORT \"NO DIALTONE\"\n\
+	ABORT \"ERROR\"\n\
+	ABORT \"NO ANSWER\"\n\
+	ABORT \"BUSY\"\n\
+	\"\" \"atz\"\n\
+	OK \"at&d0&c1\"\n\
+	OK \"atdt8319000\"\n\
+	\"CONNECT\"\n\
+	ogin:\"{}\"\n\
+	sword:\"{}\"\n".format(test_name, network['password'])
+
+	with open(file1_path, 'w') as myfile:
+  		myfile.write(data_file_chat)
+
+  	data_file_provider = "\
+  	user \"{}\"\n\
+	connect \"/usr/sbin/chat -v -f /etc/chatscripts/pap -T {}\"\n\
+	/dev/ttymxc1\n\
+	115200\n\
+	noipdefault\n\
+	usepeerdns\n\
+	defaultroute\n\
+	persist\n\
+	noauth\n".format(test_name, network['apn_num'])
+
+	with open(file2_path, 'w') as myfile:
+  		myfile.write(data_file_provider)
+
 
 # main function calling
 if __name__ == "__main__":
